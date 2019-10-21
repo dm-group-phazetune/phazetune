@@ -8,7 +8,9 @@ async function getUser(req, res) {
 }
 
 // tn - User Register
-async function register(req, res) {}
+async function register(req, res) {
+  
+}
 
 // tn - User Login
 async function login(req, res) {}
