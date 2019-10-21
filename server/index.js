@@ -34,11 +34,14 @@ massive(CONNECTION_STRING).then(db => {
   console.log("db connected!");
 });
 
+// De-structured controllers
+const { getUser, register, login, logout } = authController;
+
 // Auth Endpoints
-app.get("/auth/user");
-app.post("/auth/user");
-app.post("/auth/login");
-app.post("/auth/logout");
+app.get("/auth/user", getUser);
+app.post("/auth/register", register);
+app.post("/auth/login", login);
+app.post("/auth/logout", logout);
 // Posts Endpoints
 app.post("/api/posts");
 app.put("/api/posts/:post_id");
