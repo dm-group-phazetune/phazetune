@@ -1,10 +1,11 @@
 import React from "react";
+import routes from "./routes";
 import "./styles/main.scss";
 
 function App() {
   return (
     <div className="App">
-      <h1>PHAZETUNE</h1>
+      <h1>{routes}</h1>
     </div>
   );
 }
