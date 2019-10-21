@@ -56,7 +56,9 @@ async function register(req, res) {
 // tn - User Login
 async function login(req, res) {
   const db = req.app.get("db");
+  console.log("hit");
   const { username, password } = req.body;
+  console.log(username, password);
 
   const foundUser = await db.auth.checkForUsername(username);
 
@@ -77,6 +79,8 @@ async function login(req, res) {
         bio: foundUser[0].bio,
         follow_count: foundUser[0].follow_count
       };
+
+      res.status(200).json(req.session.user);
     }
   }
 }
