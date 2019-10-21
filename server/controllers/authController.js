@@ -1,3 +1,5 @@
+const bcrypt = require("bcryptjs");
+
 // tn - Get User
 async function getUser(req, res) {
   if (req.session.user) {
