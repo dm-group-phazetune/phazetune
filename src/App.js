@@ -1,7 +1,7 @@
 import React from "react";
 import routes from "./routes";
 import "./styles/main.scss";
-import AudioUpload from './Components/AudioUpload';
+import AudioUpload from './Components/FireAudioUpload/AudioUpload'
 function App() {
   return (
     <div className="App">
@@ -12,3 +12,4 @@ function App() {
 }
 
 export default App;
+
