@@ -13,7 +13,12 @@ class Header extends Component {
   }
 
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <div>PHAZETUNE</div>
+        <div>LOGIN</div>
+      </div>
+    );
   }
 }
 

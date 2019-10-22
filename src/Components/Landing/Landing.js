@@ -4,8 +4,10 @@ class Landing extends Component {
   render() {
     return (
       <div>
-        <h1>Landing</h1>
-        <div></div>
+        <header>Landing</header>
+        <main>Phazetune Features</main>
+        <main>Mission Statement</main>
+        <footer>About the team</footer>
       </div>
     );
   }
