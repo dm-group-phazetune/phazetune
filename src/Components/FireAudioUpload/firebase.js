@@ -1,7 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/storage'
 require('dotenv').config()
-// Your web app's Firebase configuration
+// Web app's Firebase configuration
 var firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: "phazetune.firebaseapp.com",
@@ -19,4 +19,5 @@ const storage = firebase.storage()
 export {
     storage, firebase as default
 }
+
 
