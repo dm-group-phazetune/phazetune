@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import WaveSurfer from 'wavesurfer';
 import {peaks} from './peaks'
+import AudioUpload from '../FireAudioUpload/AudioUpload'
 // import ReactWaveSurfer from 'react-wavesurfers'
 
 
@@ -26,6 +27,7 @@ class Newsfeed extends Component {
     this.wavesurfer.load(audio, peaks);
   }
 
+
   play = () => {
     this.wavesurfer.play();
   };
@@ -41,6 +43,7 @@ class Newsfeed extends Component {
   render() {
     return (
       <div>
+
         <button onClick={this.play} 
                 style={{marginLeft: 850}}>Play</button>
 
@@ -51,7 +54,8 @@ class Newsfeed extends Component {
                 style={{marginLeft: 850}}>Skip Forward</button>
 
         <button onClick={this.toggleMute} 
-                style={{marginLeft: 850}}>toggleMute</button>
+                style={{marginLeft: 850}}>Mute</button>
+                <AudioUpload />
                 
         <div
           style={{ border: '3px solid grey', width: 500, height: 80, marginLeft: 600 }}
