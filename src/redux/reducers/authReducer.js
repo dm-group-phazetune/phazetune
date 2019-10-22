@@ -102,6 +102,18 @@ export default function reducer(state = initialState, action) {
         bio: payload.data.bio
       };
     }
+    case LOGOUT_USER: {
+      return {
+        user_id: null,
+        first_name: "",
+        last_name: "",
+        username: "",
+        location: "",
+        photo: "",
+        bio: "",
+        loading: false
+      };
+    }
     default:
       return state;
   }
