@@ -35,7 +35,9 @@ class Newsfeed extends Component {
   skipForward = () => {
     this.wavesurfer.skipForward()
   }
-
+  toggleMute = () => {
+    this.wavesurfer.toggleMute()
+  }
   render() {
     return (
       <div>
@@ -45,7 +47,11 @@ class Newsfeed extends Component {
         <button onClick={this.pause} 
                 style={{marginLeft: 850}}>Pause</button>
 
-        
+        <button onClick={this.skipForward} 
+                style={{marginLeft: 850}}>Skip Forward</button>
+
+        <button onClick={this.toggleMute} 
+                style={{marginLeft: 850}}>toggleMute</button>
                 
         <div
           style={{ border: '3px solid grey', width: 500, height: 80, marginLeft: 600 }}
