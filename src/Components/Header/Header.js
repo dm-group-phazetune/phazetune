@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import {
   getSession,
-  loginUser,
   registerUser,
+  loginUser,
   logoutUser
 } from "../../redux/reducers/authReducer";
 import { connect } from "react-redux";
-import { Redirect, withRouter } from "react-router-dom";
-import Dialog from "@material-ui/core/Dialog";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import { withRouter } from "react-router-dom";
+import Login from "../Login/Login";
+import Register from "../Register/Register";
 
 class Header extends Component {
   constructor() {
@@ -21,7 +20,7 @@ class Header extends Component {
       password: "",
       first_name: "",
       last_name: "",
-      location: ""
+      city: ""
     };
   }
 
@@ -37,128 +36,76 @@ class Header extends Component {
     this.setState({ register: true });
   };
 
-  handleLogin = e => {
-    e.preventDefault();
-    const { username, password } = this.state;
-    const { loginUser } = this.props;
-    loginUser({ username, password });
-    this.setState({ login: false });
-  };
-
-  handleRegister = e => {
-    e.preventDefault();
-    this.setState({ register: false });
-  };
-
   handleInput = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  render() {
-    if (this.props.user_id) {
-      return <Redirect to="/newsfeed" />;
+  handleSubmit = e => {
+    e.preventDefault();
+    const formName = e.target.name;
+    const { username, password, first_name, last_name, city } = this.state;
+    const { loginUser, registerUser } = this.props;
+
+    if (formName === "login-form") {
+      loginUser({ username, password });
+      this.setState({ login: false, username: "", password: "" });
+    } else if (formName === "register-form") {
+      registerUser({ username, password, first_name, last_name, city });
+      this.setState({
+        register: false,
+        username: "",
+        password: "",
+        first_name: "",
+        last_name: "",
+        city: ""
+      });
     }
+  };
+
+  handleLogout = () => {
+    this.props.logoutUser();
+    this.props.history.push("/");
+  };
+
+  render() {
     return (
       <div>
-        <div>PHAZETUNE</div>
-        {this.props.location.pathname === "/" ? (
-          <div>
-            <button onClick={this.openLogin}>LOGIN</button>
-            <Dialog open={this.state.login}>
-              <DialogTitle>Welcome Back</DialogTitle>
-              <DialogContent>
-                <form>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <label>username:</label>
-                        </td>
-                        <td>
-                          <input
-                            name="username"
-                            value={this.state.username}
-                            onChange={this.handleInput}
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>password:</label>
-                        </td>
-                        <td>
-                          <input
-                            name="password"
-                            value={this.state.password}
-                            onChange={this.handleInput}
-                          />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <button type="submit" onClick={this.handleLogin}>
-                    LOG IN
-                  </button>
-                </form>
-              </DialogContent>
-            </Dialog>
-            <button name="register" type="button" onClick={this.openRegister}>
-              REGISTER
-            </button>
-            <Dialog open={this.state.register}>
-              <DialogTitle>Sign Up</DialogTitle>
-              <DialogContent>
-                <form>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <label>First Name:</label>
-                        </td>
-                        <td>
-                          <input placeholder="" />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>Last Name:</label>
-                        </td>
-                        <td>
-                          <input placeholder="" />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>Username:</label>
-                        </td>
-                        <td>
-                          <input placeholder="" />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>Password:</label>
-                        </td>
-                        <td>
-                          <input placeholder="" />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>Location:</label>
-                        </td>
-                        <td>
-                          <input placeholder="" />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <button onClick={this.handleRegister}>Register</button>
-                </form>
-              </DialogContent>
-            </Dialog>
-          </div>
-        ) : null}
+        <div>
+          {this.props.location.pathname === "/" ? (
+            <div>
+              <div>PHAZETUNE</div>
+              <button onClick={this.openLogin}>LOGIN</button>
+              <Login
+                handleSubmit={this.handleSubmit}
+                login={this.state.login}
+                username={this.state.username}
+                password={this.state.password}
+                openLogin={this.openLogin}
+                handleInput={this.handleInput}
+              />
+              <button onClick={this.openRegister}>REGISTER</button>
+              <Register
+                handleSubmit={this.handleSubmit}
+                register={this.state.register}
+                username={this.state.username}
+                password={this.state.password}
+                firstName={this.state.first_name}
+                lastName={this.state.last_name}
+                city={this.state.city}
+                openRegister={this.openRegister}
+                handleInput={this.handleInput}
+              />
+            </div>
+          ) : (
+            <div>
+              <div>PHAZETUNE</div>
+              <div>
+                <p>Hi, {this.props.first_name}</p>
+                <button onClick={this.handleLogout}>LOG OUT</button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     );
   }
@@ -176,8 +123,8 @@ export default withRouter(
     mapStateToProps,
     {
       getSession,
-      loginUser,
       registerUser,
+      loginUser,
       logoutUser
     }
   )(Header)
