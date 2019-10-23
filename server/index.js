@@ -5,8 +5,8 @@ const massive = require("massive");
 const app = express();
 // Socket
 const http = require("http").createServer(app);
-const sockets = require('socket.io');
-const io = require(sockets)(http);
+// const sockets = require('socket.io');
+const io = require("socket.io")(http);
 // Controllers
 const authController = require("./controllers/authController");
 const postsController = require("./controllers/postsController");
@@ -69,7 +69,7 @@ app.delete("/api/user/:user_id");
 
 let messages =[];
 
-app.post('/login', (req, res) => {
+app.post('/login', (req, res) => {res
   req.session.username = req.body.username;
 })
 
