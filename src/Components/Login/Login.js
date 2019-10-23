@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getSession, loginUser } from "../../redux/reducers/authReducer";
+import { getSession } from "../../redux/reducers/authReducer";
 import { connect } from "react-redux";
 import { Redirect, withRouter } from "react-router-dom";
 import Dialog from "@material-ui/core/Dialog";
@@ -64,8 +64,7 @@ export default withRouter(
   connect(
     mapStateToProps,
     {
-      getSession,
-      loginUser
+      getSession
     }
   )(Login)
 );

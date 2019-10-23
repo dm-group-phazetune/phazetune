@@ -10,15 +10,7 @@ async function getUser(req, res) {
 // tn - User Register
 async function register(req, res) {
   const db = req.app.get("db");
-  const {
-    first_name,
-    last_name,
-    username,
-    password,
-    location
-    // photo,
-    // bio
-  } = req.body;
+  const { first_name, last_name, username, password, city } = req.body;
 
   const foundUser = await db.auth.checkForUsername(username);
 
@@ -33,9 +25,7 @@ async function register(req, res) {
       last_name,
       username,
       hash,
-      location
-      // photo,
-      // bio
+      city
     ]);
 
     req.session.user = {
@@ -43,7 +33,7 @@ async function register(req, res) {
       first_name: newUser[0].first_name,
       last_name: newUser[0].last_name,
       username: newUser[0].username,
-      location: newUser[0].location,
+      city: newUser[0].city,
       photo: newUser[0].photo,
       bio: newUser[0].bio,
       follow_count: newUser[0].follow_count
@@ -72,7 +62,7 @@ async function login(req, res) {
         first_name: foundUser[0].first_name,
         last_name: foundUser[0].last_name,
         username: foundUser[0].username,
-        location: foundUser[0].location,
+        city: foundUser[0].city,
         photo: foundUser[0].photo,
         bio: foundUser[0].bio,
         follow_count: foundUser[0].follow_count

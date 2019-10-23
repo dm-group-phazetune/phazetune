@@ -8,6 +8,7 @@ import {
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Login from "../Login/Login";
+import Register from "../Register/Register";
 
 class Header extends Component {
   constructor() {
@@ -19,7 +20,7 @@ class Header extends Component {
       password: "",
       first_name: "",
       last_name: "",
-      location: ""
+      city: ""
     };
   }
 
@@ -42,21 +43,21 @@ class Header extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const formName = e.target.name;
-    const { username, password, first_name, last_name, location } = this.state;
+    const { username, password, first_name, last_name, city } = this.state;
     const { loginUser, registerUser } = this.props;
 
     if (formName === "login-form") {
       loginUser({ username, password });
       this.setState({ login: false, username: "", password: "" });
     } else if (formName === "register-form") {
-      registerUser({ username, password, first_name, last_name, location });
+      registerUser({ username, password, first_name, last_name, city });
       this.setState({
         register: false,
         username: "",
         password: "",
         first_name: "",
         last_name: "",
-        location: ""
+        city: ""
       });
     }
   };
@@ -82,67 +83,24 @@ class Header extends Component {
                 openLogin={this.openLogin}
                 handleInput={this.handleInput}
               />
-              {/* <button name="register" type="button" onClick={this.openRegister}>
-                REGISTER
-              </button>
-              <Dialog open={this.state.register}>
-                <DialogTitle>Sign Up</DialogTitle>
-                <DialogContent>
-                  <form name="register-form" onSubmit={this.handleSubmit}>
-                    <table>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <label>First Name:</label>
-                          </td>
-                          <td>
-                            <input placeholder="" />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <label>Last Name:</label>
-                          </td>
-                          <td>
-                            <input placeholder="" />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <label>Username:</label>
-                          </td>
-                          <td>
-                            <input placeholder="" />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <label>Password:</label>
-                          </td>
-                          <td>
-                            <input placeholder="" />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <label>Location:</label>
-                          </td>
-                          <td>
-                            <input placeholder="" />
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <button type="submit">Register</button>
-                  </form>
-                </DialogContent>
-              </Dialog> */}
+              <button onClick={this.openRegister}>REGISTER</button>
+              <Register
+                handleSubmit={this.handleSubmit}
+                register={this.state.register}
+                username={this.state.username}
+                password={this.state.password}
+                firstName={this.state.first_name}
+                lastName={this.state.last_name}
+                city={this.state.city}
+                openRegister={this.openRegister}
+                handleInput={this.handleInput}
+              />
             </div>
           ) : (
             <div>
               <div>PHAZETUNE</div>
               <div>
-                {/* <p>Hi, {this.props.user_id ? this.props.first_name : Guest}</p> */}
+                <p>Hi, {this.props.first_name}</p>
                 <button onClick={this.handleLogout}>LOG OUT</button>
               </div>
             </div>

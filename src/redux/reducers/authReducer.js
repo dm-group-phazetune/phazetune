@@ -5,7 +5,7 @@ const initialState = {
   first_name: "",
   last_name: "",
   username: "",
-  location: "",
+  city: "",
   photo: "",
   bio: "",
   loading: false
@@ -24,7 +24,6 @@ export function getSession() {
 }
 
 export function registerUser(newUser) {
-  console.log(newUser);
   return {
     type: REGISTER_USER,
     payload: Axios.post("/auth/register", newUser)
@@ -32,7 +31,6 @@ export function registerUser(newUser) {
 }
 
 export function loginUser(user) {
-  console.log(user);
   return {
     type: LOGIN_USER,
     payload: Axios.post("/auth/login", user)
@@ -48,7 +46,6 @@ export function logoutUser() {
 
 export default function reducer(state = initialState, action) {
   const { type, payload } = action;
-  console.log(type, payload);
   switch (type) {
     case `${GET_SESSION}_PENDING`: {
       return {
@@ -63,7 +60,7 @@ export default function reducer(state = initialState, action) {
         first_name: payload.data.first_name,
         last_name: payload.data.last_name,
         username: payload.data.username,
-        location: payload.data.location,
+        city: payload.data.city,
         photo: payload.data.photo,
         bio: payload.data.bio
       };
@@ -81,7 +78,7 @@ export default function reducer(state = initialState, action) {
         first_name: payload.data.first_name,
         last_name: payload.data.last_name,
         username: payload.data.username,
-        location: payload.data.location
+        city: payload.data.city
       };
     }
     case `${LOGIN_USER}_PENDING`: {
@@ -94,7 +91,10 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         user_id: payload.data.user_id,
-        username: payload.data.username
+        first_name: payload.data.first_name,
+        last_name: payload.data.last_name,
+        username: payload.data.username,
+        city: payload.data.city
       };
     }
     case LOGOUT_USER: {
@@ -103,7 +103,7 @@ export default function reducer(state = initialState, action) {
         first_name: "",
         last_name: "",
         username: "",
-        location: "",
+        city: "",
         photo: "",
         bio: "",
         loading: false
