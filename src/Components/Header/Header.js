@@ -6,7 +6,7 @@ import {
   logoutUser
 } from "../../redux/reducers/authReducer";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -39,11 +39,8 @@ class Header extends Component {
 
   handleLogin = e => {
     e.preventDefault();
-    // console.log("hit");
     const { username, password } = this.state;
     const { loginUser } = this.props;
-    // console.log(username, password);
-    // console.log(loginUser({ username, password }));
     loginUser({ username, password });
     this.setState({ login: false });
   };
@@ -64,100 +61,104 @@ class Header extends Component {
     return (
       <div>
         <div>PHAZETUNE</div>
-        <button onClick={this.openLogin}>LOGIN</button>
-        <Dialog open={this.state.login}>
-          <DialogTitle>Welcome Back</DialogTitle>
-          <DialogContent>
-            <form>
-              <table>
-                <tbody>
-                  <tr>
-                    <td>
-                      <label>username:</label>
-                    </td>
-                    <td>
-                      <input
-                        name="username"
-                        value={this.state.username}
-                        onChange={this.handleInput}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label>password:</label>
-                    </td>
-                    <td>
-                      <input
-                        name="password"
-                        value={this.state.password}
-                        onChange={this.handleInput}
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <button type="submit" onClick={this.handleLogin}>
-                LOG IN
-              </button>
-            </form>
-          </DialogContent>
-        </Dialog>
-        <button name="register" type="button" onClick={this.openRegister}>
-          REGISTER
-        </button>
-        <Dialog open={this.state.register}>
-          <DialogTitle>Sign Up</DialogTitle>
-          <DialogContent>
-            <form>
-              <table>
-                <tbody>
-                  <tr>
-                    <td>
-                      <label>First Name:</label>
-                    </td>
-                    <td>
-                      <input placeholder="" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label>Last Name:</label>
-                    </td>
-                    <td>
-                      <input placeholder="" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label>Username:</label>
-                    </td>
-                    <td>
-                      <input placeholder="" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label>Password:</label>
-                    </td>
-                    <td>
-                      <input placeholder="" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label>Location:</label>
-                    </td>
-                    <td>
-                      <input placeholder="" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <button onClick={this.handleRegister}>Register</button>
-            </form>
-          </DialogContent>
-        </Dialog>
+        {this.props.location.pathname === "/" ? (
+          <div>
+            <button onClick={this.openLogin}>LOGIN</button>
+            <Dialog open={this.state.login}>
+              <DialogTitle>Welcome Back</DialogTitle>
+              <DialogContent>
+                <form>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <label>username:</label>
+                        </td>
+                        <td>
+                          <input
+                            name="username"
+                            value={this.state.username}
+                            onChange={this.handleInput}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label>password:</label>
+                        </td>
+                        <td>
+                          <input
+                            name="password"
+                            value={this.state.password}
+                            onChange={this.handleInput}
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <button type="submit" onClick={this.handleLogin}>
+                    LOG IN
+                  </button>
+                </form>
+              </DialogContent>
+            </Dialog>
+            <button name="register" type="button" onClick={this.openRegister}>
+              REGISTER
+            </button>
+            <Dialog open={this.state.register}>
+              <DialogTitle>Sign Up</DialogTitle>
+              <DialogContent>
+                <form>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <label>First Name:</label>
+                        </td>
+                        <td>
+                          <input placeholder="" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label>Last Name:</label>
+                        </td>
+                        <td>
+                          <input placeholder="" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label>Username:</label>
+                        </td>
+                        <td>
+                          <input placeholder="" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label>Password:</label>
+                        </td>
+                        <td>
+                          <input placeholder="" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label>Location:</label>
+                        </td>
+                        <td>
+                          <input placeholder="" />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <button onClick={this.handleRegister}>Register</button>
+                </form>
+              </DialogContent>
+            </Dialog>
+          </div>
+        ) : null}
       </div>
     );
   }
@@ -170,12 +171,14 @@ const mapStateToProps = reduxState => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    getSession,
-    loginUser,
-    registerUser,
-    logoutUser
-  }
-)(Header);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    {
+      getSession,
+      loginUser,
+      registerUser,
+      logoutUser
+    }
+  )(Header)
+);
