@@ -67,6 +67,7 @@ async function login(req, res) {
     if (!isAuthenticated) {
       res.status(403).json("Username or Password is incorrect.");
     } else {
+      console.log(req.session.user);
       req.session.user = {
         user_id: foundUser[0].user_id,
         first_name: foundUser[0].first_name,

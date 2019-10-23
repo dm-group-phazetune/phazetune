@@ -6,7 +6,7 @@ import {
   logoutUser
 } from "../../redux/reducers/authReducer";
 import { connect } from "react-redux";
-import { Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -51,9 +51,20 @@ class Header extends Component {
     if (formName === "login-form") {
       loginUser({ username, password });
       this.setState({ login: false, username: "", password: "" });
+      if (this.props.user_id) {
+        console.log("User logged in");
+        this.props.history.push("/newsfeed");
+      }
     } else if (formName === "register-form") {
       registerUser({ username, password, first_name, last_name, location });
-      this.setState({ register: false });
+      this.setState({
+        register: false,
+        username: "",
+        password: "",
+        first_name: "",
+        last_name: "",
+        location: ""
+      });
     }
   };
 
