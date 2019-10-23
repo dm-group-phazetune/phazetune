@@ -6,7 +6,7 @@ import {
   logoutUser
 } from "../../redux/reducers/authReducer";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -21,7 +21,8 @@ class Header extends Component {
       password: "",
       first_name: "",
       last_name: "",
-      location: ""
+      location: "",
+      toNewsfeed: false
     };
   }
 
@@ -41,19 +42,38 @@ class Header extends Component {
     this.setState({ register: true });
   };
 
-  handleLogin = e => {
+  handleSubmit = e => {
     e.preventDefault();
-    const { username, password } = this.state;
-    const { loginUser } = this.props;
-    loginUser({ username, password });
-    this.setState({ login: false });
-    this.props.history.push("/newsfeed");
+    const formName = e.target.name;
+    const { username, password, first_name, last_name, location } = this.state;
+    const { loginUser, registerUser } = this.props;
+
+    if (formName === "login-form") {
+      loginUser({ username, password });
+      this.setState({ login: false, username: "", password: "" });
+    } else if (formName === "register-form") {
+      registerUser({ username, password, first_name, last_name, location });
+      this.setState({ register: false });
+    }
   };
 
-  handleRegister = e => {
-    e.preventDefault();
-    this.setState({ register: false });
-  };
+  // handleLogin = e => {
+  //   e.preventDefault();
+  //   const { username, password } = this.state;
+  //   const { loginUser } = this.props;
+  //   loginUser({ username, password });
+  //   this.setState({ login: false });
+  //   this.props.history.push("/newsfeed");
+  // };
+
+  // handleRegister = e => {
+  //   e.preventDefault();
+  //   const { username, password, first_name, last_name, location } = this.state;
+  //   const { registerUser } = this.props;
+  //   registerUser({ username, password, first_name, last_name, location });
+  //   this.setState({ register: false });
+  //   this.props.history.push("/newsfeed");
+  // };
 
   handleInput = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -69,7 +89,7 @@ class Header extends Component {
               <Dialog open={this.state.login}>
                 <DialogTitle>Welcome Back</DialogTitle>
                 <DialogContent>
-                  <form>
+                  <form name="login-form" onSubmit={this.handleSubmit}>
                     <table>
                       <tbody>
                         <tr>
@@ -98,9 +118,7 @@ class Header extends Component {
                         </tr>
                       </tbody>
                     </table>
-                    <button type="submit" onClick={this.handleLogin}>
-                      LOG IN
-                    </button>
+                    <button type="submit">LOG IN</button>
                   </form>
                 </DialogContent>
               </Dialog>
@@ -110,7 +128,7 @@ class Header extends Component {
               <Dialog open={this.state.register}>
                 <DialogTitle>Sign Up</DialogTitle>
                 <DialogContent>
-                  <form>
+                  <form name="register-form" onSubmit={this.handleSubmit}>
                     <table>
                       <tbody>
                         <tr>
@@ -155,7 +173,7 @@ class Header extends Component {
                         </tr>
                       </tbody>
                     </table>
-                    <button onClick={this.handleRegister}>Register</button>
+                    <button type="submit">Register</button>
                   </form>
                 </DialogContent>
               </Dialog>

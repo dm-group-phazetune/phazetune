@@ -15,9 +15,9 @@ async function register(req, res) {
     last_name,
     username,
     password,
-    location,
-    photo,
-    bio
+    location
+    // photo,
+    // bio
   } = req.body;
 
   const foundUser = await db.auth.checkForUsername(username);
@@ -27,15 +27,15 @@ async function register(req, res) {
   } else {
     const salt = await bcrypt.genSaltSync(10);
     const hash = await bcrypt.hashSync(password, salt);
-    console.log(username);
+    console.log("hit");
     const newUser = await db.auth.registerUser([
       first_name,
       last_name,
       username,
       hash,
-      location,
-      photo,
-      bio
+      location
+      // photo,
+      // bio
     ]);
 
     req.session.user = {
@@ -56,9 +56,7 @@ async function register(req, res) {
 // tn - User Login
 async function login(req, res) {
   const db = req.app.get("db");
-  console.log("hit");
   const { username, password } = req.body;
-  console.log(username, password);
 
   const foundUser = await db.auth.checkForUsername(username);
 

@@ -24,6 +24,7 @@ export function getSession() {
 }
 
 export function registerUser(newUser) {
+  console.log(newUser);
   return {
     type: REGISTER_USER,
     payload: Axios.post("/auth/register", newUser)
@@ -31,6 +32,7 @@ export function registerUser(newUser) {
 }
 
 export function loginUser(user) {
+  console.log(user);
   return {
     type: LOGIN_USER,
     payload: Axios.post("/auth/login", user)
@@ -79,9 +81,7 @@ export default function reducer(state = initialState, action) {
         first_name: payload.data.first_name,
         last_name: payload.data.last_name,
         username: payload.data.username,
-        location: payload.data.location,
-        photo: payload.data.photo,
-        bio: payload.data.bio
+        location: payload.data.location
       };
     }
     case `${LOGIN_USER}_LOADING`: {
