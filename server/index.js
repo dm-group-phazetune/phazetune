@@ -66,7 +66,9 @@ app.delete("/api/user/:user_id");
 
 //socket endpoint
 
-let messages = [];
+let generalMessages = [];
+let 
+
 
 app.post("/login", (req, res) => {
   req.session.username = req.body.username;
@@ -84,6 +86,8 @@ io.on("connection", socket => {
     io.emit("newMessage", messages);
   });
 });
+
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../"));
 });
