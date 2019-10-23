@@ -35,6 +35,7 @@ class AudioPlayer extends React.Component {
     toggleMute = () => {
         this.wavesurfer.toggleMute()
     }
+    
     render() {
         return (
         <div>

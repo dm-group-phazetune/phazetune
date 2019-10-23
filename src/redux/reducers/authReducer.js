@@ -5,7 +5,7 @@ const initialState = {
   first_name: "",
   last_name: "",
   username: "",
-  location: "",
+  city: "",
   photo: "",
   bio: "",
   loading: false
@@ -46,9 +46,8 @@ export function logoutUser() {
 
 export default function reducer(state = initialState, action) {
   const { type, payload } = action;
-
   switch (type) {
-    case `${GET_SESSION}_LOADING`: {
+    case `${GET_SESSION}_PENDING`: {
       return {
         ...state,
         loading: true
@@ -61,12 +60,12 @@ export default function reducer(state = initialState, action) {
         first_name: payload.data.first_name,
         last_name: payload.data.last_name,
         username: payload.data.username,
-        location: payload.data.location,
+        city: payload.data.city,
         photo: payload.data.photo,
         bio: payload.data.bio
       };
     }
-    case `${REGISTER_USER}_LOADING`: {
+    case `${REGISTER_USER}_PENDING`: {
       return {
         ...state,
         loading: true
@@ -79,12 +78,10 @@ export default function reducer(state = initialState, action) {
         first_name: payload.data.first_name,
         last_name: payload.data.last_name,
         username: payload.data.username,
-        location: payload.data.location,
-        photo: payload.data.photo,
-        bio: payload.data.bio
+        city: payload.data.city
       };
     }
-    case `${LOGIN_USER}_LOADING`: {
+    case `${LOGIN_USER}_PENDING`: {
       return {
         ...state,
         loading: true
@@ -94,7 +91,10 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         user_id: payload.data.user_id,
-        username: payload.data.username
+        first_name: payload.data.first_name,
+        last_name: payload.data.last_name,
+        username: payload.data.username,
+        city: payload.data.city
       };
     }
     case LOGOUT_USER: {
@@ -103,7 +103,7 @@ export default function reducer(state = initialState, action) {
         first_name: "",
         last_name: "",
         username: "",
-        location: "",
+        city: "",
         photo: "",
         bio: "",
         loading: false

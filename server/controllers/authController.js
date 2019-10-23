@@ -10,15 +10,7 @@ async function getUser(req, res) {
 // tn - User Register
 async function register(req, res) {
   const db = req.app.get("db");
-  const {
-    first_name,
-    last_name,
-    username,
-    password,
-    location,
-    photo,
-    bio
-  } = req.body;
+  const { first_name, last_name, username, password, city } = req.body;
 
   const foundUser = await db.auth.checkForUsername(username);
 
@@ -27,15 +19,13 @@ async function register(req, res) {
   } else {
     const salt = await bcrypt.genSaltSync(10);
     const hash = await bcrypt.hashSync(password, salt);
-    console.log(username);
+    console.log("hit");
     const newUser = await db.auth.registerUser([
       first_name,
       last_name,
       username,
       hash,
-      location,
-      photo,
-      bio
+      city
     ]);
 
     req.session.user = {
@@ -43,7 +33,7 @@ async function register(req, res) {
       first_name: newUser[0].first_name,
       last_name: newUser[0].last_name,
       username: newUser[0].username,
-      location: newUser[0].location,
+      city: newUser[0].city,
       photo: newUser[0].photo,
       bio: newUser[0].bio,
       follow_count: newUser[0].follow_count
@@ -56,9 +46,7 @@ async function register(req, res) {
 // tn - User Login
 async function login(req, res) {
   const db = req.app.get("db");
-  console.log("hit");
   const { username, password } = req.body;
-  console.log(username, password);
 
   const foundUser = await db.auth.checkForUsername(username);
 
@@ -74,21 +62,23 @@ async function login(req, res) {
         first_name: foundUser[0].first_name,
         last_name: foundUser[0].last_name,
         username: foundUser[0].username,
-        location: foundUser[0].location,
+        city: foundUser[0].city,
         photo: foundUser[0].photo,
         bio: foundUser[0].bio,
         follow_count: foundUser[0].follow_count
       };
-
       res.status(200).json(req.session.user);
     }
   }
+
+  console.log("User logged in");
 }
 
 // tn - User Logout
 async function logout(req, res) {
   req.session.destroy();
   res.sendStatus(200);
+  console.log("User logged out");
 }
 
 module.exports = {
