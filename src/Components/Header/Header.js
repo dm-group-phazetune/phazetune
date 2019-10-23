@@ -28,6 +28,10 @@ class Header extends Component {
   componentDidMount() {
     this.props.getSession();
   }
+  handleLogout = e => {
+    this.props.logoutUser();
+    this.props.history.push("/");
+  };
 
   openLogin = () => {
     this.setState({ login: true });
@@ -58,108 +62,110 @@ class Header extends Component {
     if (this.props.user_id) {
       return <Redirect to="/newsfeed" />;
     }
+
     return (
-      <div>
-        <div>PHAZETUNE</div>
-        {this.props.location.pathname === "/" ? (
-          <div>
-            <button onClick={this.openLogin}>LOGIN</button>
-            <Dialog open={this.state.login}>
-              <DialogTitle>Welcome Back</DialogTitle>
-              <DialogContent>
-                <form>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <label>username:</label>
-                        </td>
-                        <td>
-                          <input
-                            name="username"
-                            value={this.state.username}
-                            onChange={this.handleInput}
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>password:</label>
-                        </td>
-                        <td>
-                          <input
-                            name="password"
-                            value={this.state.password}
-                            onChange={this.handleInput}
-                          />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <button type="submit" onClick={this.handleLogin}>
-                    LOG IN
-                  </button>
-                </form>
-              </DialogContent>
-            </Dialog>
-            <button name="register" type="button" onClick={this.openRegister}>
-              REGISTER
-            </button>
-            <Dialog open={this.state.register}>
-              <DialogTitle>Sign Up</DialogTitle>
-              <DialogContent>
-                <form>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <label>First Name:</label>
-                        </td>
-                        <td>
-                          <input placeholder="" />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>Last Name:</label>
-                        </td>
-                        <td>
-                          <input placeholder="" />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>Username:</label>
-                        </td>
-                        <td>
-                          <input placeholder="" />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>Password:</label>
-                        </td>
-                        <td>
-                          <input placeholder="" />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>Location:</label>
-                        </td>
-                        <td>
-                          <input placeholder="" />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <button onClick={this.handleRegister}>Register</button>
-                </form>
-              </DialogContent>
-            </Dialog>
-          </div>
-        ) : null}
-      </div>
+      <>
+        <div>
+          <div>PHAZETUNE</div>
+          <button onClick={this.openLogin}>LOGIN</button>
+          <Dialog open={this.state.login}>
+            <DialogTitle>Welcome Back</DialogTitle>
+            <DialogContent>
+              <form>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <label>username:</label>
+                      </td>
+                      <td>
+                        <input
+                          name="username"
+                          value={this.state.username}
+                          onChange={this.handleInput}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label>password:</label>
+                      </td>
+                      <td>
+                        <input
+                          name="password"
+                          value={this.state.password}
+                          onChange={this.handleInput}
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button type="submit" onClick={this.handleLogin}>
+                  LOG IN
+                </button>
+              </form>
+            </DialogContent>
+          </Dialog>
+          <button name="register" type="button" onClick={this.openRegister}>
+            REGISTER
+          </button>
+          <Dialog open={this.state.register}>
+            <DialogTitle>Sign Up</DialogTitle>
+            <DialogContent>
+              <form>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <label>First Name:</label>
+                      </td>
+                      <td>
+                        <input placeholder="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label>Last Name:</label>
+                      </td>
+                      <td>
+                        <input placeholder="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label>Username:</label>
+                      </td>
+                      <td>
+                        <input placeholder="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label>Password:</label>
+                      </td>
+                      <td>
+                        <input placeholder="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label>Location:</label>
+                      </td>
+                      <td>
+                        <input placeholder="" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button onClick={this.handleRegister}>Register</button>
+              </form>
+            </DialogContent>
+          </Dialog>
+        </div>
+        <div>
+          <button onClick={this.handleLogout}>LOG OUT</button>
+        </div>
+      </>
     );
   }
 }

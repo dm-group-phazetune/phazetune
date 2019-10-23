@@ -9,10 +9,10 @@ import Chat from "./Components/Chat/Chat";
 export default (
   <Switch>
     <Route component={Landing} exact path="/" />
-    <Route component={Newsfeed} path="/newsfeed" />
-    <Route component={Explore} path="/explore" />
-    <Route component={Profile} path="/profile" />
-    <Route component={Chat} path="/chat" />
+    <Route component={Newsfeed} exact path="/newsfeed" />
+    <Route component={Explore} exact path="/explore" />
+    <Route component={Profile} exact path="/profile" />
+    <Route component={Chat} exact path="/chat" />
     <Route
       render={() => {
         return <h1>404 Page Not Found.</h1>;

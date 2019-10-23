@@ -10,7 +10,7 @@ function App() {
       <Header />
       {/* <AudioUpload /> */}
       {/* <Newsfeed /> */}
-      <h1>{routes}</h1>
+      {routes}
     </div>
   );
 }
