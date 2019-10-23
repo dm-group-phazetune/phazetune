@@ -2,7 +2,7 @@
   "name": "group-project",
   "version": "0.1.0",
   "main": "server/",
-  "proxy": "http://locahost:6000",
+  "proxy": "http://localhost:6000",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
@@ -23,11 +23,13 @@
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "react-wavesurfer": "^0.8.6",
     "redux": "^4.0.4",
     "redux-promise-middleware": "^6.1.1",
     "sass": "^1.23.0",
     "socket.io": "^2.3.0",
-    "socket.io-client": "^2.3.0"
+    "socket.io-client": "^2.3.0",
+    "wavesurfer": "^1.3.4"
   },
   "scripts": {
     "start": "react-scripts start",

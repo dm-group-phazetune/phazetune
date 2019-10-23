@@ -5,7 +5,6 @@ const massive = require("massive");
 const app = express();
 // Socket
 const http = require("http").createServer(app);
-// const sockets = require('socket.io');
 const io = require("socket.io")(http);
 // Controllers
 const authController = require("./controllers/authController");
@@ -67,28 +66,27 @@ app.delete("/api/user/:user_id");
 
 //socket endpoint
 
-let messages =[];
+let messages = [];
 
-app.post('/login', (req, res) => {res
+app.post("/login", (req, res) => {
   req.session.username = req.body.username;
-})
+});
 
-io.on('connection', socket => {
+io.on("connection", socket => {
   socket.emit("onConnection", {
     message: "Sockets has been connected"
-  })
+  });
   socket.on("messageSend", data => {
     messages.push({
       message: data.message,
       username: data.username
     });
-    io.emit("newMessage", messages)
-  })
-})
+    io.emit("newMessage", messages);
+  });
+});
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, '../'))
-})
-
+  res.sendFile(path.join(__dirname, "../"));
+});
 
 http.listen(SERVER_PORT, () => {
   console.log(`SERVER LISTENING ON PORT: ${SERVER_PORT}`);

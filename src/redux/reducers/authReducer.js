@@ -94,12 +94,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         user_id: payload.data.user_id,
-        first_name: payload.data.first_name,
-        last_name: payload.data.last_name,
-        username: payload.data.username,
-        location: payload.data.location,
-        photo: payload.data.photo,
-        bio: payload.data.bio
+        username: payload.data.username
       };
     }
     case LOGOUT_USER: {
