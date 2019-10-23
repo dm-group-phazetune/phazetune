@@ -78,6 +78,8 @@ class AudioUpload extends React.Component {
             })
         })
     }
+    
+    
     render(){
         const style = {
             display: 'flex',
