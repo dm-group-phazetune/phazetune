@@ -36,7 +36,7 @@ massive(CONNECTION_STRING).then(db => {
 
 // De-structured controllers
 const { getUser, register, login, logout } = authController;
-const { editUserProf, getUserProf} = profController
+const { editUserProf, getUserProf } = profController;
 
 // Auth Endpoints
 app.get("/auth/user", getUser);
@@ -66,28 +66,82 @@ app.post("/api/user/:user_id");
 app.delete("/api/user/:user_id");
 
 //socket endpoint
+// const rooms = [
+//   "General",
+//   "Country",
+//   "Hip-Hop/R&B",
+//   "Dance/EDM",
+//   "Christian/Gospel",
+//   "Holiday/Season",
+//   "Latin",
+//   "Jazz",
+//   "Rock",
+//   "Pop",
+//   "Classical",
+//   "Children"
+// ];
 
-let generalMessages = [];
-let 
+// io.of("/chat");
+// io.on("connection", socket => {
+//   let room;
+//   socket.on("joinRoom", room => {
+//     console.log(room);
+//     if (rooms.includes(room)) {
+//       room = `Room: ${room}`;
+//       socket.join(room);
+//       io.of("/chat");
+//       io.in(room).emit("newUser", "A user has joined the " + room);
+//       return socket.emit("success", "You have joined this room.");
+//     } else {
+//       return socket.emit("err", "Room does not exist.");
+//     }
+//   });
+//   // client sends a message
+//   socket.on("newMessage", message => {
+//     console.log("got message", message);
+//     io.to(room).emit("newMessage", message);
+//   });
+// });
+// Socket messages
+let messages = [];
+let users = [];
 
-
-app.post("/login", (req, res) => {
-  req.session.username = req.body.username;
-});
-
-io.on("connection", socket => {
-  socket.emit("onConnection", {
-    message: "Sockets has been connected"
+// When socket connects
+const chat = io.of("/chat");
+chat.on("connect", socket => {
+  socket.on("addUser", username => {
+    socket.id = username;
+    users.push({ user: socket.id });
+    chat.emit("usersInChat", { users });
+    messages.push({ message: `${socket.id} entered the chat.` });
+    chat.emit("userEntered", { messages });
   });
-  socket.on("messageSend", data => {
+
+  // When user sends a new message
+  socket.on("sendMsg", data => {
+    console.log(`Message received: ${data.username}: ${data.message}`);
+    const { username, message } = data;
     messages.push({
-      message: data.message,
-      username: data.username
+      username,
+      message,
+      hours: new Date().getHours(),
+      minutes: new Date().getMinutes()
+      // let hours = Math.floor(num / 60);
+      // var minutes = num % 60;
+      // return hours + ":" + minutes;
     });
-    io.emit("newMessage", messages);
+    chat.emit("newMsg", { messages });
+  });
+
+  // When user disconnects
+  socket.on("disconnect", () => {
+    const remainingUsers = users.filter(user => user.user !== socket.id);
+    users = remainingUsers;
+    chat.emit("usersInChat", { users });
+    messages.push({ message: `${socket.id} left the chat.` });
+    chat.emit("userLeft", { messages });
   });
 });
-
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../"));
