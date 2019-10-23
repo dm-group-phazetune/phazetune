@@ -58,8 +58,8 @@ app.get("/api/posts/:user_id");
 app.get("/api/posts");
 app.get("/api/posts/genre");
 // Profile endpoints
-app.get("/api/profile/user");
-app.put("/api/profile/user");
+app.get("/api/profile/user", profController);
+app.put("/api/profile/user", profController);
 // Follow Endpoints
 app.post("/api/user/:user_id");
 app.delete("/api/user/:user_id");
