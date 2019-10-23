@@ -67,7 +67,6 @@ async function login(req, res) {
     if (!isAuthenticated) {
       res.status(403).json("Username or Password is incorrect.");
     } else {
-      console.log(req.session.user);
       req.session.user = {
         user_id: foundUser[0].user_id,
         first_name: foundUser[0].first_name,
@@ -78,16 +77,18 @@ async function login(req, res) {
         bio: foundUser[0].bio,
         follow_count: foundUser[0].follow_count
       };
-
       res.status(200).json(req.session.user);
     }
   }
+
+  console.log("User logged in");
 }
 
 // tn - User Logout
 async function logout(req, res) {
   req.session.destroy();
   res.sendStatus(200);
+  console.log("User logged out");
 }
 
 module.exports = {

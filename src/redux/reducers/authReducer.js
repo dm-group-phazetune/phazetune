@@ -48,9 +48,9 @@ export function logoutUser() {
 
 export default function reducer(state = initialState, action) {
   const { type, payload } = action;
-
+  console.log(type, payload);
   switch (type) {
-    case `${GET_SESSION}_LOADING`: {
+    case `${GET_SESSION}_PENDING`: {
       return {
         ...state,
         loading: true
@@ -68,7 +68,7 @@ export default function reducer(state = initialState, action) {
         bio: payload.data.bio
       };
     }
-    case `${REGISTER_USER}_LOADING`: {
+    case `${REGISTER_USER}_PENDING`: {
       return {
         ...state,
         loading: true
@@ -84,7 +84,7 @@ export default function reducer(state = initialState, action) {
         location: payload.data.location
       };
     }
-    case `${LOGIN_USER}_LOADING`: {
+    case `${LOGIN_USER}_PENDING`: {
       return {
         ...state,
         loading: true

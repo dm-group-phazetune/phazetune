@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import {
   getSession,
-  loginUser,
   registerUser,
+  loginUser,
   logoutUser
 } from "../../redux/reducers/authReducer";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import Dialog from "@material-ui/core/Dialog";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import Login from "../Login/Login";
 
 class Header extends Component {
   constructor() {
@@ -21,18 +19,13 @@ class Header extends Component {
       password: "",
       first_name: "",
       last_name: "",
-      location: "",
-      toNewsfeed: false
+      location: ""
     };
   }
 
   componentDidMount() {
     this.props.getSession();
   }
-  handleLogout = e => {
-    this.props.logoutUser();
-    this.props.history.push("/");
-  };
 
   openLogin = () => {
     this.setState({ login: true });
@@ -40,6 +33,10 @@ class Header extends Component {
 
   openRegister = () => {
     this.setState({ register: true });
+  };
+
+  handleInput = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   handleSubmit = e => {
@@ -51,10 +48,6 @@ class Header extends Component {
     if (formName === "login-form") {
       loginUser({ username, password });
       this.setState({ login: false, username: "", password: "" });
-      if (this.props.user_id) {
-        console.log("User logged in");
-        this.props.history.push("/newsfeed");
-      }
     } else if (formName === "register-form") {
       registerUser({ username, password, first_name, last_name, location });
       this.setState({
@@ -68,27 +61,11 @@ class Header extends Component {
     }
   };
 
-  // handleLogin = e => {
-  //   e.preventDefault();
-  //   const { username, password } = this.state;
-  //   const { loginUser } = this.props;
-  //   loginUser({ username, password });
-  //   this.setState({ login: false });
-  //   this.props.history.push("/newsfeed");
-  // };
-
-  // handleRegister = e => {
-  //   e.preventDefault();
-  //   const { username, password, first_name, last_name, location } = this.state;
-  //   const { registerUser } = this.props;
-  //   registerUser({ username, password, first_name, last_name, location });
-  //   this.setState({ register: false });
-  //   this.props.history.push("/newsfeed");
-  // };
-
-  handleInput = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  handleLogout = () => {
+    this.props.logoutUser();
+    this.props.history.push("/");
   };
+
   render() {
     return (
       <div>
@@ -97,43 +74,15 @@ class Header extends Component {
             <div>
               <div>PHAZETUNE</div>
               <button onClick={this.openLogin}>LOGIN</button>
-              <Dialog open={this.state.login}>
-                <DialogTitle>Welcome Back</DialogTitle>
-                <DialogContent>
-                  <form name="login-form" onSubmit={this.handleSubmit}>
-                    <table>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <label>username:</label>
-                          </td>
-                          <td>
-                            <input
-                              name="username"
-                              value={this.state.username}
-                              onChange={this.handleInput}
-                            />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <label>password:</label>
-                          </td>
-                          <td>
-                            <input
-                              name="password"
-                              value={this.state.password}
-                              onChange={this.handleInput}
-                            />
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <button type="submit">LOG IN</button>
-                  </form>
-                </DialogContent>
-              </Dialog>
-              <button name="register" type="button" onClick={this.openRegister}>
+              <Login
+                handleSubmit={this.handleSubmit}
+                login={this.state.login}
+                username={this.state.username}
+                password={this.state.password}
+                openLogin={this.openLogin}
+                handleInput={this.handleInput}
+              />
+              {/* <button name="register" type="button" onClick={this.openRegister}>
                 REGISTER
               </button>
               <Dialog open={this.state.register}>
@@ -187,12 +136,15 @@ class Header extends Component {
                     <button type="submit">Register</button>
                   </form>
                 </DialogContent>
-              </Dialog>
+              </Dialog> */}
             </div>
           ) : (
             <div>
               <div>PHAZETUNE</div>
-              <button onClick={this.handleLogout}>LOG OUT</button>
+              <div>
+                {/* <p>Hi, {this.props.user_id ? this.props.first_name : Guest}</p> */}
+                <button onClick={this.handleLogout}>LOG OUT</button>
+              </div>
             </div>
           )}
         </div>
@@ -213,8 +165,8 @@ export default withRouter(
     mapStateToProps,
     {
       getSession,
-      loginUser,
       registerUser,
+      loginUser,
       logoutUser
     }
   )(Header)
