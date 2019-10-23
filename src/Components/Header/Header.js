@@ -6,7 +6,7 @@ import {
   logoutUser
 } from "../../redux/reducers/authReducer";
 import { connect } from "react-redux";
-import { Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -47,6 +47,7 @@ class Header extends Component {
     const { loginUser } = this.props;
     loginUser({ username, password });
     this.setState({ login: false });
+    this.props.history.push("/newsfeed");
   };
 
   handleRegister = e => {
@@ -57,115 +58,116 @@ class Header extends Component {
   handleInput = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
   render() {
-    if (this.props.user_id) {
-      return <Redirect to="/newsfeed" />;
-    }
-
     return (
-      <>
+      <div>
         <div>
-          <div>PHAZETUNE</div>
-          <button onClick={this.openLogin}>LOGIN</button>
-          <Dialog open={this.state.login}>
-            <DialogTitle>Welcome Back</DialogTitle>
-            <DialogContent>
-              <form>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <label>username:</label>
-                      </td>
-                      <td>
-                        <input
-                          name="username"
-                          value={this.state.username}
-                          onChange={this.handleInput}
-                        />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <label>password:</label>
-                      </td>
-                      <td>
-                        <input
-                          name="password"
-                          value={this.state.password}
-                          onChange={this.handleInput}
-                        />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <button type="submit" onClick={this.handleLogin}>
-                  LOG IN
-                </button>
-              </form>
-            </DialogContent>
-          </Dialog>
-          <button name="register" type="button" onClick={this.openRegister}>
-            REGISTER
-          </button>
-          <Dialog open={this.state.register}>
-            <DialogTitle>Sign Up</DialogTitle>
-            <DialogContent>
-              <form>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <label>First Name:</label>
-                      </td>
-                      <td>
-                        <input placeholder="" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <label>Last Name:</label>
-                      </td>
-                      <td>
-                        <input placeholder="" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <label>Username:</label>
-                      </td>
-                      <td>
-                        <input placeholder="" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <label>Password:</label>
-                      </td>
-                      <td>
-                        <input placeholder="" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <label>Location:</label>
-                      </td>
-                      <td>
-                        <input placeholder="" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <button onClick={this.handleRegister}>Register</button>
-              </form>
-            </DialogContent>
-          </Dialog>
+          {this.props.location.pathname === "/" ? (
+            <div>
+              <div>PHAZETUNE</div>
+              <button onClick={this.openLogin}>LOGIN</button>
+              <Dialog open={this.state.login}>
+                <DialogTitle>Welcome Back</DialogTitle>
+                <DialogContent>
+                  <form>
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <label>username:</label>
+                          </td>
+                          <td>
+                            <input
+                              name="username"
+                              value={this.state.username}
+                              onChange={this.handleInput}
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label>password:</label>
+                          </td>
+                          <td>
+                            <input
+                              name="password"
+                              value={this.state.password}
+                              onChange={this.handleInput}
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <button type="submit" onClick={this.handleLogin}>
+                      LOG IN
+                    </button>
+                  </form>
+                </DialogContent>
+              </Dialog>
+              <button name="register" type="button" onClick={this.openRegister}>
+                REGISTER
+              </button>
+              <Dialog open={this.state.register}>
+                <DialogTitle>Sign Up</DialogTitle>
+                <DialogContent>
+                  <form>
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <label>First Name:</label>
+                          </td>
+                          <td>
+                            <input placeholder="" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label>Last Name:</label>
+                          </td>
+                          <td>
+                            <input placeholder="" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label>Username:</label>
+                          </td>
+                          <td>
+                            <input placeholder="" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label>Password:</label>
+                          </td>
+                          <td>
+                            <input placeholder="" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label>Location:</label>
+                          </td>
+                          <td>
+                            <input placeholder="" />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <button onClick={this.handleRegister}>Register</button>
+                  </form>
+                </DialogContent>
+              </Dialog>
+            </div>
+          ) : (
+            <div>
+              <div>PHAZETUNE</div>
+              <button onClick={this.handleLogout}>LOG OUT</button>
+            </div>
+          )}
         </div>
-        <div>
-          <button onClick={this.handleLogout}>LOG OUT</button>
-        </div>
-      </>
+      </div>
     );
   }
 }
