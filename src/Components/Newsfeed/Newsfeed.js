@@ -14,7 +14,7 @@ class Newsfeed extends Component {
       <>
         <div>
           <AudioUpload />
-          <AudioPlayer />
+          {/* <AudioPlayer /> */}
         </div>
       </>
     );
