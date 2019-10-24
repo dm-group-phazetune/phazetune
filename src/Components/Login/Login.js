@@ -14,7 +14,7 @@ class Login extends Component {
 
     return (
       <div>
-        <Dialog open={this.props.login}>
+        <Dialog onClose={this.props.closeLogin} open={this.props.login}>
           <DialogTitle>Welcome Back</DialogTitle>
           <DialogContent>
             <form name="login-form" onSubmit={this.props.handleSubmit}>

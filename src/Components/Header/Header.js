@@ -36,6 +36,14 @@ class Header extends Component {
     this.setState({ register: true });
   };
 
+  closeLogin = () => {
+    this.setState({ login: false });
+  };
+
+  closeRegister = () => {
+    this.setState({ register: false });
+  };
+
   handleInput = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -84,6 +92,7 @@ class Header extends Component {
                 password={this.state.password}
                 openLogin={this.openLogin}
                 handleInput={this.handleInput}
+                closeLogin={this.closeLogin}
               />
               <div className="Pipe">|</div>
               <nav onClick={this.openRegister}>REGISTER</nav>
@@ -97,6 +106,7 @@ class Header extends Component {
                 city={this.state.city}
                 openRegister={this.openRegister}
                 handleInput={this.handleInput}
+                closeRegister={this.closeRegister}
               />
             </div>
           </div>

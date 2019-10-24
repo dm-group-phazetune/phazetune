@@ -13,7 +13,7 @@ class Register extends Component {
     }
     return (
       <div>
-        <Dialog open={this.props.register}>
+        <Dialog onClose={this.props.closeRegister} open={this.props.register}>
           <DialogTitle>Sign Up</DialogTitle>
           <DialogContent>
             <form name="register-form" onSubmit={this.props.handleSubmit}>
