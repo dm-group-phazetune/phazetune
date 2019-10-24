@@ -36,7 +36,7 @@ massive(CONNECTION_STRING).then(db => {
 
 // De-structured controllers
 const { getUser, register, login, logout } = authController;
-const { editUserProf, getUserProf} = profController
+const { editUserProf, getUserProf } = profController;
 
 // Auth Endpoints
 app.get("/auth/user", getUser);
@@ -66,25 +66,167 @@ app.post("/api/user/:user_id");
 app.delete("/api/user/:user_id");
 
 //socket endpoint
+// const rooms = [
+//   "General",
+//   "Country",
+//   "Hip-Hop/R&B",
+//   "Dance/EDM",
+//   "Christian/Gospel",
+//   "Holiday/Season",
+//   "Latin",
+//   "Jazz",
+//   "Rock",
+//   "Pop",
+//   "Classical",
+//   "Children"
+// ];
 
-let messages = [];
-
-app.post("/login", (req, res) => {
-  req.session.username = req.body.username;
-});
-
+io.of("/chat");
 io.on("connection", socket => {
-  socket.emit("onConnection", {
-    message: "Sockets has been connected"
+  let room;
+  socket.on("joinRoom", room => {
+    console.log(room);
+    if (rooms.includes(room)) {
+      room = `Room: ${room}`;
+      socket.join(room);
+      io.of("/chat");
+      io.in(room).emit("newUser", "A user has joined the " + room);
+      return socket.emit("success", "You have joined this room.");
+    } else {
+      return socket.emit("err", "Room does not exist.");
+    }
   });
-  socket.on("messageSend", data => {
-    messages.push({
-      message: data.message,
-      username: data.username
-    });
-    io.emit("newMessage", messages);
+  // client sends a message
+  socket.on("newMessage", message => {
+    console.log("got message", message);
+    io.to(room).emit("newMessage", message);
   });
 });
+
+// General Chat
+let messages = [];
+let users = [];
+
+// When user connects in General Chat
+const chat = io.of("/chat");
+chat.on("connect", socket => {
+  socket.on("addUser", username => {
+    socket.id = username;
+    users.push({ user: socket.id });
+    chat.emit("usersInChat", { users });
+    messages.push({ message: `${socket.id} entered the chat.` });
+    chat.emit("userEntered", { messages });
+  });
+
+  // When user sends a new message in General Chat
+  socket.on("sendMsg", data => {
+    console.log(`Message received: ${data.username}: ${data.message}`);
+    const { username, message } = data;
+    messages.push({
+      username,
+      message,
+      hours: new Date().getHours(),
+      minutes: new Date().getMinutes()
+      // let hours = Math.floor(num / 60);
+      // var minutes = num % 60;
+      // return hours + ":" + minutes;
+    });
+    chat.emit("newMsg", { messages });
+    console.log(messages);
+  });
+
+  // When user disconnects from General Chat
+  socket.on("disconnect", () => {
+    const remainingUsers = users.filter(user => user.user !== socket.id);
+    users = remainingUsers;
+    chat.emit("usersInChat", { users });
+    messages.push({ message: `${socket.id} left the chat.` });
+    chat.emit("userLeft", { messages });
+  });
+});
+
+// Artists Chat
+let artistsMessages = [];
+let artistsUsers = [];
+
+// When user connects in Artists Chat
+const artists = io.of("/artists");
+artists.on("connect", socket => {
+  socket.on("addUser", username => {
+    socket.id = username;
+    artistsUsers.push({ user: socket.id });
+    artists.emit("usersInChat", { artistsUsers });
+    artistsMessages.push({ message: `${socket.id} entered the chat.` });
+    artists.emit("userEntered", { artistsMessages });
+  });
+
+  // When user sends a new message in Artists Chat
+  socket.on("sendMsg", data => {
+    console.log(`Message received: ${data.username}: ${data.message}`);
+    const { username, message } = data;
+    artistsMessages.push({
+      username,
+      message,
+      hours: new Date().getHours(),
+      minutes: new Date().getMinutes()
+      // let hours = Math.floor(num / 60);
+      // var minutes = num % 60;
+      // return hours + ":" + minutes;
+    });
+    artists.emit("newMsg", { artistsMessages });
+  });
+
+  // When user disconnects from Artists Chat
+  socket.on("disconnect", () => {
+    const remainingUsers = users.filter(user => user.user !== socket.id);
+    artistUsers = remainingUsers;
+    artists.emit("usersInChat", { artistsUsers });
+    artistsMessages.push({ message: `${socket.id} left the chat.` });
+    artists.emit("userLeft", { artistsMessages });
+  });
+});
+
+// Producers Chat
+let producersMessages = [];
+let producersUsers = [];
+
+// When user connects in Artists Chat
+const producers = io.of("/producers");
+producers.on("connect", socket => {
+  socket.on("addUser", username => {
+    socket.id = username;
+    producersUsers.push({ user: socket.id });
+    producers.emit("usersInChat", { producersUsers });
+    producersMessages.push({ message: `${socket.id} entered the chat.` });
+    producers.emit("userEntered", { producersMessages });
+  });
+
+  // When user sends a new message in Artists Chat
+  socket.on("sendMsg", data => {
+    console.log(`Message received: ${data.username}: ${data.message}`);
+    const { username, message } = data;
+    producersMessages.push({
+      username,
+      message,
+      hours: new Date().getHours(),
+      minutes: new Date().getMinutes()
+      // let hours = Math.floor(num / 60);
+      // var minutes = num % 60;
+      // return hours + ":" + minutes;
+    });
+    producers.emit("newMsg", { producersMessages });
+  });
+
+  // When user disconnects from Artists Chat
+  socket.on("disconnect", () => {
+    const remainingUsers = users.filter(user => user.user !== socket.id);
+    producersUsers = remainingUsers;
+    producers.emit("usersInChat", { producersUsers });
+    producersMessages.push({ message: `${socket.id} left the chat.` });
+    producers.emit("userLeft", { producersMessages });
+  });
+});
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../"));
 });
