@@ -1,5 +1,6 @@
 import React from 'react'
 import WaveSurfer from 'wavesurfer';
+
 import {peaks} from './peaks'
 
 
@@ -37,6 +38,7 @@ class AudioPlayer extends React.Component {
         this.wavesurfer.toggleMute()
     }
     
+
     render() {
         return (
         <div>
