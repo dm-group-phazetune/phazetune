@@ -14,12 +14,16 @@ class Login extends Component {
 
     return (
       <div>
-        <Dialog onClose={this.props.closeLogin} open={this.props.login}>
-          <DialogTitle>Welcome Back</DialogTitle>
-          <DialogContent>
+        <Dialog
+          style={{ textAlign: "center" }}
+          onClose={this.props.closeLogin}
+          open={this.props.login}
+        >
+          <DialogTitle className="Login-title">Welcome Back</DialogTitle>
+          <DialogContent className="Login-content">
             <form name="login-form" onSubmit={this.props.handleSubmit}>
               <table>
-                <tbody>
+                <tbody className="login-body">
                   <tr>
                     <td>
                       <label>username:</label>
