@@ -1,14 +1,15 @@
 import React from 'react'
 import "./dropzone.css";
 import {storage} from '../FireAudioUpload/firebase'
-
+import AudioPlayer from './AudioPlayer'
 
 class AudioUpload extends React.Component {
     constructor(props){
         super(props)
         this.state = {
             audio: null,
-            audio_url: '',
+            audioUrl: '',
+            progress: 0,
             //drop zone
             highlight: false
         };
@@ -63,6 +64,8 @@ class AudioUpload extends React.Component {
         uploadTask.on('state_changed', 
         //progress bar function
         (snapshot) => {
+            const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes)) * 100
+            this.setState({progress})
 
         },
         (error) => {
@@ -96,6 +99,7 @@ class AudioUpload extends React.Component {
                 onFilesAdded={this.onFilesAdded}
                 >
             </div>
+            <progress value={this.state.progress} max="100" />
                 <input 
                 onChange={this.handleChange}
                 ref= {this.fileInputRef}

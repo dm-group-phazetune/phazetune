@@ -3,7 +3,6 @@ import React, { Component } from "react";
 // import { withRouter } from "react-router-dom";
 // import { getSession } from "../../redux/reducers/authReducer";
 import AudioUpload from "./AudioUpload";
-import AudioPlayer from "./AudioPlayer";
 
 class Newsfeed extends Component {
   // componentDidMount() {
@@ -14,7 +13,7 @@ class Newsfeed extends Component {
       <>
         <div>
           <AudioUpload />
-          {/* <AudioPlayer /> */}
+          
         </div>
       </>
     );
