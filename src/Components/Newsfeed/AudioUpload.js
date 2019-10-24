@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
 import "./dropzone.css";
-import {storage} from '../FireAudioUpload/firebase';
 import {connect} from "react-redux";
 import Axios from 'axios';
 
+import {storage} from '../FireAudioUpload/firebase'
+import AudioPlayer from './AudioPlayer'
 
 class AudioUpload extends React.Component {
     constructor(props){
@@ -11,6 +12,7 @@ class AudioUpload extends React.Component {
         this.state = {
             audio: null,
             audio_url: '',
+            progress: 0,
             //drop zone
             highlight: false,
             //add post
@@ -63,12 +65,13 @@ class AudioUpload extends React.Component {
         const uploadTask = storage.ref(`audios/${audio.name}`).put(audio);
         const setThisState = (url) => {
             console.log(url);
-            this.setState({audioUrl: url})
+            this.setState({audio_url: url})
         }
         uploadTask.on('state_changed', 
         //progress bar function
         (snapshot) => {
-
+            const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes)) * 100
+            this.setState({progress})
         },
         (error) => {
             console.log(error)
@@ -124,17 +127,16 @@ class AudioUpload extends React.Component {
                 onFilesAdded={this.onFilesAdded}
                 >
             </div>
+            <progress value={this.state.progress} max="100" />
                 <input 
                 onChange={this.handleChange}
                 ref= {this.fileInputRef}
                 type= 'file'
                 />
                 <button onClick={this.handleClick}> Upload </button>
+                <AudioPlayer audioUrl={this.state.audio_url}/>
             </>
         )
     }
 }
-
-
-
 export default AudioUpload;

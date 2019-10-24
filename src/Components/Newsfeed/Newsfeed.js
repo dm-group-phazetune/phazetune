@@ -1,14 +1,26 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import { withRouter } from "react-router-dom";
-// import { getSession } from "../../redux/reducers/authReducer";
+import Axios from "axios";
 import AudioUpload from "./AudioUpload";
 import AudioPlayer from "./AudioPlayer";
 
 class Newsfeed extends Component {
-  // componentDidMount() {
-  //   this.props.getSession();
-  // }
+  constructor(){
+    super();
+    this.state = {
+      pastPost: []
+    }
+  }
+  componentDidMount(){
+    this.fetchPost();
+  }
+  updatePastPost = postArr => {
+    this.setState({pastPost : postArr});
+  }
+  fetchPost = () => {
+    Axios.get('/api/users/post').then(response => {
+      this.setState({pastPost : response.data})
+    })
+  }
   render() {
     return (
       <>
