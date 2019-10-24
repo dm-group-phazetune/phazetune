@@ -18,6 +18,7 @@ class Login extends Component {
           style={{ textAlign: "center" }}
           onClose={this.props.closeLogin}
           open={this.props.login}
+          className="Login-container"
         >
           <DialogTitle className="Login-title">Welcome Back</DialogTitle>
           <DialogContent className="Login-content">
