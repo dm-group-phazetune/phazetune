@@ -2,6 +2,18 @@ import React from 'react'
 import WaveSurfer from 'wavesurfer';
 // import {peaks} from './peaks'
 
+    this.wavesurfer = WaveSurfer.create({
+      barWidth: 1,
+      cursorWidth: 1,
+      container: "#waveform",
+      backend: "MediaElement",
+      height: 80,
+      progressColor: "grey",
+      responsive: true,
+      waveColor: "violet",
+      cursorColor: "#4a74a5"
+    });
+    // this.wavesurfer.empty();
 
 class AudioPlayer extends React.Component {
     constructor(){
@@ -99,6 +111,6 @@ class AudioPlayer extends React.Component {
     }
 }
 
-export default AudioPlayer
+export default AudioPlayer;
 
 // "https://firebasestorage.googleapis.com/v0/b/phazetune.appspot.com/o/1-02%20Light%20(feat.%20Jeremih).mp3?alt=media&token=be0f7e8a-4dfe-4bc6-a795-2cd1a7ba25ad"

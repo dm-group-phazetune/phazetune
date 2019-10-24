@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import "./dropzone.css";
 import {storage} from '../FireAudioUpload/firebase'
 import AudioPlayer from './AudioPlayer'
@@ -110,4 +110,4 @@ class AudioUpload extends React.Component {
         )
     }
 }
-export default AudioUpload
+export default AudioUpload;
