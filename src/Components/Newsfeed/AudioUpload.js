@@ -1,14 +1,15 @@
 import React from 'react'
 import "./dropzone.css";
 import {storage} from '../FireAudioUpload/firebase'
-
+import {peaks} from './peaks'
+import AudioPlayer from './AudioPlayer'
 
 class AudioUpload extends React.Component {
     constructor(props){
         super(props)
         this.state = {
             audio: null,
-            audio_url: '',
+            audioUrl: '',
             //drop zone
             highlight: false
         };
@@ -46,6 +47,7 @@ class AudioUpload extends React.Component {
             // audio: files[0]
         });
     }
+
     //end of drop zone
         handleChange = e => {
             console.log(e.target.files);
@@ -98,6 +100,7 @@ class AudioUpload extends React.Component {
                 style={{ cursor: this.props.disabled ? "default" : "pointer" }}
                 onChange={this.handleChange}
                 >
+                    
             </div>
                 <input 
                 onChange={this.handleChange}
@@ -105,6 +108,7 @@ class AudioUpload extends React.Component {
                 type= 'file'
                 />
                 <button onClick={this.handleClick}> Upload </button>
+                <AudioPlayer audioUrl={this.state.audioUrl}/>
             </>
         )
     }

@@ -9,7 +9,7 @@ class AudioPlayer extends React.Component {
         const audio = document.querySelector('#song');
     
         this.wavesurfer = WaveSurfer.create({
-        barWidth: 3,
+        barWidth: 1,
         cursorWidth: 1,
         container: '#waveform',
         backend: 'MediaElement',
@@ -19,7 +19,8 @@ class AudioPlayer extends React.Component {
         waveColor: 'violet',
         cursorColor: '#4a74a5',
         });
-    
+        // this.wavesurfer.empty();
+        
         this.wavesurfer.load(audio, peaks);
     }
     
@@ -29,7 +30,7 @@ class AudioPlayer extends React.Component {
     pause = () => {
         this.wavesurfer.pause()
     }
-    skipForward = () => {
+    skipForward = () => { 
         this.wavesurfer.skipForward()
     }
     toggleMute = () => {
@@ -39,7 +40,6 @@ class AudioPlayer extends React.Component {
     render() {
         return (
         <div>
-    
             <button onClick={this.play} 
                     style={{marginLeft: 850}}>Play</button>
     
@@ -59,7 +59,9 @@ class AudioPlayer extends React.Component {
             />
             <audio
             id="song"
-            src="https://firebasestorage.googleapis.com/v0/b/phazetune.appspot.com/o/1-02%20Light%20(feat.%20Jeremih).mp3?alt=media&token=be0f7e8a-4dfe-4bc6-a795-2cd1a7ba25ad"
+            src=
+            // "https://firebasestorage.googleapis.com/v0/b/phazetune.appspot.com/o/1-02%20Light%20(feat.%20Jeremih).mp3?alt=media&token=be0f7e8a-4dfe-4bc6-a795-2cd1a7ba25ad"
+            {this.props.audioUrl}
             />
         </div>
         );
