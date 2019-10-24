@@ -9,7 +9,7 @@ class AudioPlayer extends React.Component {
         this.clearPeakCache()
 
     }
-
+    
     componentDidMount() {
         const audio = document.querySelector('#song');
     
