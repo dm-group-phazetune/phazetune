@@ -1,10 +1,14 @@
 import React from 'react'
 import WaveSurfer from 'wavesurfer';
-
-import {peaks} from './peaks'
+// import {peaks} from './peaks'
 
 
 class AudioPlayer extends React.Component {
+    constructor(){
+        super( )
+        this.clearPeakCache()
+
+    }
 
     componentDidMount() {
         const audio = document.querySelector('#song');
@@ -20,9 +24,36 @@ class AudioPlayer extends React.Component {
         waveColor: 'violet',
         cursorColor: '#4a74a5',
         });
-        // this.wavesurfer.empty();
-        
-        this.wavesurfer.load(audio, peaks);
+        this.wavesurfer.load(audio);
+    }
+
+    clearPeakCache(){
+        this.peakCacheRanges = []
+        this.peakCacheLength = -1
+    }
+    addRangesToPeakCache(length, start, end) {
+        if(length !== this.peakCacheLength) {
+            this.clearPeakCache()
+            this.peakCacheLength = length
+        }
+        let uncachedRanges = []
+        let i = 0 
+
+        while (i < this.peakCacheRanges.length && this.peakCacheRanges[i] < start){
+            i++
+        }
+        if(i % 2 === 0){
+            uncachedRanges.push(end)
+        }
+        uncachedRanges = uncachedRanges.filter((item, pos, arr) => {
+            if(pos === 0){
+                return item !== arr[pos + 1]
+            } else if (pos === arr.length - 1){
+                return item !== [pos - 1]
+            }
+            return item !== arr[pos - 1] && item !== arr[pos + 1];
+        })
+
     }
     
     play = () => {
@@ -61,8 +92,7 @@ class AudioPlayer extends React.Component {
             />
             <audio
             id="song"
-            src=
-            {this.props.audioUrl}
+            src={this.props.audio_url}
             />
         </div>
         );
