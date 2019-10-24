@@ -88,16 +88,10 @@ nav:hover {
   text-shadow: 0 0 4px #5732a8;
   color: #ef87a9;
   background-color: #5a5759;
+  text-transform: uppercase;
 }
 
 .Login-content {
-  color: #ffffff;
-  background-color: #5a5759;
-  padding: 10px;
-  width: 300px;
-}
-
-.login-body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -113,6 +107,30 @@ nav:hover {
           flex-direction: column;
   -ms-flex-flow: none;
       flex-flow: none;
-  background-color: blue;
+  color: #ffffff;
+  background-color: #5a5759;
+  width: 300px;
+}
+
+.Login-content .login-label {
+  width: 20px;
+  padding: 10px 0;
+  padding-left: 0px;
+  text-align: left;
+}
+
+.Login-content .login-input {
+  width: 0px;
+  padding: 10px 0;
+  padding-left: 20px;
+}
+
+.Login-content .input {
+  width: 160px;
+}
+
+.Login-btn-container .Login-btn {
+  margin: 15px 0;
+  width: 250px;
 }
 /*# sourceMappingURL=Header.css.map */

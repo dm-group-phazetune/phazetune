@@ -56,16 +56,37 @@ nav:hover {
   @include text-shadow-glow(4px, $b-1);
   color: $b-4;
   background-color: $d-3;
+  text-transform: uppercase;
 }
 
 .Login-content {
+  @include flex(center, center, column, none);
   color: $white;
   background-color: $d-3;
-  padding: 10px;
   width: 300px;
+
+  .login-label {
+    width: 20px;
+    padding: 10px 0;
+    padding-left: 0px;
+    text-align: left;
+  }
+
+  .login-input {
+    width: 0px;
+    padding: 10px 0;
+    padding-left: 20px;
+  }
+
+  .input {
+    width: 160px;
+  }
 }
 
-.login-body {
-  @include flex(center, center, column, none);
-  background-color: blue;
+.Login-btn-container {
+  // background-color: white;
+  .Login-btn {
+    margin: 15px 0;
+    width: 250px;
+  }
 }

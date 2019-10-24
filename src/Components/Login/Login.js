@@ -23,13 +23,14 @@ class Login extends Component {
           <DialogContent className="Login-content">
             <form name="login-form" onSubmit={this.props.handleSubmit}>
               <table>
-                <tbody className="login-body">
+                <tbody>
                   <tr>
-                    <td>
+                    <td className="login-label">
                       <label>username:</label>
                     </td>
-                    <td>
+                    <td className="login-input">
                       <input
+                        className="input"
                         name="username"
                         value={this.props.username}
                         onChange={this.props.handleInput}
@@ -37,11 +38,12 @@ class Login extends Component {
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td className="login-label">
                       <label>password:</label>
                     </td>
-                    <td>
+                    <td className="login-input">
                       <input
+                        className="input"
                         name="password"
                         value={this.props.password}
                         onChange={this.props.handleInput}
@@ -51,7 +53,11 @@ class Login extends Component {
                   </tr>
                 </tbody>
               </table>
-              <button type="submit">LOG IN</button>
+              <div className="Login-btn-container">
+                <button className="Login-btn" type="submit">
+                  LOG IN
+                </button>
+              </div>
             </form>
           </DialogContent>
         </Dialog>
