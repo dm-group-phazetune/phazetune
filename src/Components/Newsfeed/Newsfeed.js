@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import AudioUpload from "./AudioUpload";
-import AudioPlayer from "./AudioPlayer";
+
 
 class Newsfeed extends Component {
   constructor(){
@@ -26,7 +26,7 @@ class Newsfeed extends Component {
       <>
         <div>
           <AudioUpload />
-          {/* <AudioPlayer /> */}
+          
         </div>
       </>
     );
