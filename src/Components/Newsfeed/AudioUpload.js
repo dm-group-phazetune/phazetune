@@ -8,7 +8,7 @@ class AudioUpload extends React.Component {
         super(props)
         this.state = {
             audio: null,
-            audioUrl: '',
+            audio_url: '',
             progress: 0,
             //drop zone
             highlight: false
@@ -59,7 +59,7 @@ class AudioUpload extends React.Component {
         const uploadTask = storage.ref(`audios/${audio.name}`).put(audio);
         const setThisState = (url) => {
             console.log(url);
-            this.setState({audioUrl: url})
+            this.setState({audio_url: url})
         }
         uploadTask.on('state_changed', 
         //progress bar function
@@ -105,7 +105,7 @@ class AudioUpload extends React.Component {
                 type= 'file'
                 />
                 <button onClick={this.handleClick}> Upload </button>
-                <AudioPlayer audioUrl={this.state.audioUrl}/>
+                <AudioPlayer audioUrl={this.state.audio_url}/>
             </>
         )
     }
