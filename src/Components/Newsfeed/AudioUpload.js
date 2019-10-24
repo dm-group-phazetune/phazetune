@@ -1,5 +1,8 @@
 import React from "react";
 import "./dropzone.css";
+import {connect} from "react-redux";
+import Axios from 'axios';
+
 import {storage} from '../FireAudioUpload/firebase'
 import AudioPlayer from './AudioPlayer'
 
@@ -11,7 +14,10 @@ class AudioUpload extends React.Component {
             audio_url: '',
             progress: 0,
             //drop zone
-            highlight: false
+            highlight: false,
+            //add post
+            title: "",
+            genre:"",
         };
         //drop zone
         this.fileInputRef = React.createRef();
@@ -75,6 +81,11 @@ class AudioUpload extends React.Component {
             storage.ref('audios').child(audio.name).getDownloadURL().then(url => {
                 console.log(url)
                 setThisState(url)
+                Axios.post("/api/posts", {
+                    title: this.state.title,
+                    genre: this.state.genre,
+                    audio_url: url
+                })
             })
         })
     }
@@ -87,13 +98,31 @@ class AudioUpload extends React.Component {
         }
         return (
             <>
+            <input className= "title"
+            placeholder= "title"
+            onChange={e => this.setState({title: e.target.value})}
+            />
+            <select name="genre">
+                <option>SELECT</option>
+                <option>Rock</option>
+                <option>R&B/ Hip Hop</option>
+                <option>Pop</option>
+                <option>Country</option>
+                <option>Dance/EDM</option>
+                <option>Christian/Gospel</option>
+                <option>Holiday/Seasonal</option>
+                <option>Latin</option>
+                <option>Jazz</option>
+                <option>Classical</option>
+                <option>Kids Music</option>
+                <option>Other</option>
+            </select>
             <div style={style}
                 className={`Dropzone ${this.state.hightlight ? "Highlight" : ""}`}
                 onDragOver={this.onDragOver}
                 onDragLeave={this.onDragLeave}
                 onDrop={this.onDrop}
                 onClick={this.openFileDialog}
-                // style={{ cursor: this.props.disabled ? "default" : "pointer" }}
                 onChange={this.handleChange}
                 onFilesAdded={this.onFilesAdded}
                 >
