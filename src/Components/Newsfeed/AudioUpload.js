@@ -105,10 +105,7 @@ class AudioUpload extends React.Component {
                 type= 'file'
                 />
                 <button onClick={this.handleClick}> Upload </button>
-                {/* this below is to render drag drop uploads*/}
-                {/* <div>
-                    <h1>{this.state.audio}</h1>
-                </div> */}
+                <AudioPlayer audioUrl={this.state.audioUrl}/>
             </>
         )
     }
