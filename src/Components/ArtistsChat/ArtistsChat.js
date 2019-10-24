@@ -89,7 +89,7 @@ function Chat() {
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
-    setSocket(io("/chat"));
+    setSocket(io("/artists"));
   }, []);
 
   useEffect(() => {

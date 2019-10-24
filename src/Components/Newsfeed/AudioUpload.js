@@ -7,7 +7,7 @@ class AudioUpload extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            audio: [],
+            audio: null,
             audio_url: '',
             //drop zone
             highlight: false
@@ -91,7 +91,7 @@ class AudioUpload extends React.Component {
                 onDragLeave={this.onDragLeave}
                 onDrop={this.onDrop}
                 onClick={this.openFileDialog}
-                style={{ cursor: this.props.disabled ? "default" : "pointer" }}
+                // style={{ cursor: this.props.disabled ? "default" : "pointer" }}
                 onChange={this.handleChange}
                 onFilesAdded={this.onFilesAdded}
                 >

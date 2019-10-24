@@ -18,9 +18,6 @@ function getUserProf(req,res){
 }
 
 
-
-
-
 module.exports = {
     editUserProf,
     getUserProf
