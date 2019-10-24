@@ -13,6 +13,10 @@ class Newsfeed extends Component {
       <>
         <div>
           <AudioUpload />
+<<<<<<< HEAD
+=======
+          
+>>>>>>> master
         </div>
       </>
     );
