@@ -1,15 +1,14 @@
 import React from 'react'
 import "./dropzone.css";
 import {storage} from '../FireAudioUpload/firebase'
-import {peaks} from './peaks'
-import AudioPlayer from './AudioPlayer'
+
 
 class AudioUpload extends React.Component {
     constructor(props){
         super(props)
         this.state = {
             audio: null,
-            audioUrl: '',
+            audio_url: '',
             //drop zone
             highlight: false
         };
@@ -19,7 +18,6 @@ class AudioUpload extends React.Component {
         this.onDragOver = this.onDragOver.bind(this);
         this.onDragLeave = this.onDragLeave.bind(this);
         this.onDrop = this.onDrop.bind(this);
-        // this.onFilesAdded = this.onFilesAdded.bind(this);
     }
     //Drop zone
     openFileDialog() {
@@ -42,13 +40,12 @@ class AudioUpload extends React.Component {
             const array = this.fileListToArray(files);
             this.props.onFilesAdded(array);
         }
-        console.log(files[0].name);
+        // console.log(audio);
+        this.setState({audio: files[0].name})
         this.setState({ hightlight: false,
-            // audio: files[0]
         });
     }
-
-    //end of drop zone
+    //end of drop zone 
         handleChange = e => {
             console.log(e.target.files);
             if(e.target.files[0]){
@@ -56,7 +53,6 @@ class AudioUpload extends React.Component {
                 this.setState( () => ({audio}))
             }
         }
-    
     handleClick = () => {
         const {audio} = this.state;
         const uploadTask = storage.ref(`audios/${audio.name}`).put(audio);
@@ -80,8 +76,6 @@ class AudioUpload extends React.Component {
             })
         })
     }
-    
-    
     render(){
         const style = {
             display: 'flex',
@@ -97,10 +91,10 @@ class AudioUpload extends React.Component {
                 onDragLeave={this.onDragLeave}
                 onDrop={this.onDrop}
                 onClick={this.openFileDialog}
-                style={{ cursor: this.props.disabled ? "default" : "pointer" }}
+                // style={{ cursor: this.props.disabled ? "default" : "pointer" }}
                 onChange={this.handleChange}
+                onFilesAdded={this.onFilesAdded}
                 >
-                    
             </div>
                 <input 
                 onChange={this.handleChange}
@@ -108,7 +102,10 @@ class AudioUpload extends React.Component {
                 type= 'file'
                 />
                 <button onClick={this.handleClick}> Upload </button>
-                <AudioPlayer audioUrl={this.state.audioUrl}/>
+                {/* this below is to render drag drop uploads*/}
+                {/* <div>
+                    <h1>{this.state.audio}</h1>
+                </div> */}
             </>
         )
     }
