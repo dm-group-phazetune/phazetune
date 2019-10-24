@@ -1,0 +1,86 @@
+.Header-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: none;
+          flex-direction: none;
+  -ms-flex-flow: none;
+      flex-flow: none;
+  width: 100vw;
+  height: 8vh;
+  background-color: #454244;
+}
+
+.Logo-container {
+  width: 50vw;
+  height: none;
+  padding-left: 30px;
+}
+
+.Logo {
+  font-family: "Archivo black", sans-serif;
+  font-size: 50px;
+  line-height: 1.1em;
+  letter-spacing: 0.01em;
+  color: #ed5eb7;
+  -webkit-text-stroke: 3px #5732a8;
+  text-shadow: 0 0 4px #5732a8;
+}
+
+.Login-Register-container {
+  width: 50vw;
+  height: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: none;
+          flex-direction: none;
+  -ms-flex-flow: none;
+      flex-flow: none;
+  padding-right: 30px;
+  color: #ffffff;
+}
+
+.Login-Register-container .Pipe {
+  width: 25px;
+  height: none;
+  text-align: center;
+  font-size: 1.5em;
+  opacity: 0.3;
+}
+
+nav {
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  font-weight: none;
+  font-style: none;
+  line-height: 1.618em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+nav:hover {
+  text-shadow: 0 0 4px #5732a8;
+  color: #ed5eb7;
+  cursor: pointer;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+/*# sourceMappingURL=Header.css.map */

@@ -1,0 +1,80 @@
+// Logo
+@mixin logo($size, $color, $ts-c) {
+  font-family: "Archivo black", sans-serif;
+  font-size: $size;
+  line-height: 1.1em;
+  letter-spacing: 0.01em;
+  color: $color;
+  -webkit-text-stroke: 3px $ts-c;
+}
+// Francois-one
+@mixin francois-one(
+  $size,
+  $font-weight,
+  $font-style,
+  $letter-spacing,
+  $text-transform
+) {
+  font-family: "Francois One", sans-serif;
+  font-size: $size;
+  font-weight: $font-weight;
+  font-style: $font-style;
+  line-height: 1.618em;
+  letter-spacing: $letter-spacing;
+  text-transform: $text-transform;
+}
+// Poppins
+@mixin poppins(
+  $size,
+  $font-weight,
+  $font-style,
+  $letter-spacing,
+  $text-transform
+) {
+  font-family: "Poppins", sans-serif;
+  font-size: $size;
+  font-weight: $font-weight;
+  font-style: $font-style;
+  line-height: 1.618em;
+  letter-spacing: $letter-spacing;
+  text-transform: $text-transform;
+}
+// Oswald
+@mixin oswald(
+  $size,
+  $font-weight,
+  $font-style,
+  $letter-spacing,
+  $text-transform
+) {
+  font-family: "Oswald", sans-serif;
+  font-size: $size;
+  font-weight: $font-weight;
+  font-style: $font-style;
+  line-height: 1.618em;
+  letter-spacing: $letter-spacing;
+  text-transform: $text-transform;
+}
+// p
+@mixin p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  line-height: 1.618em;
+  letter-spacing: 0.03em;
+}
+
+@mixin text-shadow-basic($x, $y, $blur, $c) {
+  text-shadow: $x $y $blur $c;
+}
+
+@mixin text-shadow-glow($blur, $c) {
+  text-shadow: 0 0 $blur $c;
+}
+
+@mixin text-stroke($w, $c) {
+  text-stroke: $w $c;
+}
+
+@mixin border($w, $s, $c) {
+  border: $w $s $c;
+}

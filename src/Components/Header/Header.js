@@ -70,11 +70,13 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <div>
-          {this.props.location.pathname === "/" ? (
-            <div>
-              <div>PHAZETUNE</div>
-              <button onClick={this.openLogin}>LOGIN</button>
+        {this.props.location.pathname === "/" ? (
+          <div className="Header-container">
+            <div className="Logo-container">
+              <div className="Logo">PHAZETUNE</div>
+            </div>
+            <div className="Login-Register-container">
+              <nav onClick={this.openLogin}>LOGIN</nav>
               <Login
                 handleSubmit={this.handleSubmit}
                 login={this.state.login}
@@ -83,7 +85,8 @@ class Header extends Component {
                 openLogin={this.openLogin}
                 handleInput={this.handleInput}
               />
-              <button onClick={this.openRegister}>REGISTER</button>
+              <div className="Pipe">|</div>
+              <nav onClick={this.openRegister}>REGISTER</nav>
               <Register
                 handleSubmit={this.handleSubmit}
                 register={this.state.register}
@@ -96,16 +99,16 @@ class Header extends Component {
                 handleInput={this.handleInput}
               />
             </div>
-          ) : (
+          </div>
+        ) : (
+          <div className="Header-container">
+            <div>PHAZETUNE</div>
             <div>
-              <div>PHAZETUNE</div>
-              <div>
-                <p>Hi, {this.props.first_name}</p>
-                <button onClick={this.handleLogout}>LOG OUT</button>
-              </div>
+              <p>Hi, {this.props.first_name}</p>
+              <button onClick={this.handleLogout}>LOG OUT</button>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     );
   }

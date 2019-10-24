@@ -9,3 +9,45 @@
 @import "../_modules/buttons.scss";
 @import "../_modules/cards.scss";
 @import "../_modules/images.scss";
+
+.Header-container {
+  @include flex(center, center, none, none);
+  @include background-size(100vw, 8vh);
+  background-color: $d-2;
+}
+
+.Logo-container {
+  @include background-size(50vw, none);
+  padding-left: 30px;
+}
+
+.Logo {
+  @include logo(50px, $b-3, $b-1);
+  @include text-shadow-glow(4px, $b-1);
+}
+
+.Login-Register-container {
+  @include background-size(50vw, none);
+  @include flex(flex-end, center, none, none);
+  padding-right: 30px;
+  color: $white;
+
+  .Pipe {
+    @include background-size(25px, none);
+    text-align: center;
+    font-size: 1.5em;
+    opacity: 0.3;
+  }
+}
+
+nav {
+  @include oswald(20px, none, none, 0.05em, uppercase);
+  color: $white;
+}
+
+nav:hover {
+  @include text-shadow-glow(4px, $b-1);
+  color: $b-3;
+  cursor: pointer;
+  transition: 1s;
+}
