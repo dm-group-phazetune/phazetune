@@ -69,7 +69,6 @@ class AudioUpload extends React.Component {
         (snapshot) => {
             const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes)) * 100
             this.setState({progress})
-
         },
         (error) => {
             console.log(error)
