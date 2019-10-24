@@ -228,9 +228,9 @@ producers.on("connect", socket => {
   });
 });
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../"));
+// });
 
 http.listen(SERVER_PORT, () => {
   console.log(`SERVER LISTENING ON PORT: ${SERVER_PORT}`);
