@@ -1,5 +1,3 @@
-
-
 function editUserProf(req,res){
     const user_id = +req.params.id
     const {first_name, last_name, city, bio} = req.body
