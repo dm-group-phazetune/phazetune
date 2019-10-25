@@ -10,7 +10,6 @@ const io = require("socket.io")(http);
 const authController = require("./controllers/authController");
 const postsController = require("./controllers/postsController");
 const profController = require("./controllers/profController");
-const followController = require("./controllers/followController");
 // Dotenv
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
@@ -37,7 +36,7 @@ massive(CONNECTION_STRING).then(db => {
 // De-structured controllers
 const { getUser, register, login, logout } = authController;
 const { editUserProf, getUserProf } = profController;
-const {addPost} = require("./controllers/postsController");
+const { addPost } = require("./controllers/postsController");
 
 // Auth Endpoints
 app.get("/auth/user", getUser);
@@ -60,27 +59,11 @@ app.get("/api/posts/:user_id");
 app.get("/api/posts");
 app.get("/api/posts/genre");
 // Profile endpoints
-app.get("/api/profile/user", getUserProf);
+app.get("/api/profile/user/:user_id", getUserProf);
 app.put("/api/profile/user", editUserProf);
 // Follow Endpoints
 app.post("/api/user/:user_id");
 app.delete("/api/user/:user_id");
-
-//socket endpoint
-// const rooms = [
-//   "General",
-//   "Country",
-//   "Hip-Hop/R&B",
-//   "Dance/EDM",
-//   "Christian/Gospel",
-//   "Holiday/Season",
-//   "Latin",
-//   "Jazz",
-//   "Rock",
-//   "Pop",
-//   "Classical",
-//   "Children"
-// ];
 
 io.of("/chat");
 io.on("connection", socket => {
