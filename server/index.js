@@ -59,7 +59,7 @@ app.get("/api/posts/:user_id");
 app.get("/api/posts");
 app.get("/api/posts/genre");
 // Profile endpoints
-app.get("/api/profile/user/:username", getUserProf);
+app.get("/api/profile/user/:user_id", getUserProf);
 app.put("/api/profile/user", editUserProf);
 // Follow Endpoints
 app.post("/api/user/:user_id");
