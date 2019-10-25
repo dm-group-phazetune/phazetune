@@ -25,21 +25,21 @@ class Profile extends Component {
   }
 
 
-  handleEdit = () => {
-    axios.put("/api/profile/user"), {
-      editFirstName: this.state.editFirstName,
-      editLastName: this.state.editLastName,
-      editCity: this.state.editCity,
-      editBio: this.state.editBio,
-    }.then(res => {
-      this.setState({
-        editFirstName: res.data.first_name,
-        editLastName: res.data.last_name,
-        editCity: res.data.city,
-        editBio: res.data.bio
-      })
-    })
-  }
+  // handleEdit = () => {
+  //   axios.put("/api/profile/user"), {
+  //     editFirstName: this.state.editFirstName,
+  //     editLastName: this.state.editLastName,
+  //     editCity: this.state.editCity,
+  //     editBio: this.state.editBio,
+  //   }.then(res => {
+  //     this.setState({
+  //       editFirstName: res.data.first_name,
+  //       editLastName: res.data.last_name,
+  //       editCity: res.data.city,
+  //       editBio: res.data.bio
+  //     })
+  //   })
+  // }
 
   render() {
     return (
