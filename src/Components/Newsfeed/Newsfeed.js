@@ -24,9 +24,10 @@ class Newsfeed extends Component {
   render() {
     return (
       <>
-        <div>
+        <div className="Newsfeed-container">
+          <div className="Audio-container">
           <AudioUpload />
-          
+          </div>  
         </div>
       </>
     );

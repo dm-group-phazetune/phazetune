@@ -9,3 +9,11 @@
 @import "../_modules/buttons.scss";
 @import "../_modules/cards.scss";
 @import "../_modules/images.scss";
+
+.Newsfeed-container {
+    @include background-size(100vw, 100vh);
+    @include flex(center, center, column, none);
+}
+.Audio-container {
+    @include flex(center, center, column, none);
+}
