@@ -1,6 +1,5 @@
 import React from "react";
 import "./dropzone.css";
-import {connect} from "react-redux";
 import Axios from 'axios';
 
 import {storage} from '../FireAudioUpload/firebase'
@@ -89,6 +88,9 @@ class AudioUpload extends React.Component {
             })
         })
     }
+    handlePlaceChange = event => {
+        this.setState({genre: event.target.value})
+    }
     render(){
         const style = {
             display: 'flex',
@@ -102,7 +104,9 @@ class AudioUpload extends React.Component {
             placeholder= "title"
             onChange={e => this.setState({title: e.target.value})}
             />
-            <select name="genre">
+            <select name="genre"
+                onChange = {this.handlePlaceChange}
+            >
                 <option>SELECT</option>
                 <option>Rock</option>
                 <option>R&B/ Hip Hop</option>
