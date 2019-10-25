@@ -11,9 +11,11 @@
 @import "../_modules/images.scss";
 
 .Newsfeed-container {
-    @include background-size(100vw, 100vh);
-    @include flex(center, center, column, none);
+  @include background-size(100vw, 100vh);
+  @include flex(center, center, column, none);
+  overflow-y: auto;
 }
+
 .Audio-container {
-    @include flex(center, center, column, none);
+  @include flex(center, center, column, none);
 }

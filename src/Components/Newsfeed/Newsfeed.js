@@ -3,20 +3,19 @@ import Axios from "axios";
 import AudioUpload from "./AudioUpload";
 import AudioPlayer from "./AudioPlayer";
 
-
 class Newsfeed extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       pastPost: []
-    }
+    };
   }
-  componentDidMount(){
+  componentDidMount() {
     this.fetchPost();
   }
   updatePastPost = postArr => {
-    this.setState({pastPost : postArr});
-  }
+    this.setState({ pastPost: postArr });
+  };
   fetchPost = () => {
     Axios.get('/api/users/post').then(response => {
       this.setState({pastPost: response.data})
@@ -28,8 +27,8 @@ class Newsfeed extends Component {
       <>
         <div className="Newsfeed-container">
           <div className="Audio-container">
-          <AudioUpload />
-          </div>  
+            <AudioUpload />
+          </div>
         </div>
         {this.state.pastPost.map(individualPost => {
           console.log(individualPost.audio_url);
