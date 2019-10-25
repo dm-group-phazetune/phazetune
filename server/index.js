@@ -36,7 +36,7 @@ massive(CONNECTION_STRING).then(db => {
 // De-structured controllers
 const { getUser, register, login, logout } = authController;
 const { editUserProf, getUserProf } = profController;
-const { addPost } = require("./controllers/postsController");
+const {addPost, getPastPosts, getAllPosts} = require("./controllers/postsController");
 
 // Auth Endpoints
 app.get("/auth/user", getUser);
@@ -54,7 +54,8 @@ app.get("/api/posts/user");
 // Posts - Newsfeed
 app.get("/api/posts/favorites/:post_id");
 app.get("/api/posts/user/genre");
-app.get("/api/posts/:user_id");
+app.get("/api/posts/:user_id",);
+app.get('/api/users/post', getAllPosts);
 // Posts - Explore
 app.get("/api/posts");
 app.get("/api/posts/genre");
