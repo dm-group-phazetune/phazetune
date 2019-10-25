@@ -5,6 +5,7 @@ import Axios from 'axios';
 import {storage} from '../FireAudioUpload/firebase'
 import AudioPlayer from './AudioPlayer'
 
+
 class AudioUpload extends React.Component {
     constructor(props){
         super(props)
@@ -91,6 +92,7 @@ class AudioUpload extends React.Component {
     handlePlaceChange = event => {
         this.setState({genre: event.target.value})
     }
+    
     render(){
         const style = {
             display: 'flex',
