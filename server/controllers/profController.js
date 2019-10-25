@@ -6,7 +6,7 @@ function editUserProf(req,res){
     db.prof.editUserProfile(first_name, last_name, city, bio, user_id).then(() => {
         db.getUserPosts(req.session.user.username).then(info => {
             
-            res.status(200).json(info)
+            res.status(200).json(info[0])
         })
     })
 }

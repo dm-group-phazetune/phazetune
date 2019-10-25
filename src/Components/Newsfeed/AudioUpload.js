@@ -11,7 +11,7 @@ class AudioUpload extends React.Component {
         super(props)
         this.state = {
             audio: null,
-            audio_url: '',
+            audioUrl: '',
             progress: 0,
             //drop zone
             highlight: false,
@@ -65,7 +65,7 @@ class AudioUpload extends React.Component {
         const uploadTask = storage.ref(`audios/${audio.name}`).put(audio);
         const setThisState = (url) => {
             console.log(url);
-            this.setState({audio_url: url})
+            this.setState({audioUrl: url})
         }
         uploadTask.on('state_changed', 
         //progress bar function
@@ -84,7 +84,7 @@ class AudioUpload extends React.Component {
                 Axios.post("/api/posts", {
                     title: this.state.title,
                     genre: this.state.genre,
-                    audio_url: url
+                    audioUrl: url
                 })
             })
         })
@@ -134,7 +134,7 @@ class AudioUpload extends React.Component {
                 type= 'file'
                 />
                 <button onClick={this.handleClick}> Upload </button>
-                <AudioPlayer audioUrl={this.state.audio_url}/>
+                <AudioPlayer audioUrl={this.state.audioUrl}/>
             </>
         )
     }

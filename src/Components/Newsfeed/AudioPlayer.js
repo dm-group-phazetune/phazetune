@@ -92,7 +92,7 @@ class AudioPlayer extends React.Component {
             />
             <audio
             id="song"
-            src={this.props.audio_url}
+            src={this.props.audioUrl}
             />
         </div>
         );

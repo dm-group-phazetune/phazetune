@@ -1,9 +1,9 @@
 //add post
 async function addPost(req, res) {
-    const {title, genre, audio_url} = req.body;
+    const {title, genre, audioUrl} = req.body;
     const {user_id} = req.session.user;
     const db = req.app.get("db");
-    await db.posts.addPost(title, genre, audio_url, user_id)
+    await db.posts.addPost(title, genre, audioUrl, user_id)
         res.sendStatus(200);
     
 }
