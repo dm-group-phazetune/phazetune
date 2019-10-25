@@ -13,10 +13,17 @@ class Profile extends Component {
       editBio: ""
     };
   }
+<<<<<<< HEAD
   componentDidMount() {
     axios.get("/api/profile/user").then(res => {
       this.setState({ userProf: res.data });
     });
+=======
+  componentDidMount(){
+    axios.get("/api/profile/user/:user_id").then(res => {
+      this.setState({userProf: res.data})
+    })
+>>>>>>> master
   }
 
   handleClick = () => {
