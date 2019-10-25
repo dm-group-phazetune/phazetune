@@ -7,8 +7,20 @@ async function addPost(req, res) {
         res.sendStatus(200);
     
 }
+async function getPastPosts(req, res) {
+    const db = req.app.get('db');
+    const posts = await db.posts.getPastPosts(req.session.user.username)
+    res.status(200).json(posts);
+}
+async function getAllPosts(req, res) {
+    const db = req.app.get('db');
+    const allPosts = await db.posts.getAllPosts(req.session.user.user_id)
+    res.status(200).json(allPosts);
+}
 
 //export all
 module.exports ={
-    addPost
+    addPost,
+    getPastPosts,
+    getAllPosts
 }
