@@ -10,13 +10,15 @@
 @import "../_modules/cards.scss";
 @import "../_modules/images.scss";
 
+// HEADER NAV
 .Header-container {
   @include flex(center, center, none, none);
-  @include background-size(100vw, 8vh);
+  @include background-size(100vw, 7vh);
   background-color: $d-2;
   box-sizing: border-box;
   box-shadow: 0px 2px 6px 0px hsla(0, 0%, 0%, 0.2);
   position: fixed;
+  top: 0;
 }
 
 .Logo-container {
@@ -94,4 +96,32 @@
     margin: 15px 0;
     width: 250px;
   }
+}
+
+// FOOTER NAV
+.FooterNav-container {
+  @include background-size(100vw, 7vh);
+  @include flex(center, center, none, none);
+  background-color: $d-2;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 6px 0px hsla(0, 0%, 0%, 0.2);
+  position: fixed;
+  bottom: 0;
+}
+
+.Footernav {
+  @include background-size(70px, none);
+  @include flex(center, center, none, none);
+  color: white;
+  opacity: 0.9;
+}
+
+.Footernav:hover {
+  color: $b-3;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.Footernav-icon {
+  size: 10px;
 }

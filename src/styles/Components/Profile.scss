@@ -9,3 +9,9 @@
 @import "../_modules/buttons.scss";
 @import "../_modules/cards.scss";
 @import "../_modules/images.scss";
+
+.Profile-container {
+  @include background-size(100vw, 100vh);
+  @include flex(center, center, column, none);
+  overflow-y: auto;
+}
