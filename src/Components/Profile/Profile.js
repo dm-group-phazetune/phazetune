@@ -14,7 +14,7 @@ class Profile extends Component {
     }
   }
   componentDidMount(){
-    axios.get("/api/profile/user").then(res => {
+    axios.get("/api/profile/user/:user_id").then(res => {
       this.setState({userProf: res.data})
     })
   }
