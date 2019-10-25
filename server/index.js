@@ -10,7 +10,6 @@ const io = require("socket.io")(http);
 const authController = require("./controllers/authController");
 const postsController = require("./controllers/postsController");
 const profController = require("./controllers/profController");
-const followController = require("./controllers/followController");
 // Dotenv
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
