@@ -1,15 +1,17 @@
 import React from "react";
 import "./dropzone.css";
 import Axios from 'axios';
-
-import {storage} from '../FireAudioUpload/firebase'
-import AudioPlayer from './AudioPlayer'
+import {storage} from '../FireAudioUpload/firebase';
+import AudioPlayer from './AudioPlayer';
 
 
 class AudioUpload extends React.Component {
     constructor(props){
         super(props)
-        this.state = {
+        this.state = {import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
+
             audio: null,
             audioUrl: '',
             progress: 0,

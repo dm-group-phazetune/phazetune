@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
 import { getSession } from "../../redux/reducers/authReducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,52 +10,64 @@ import {
   faCommentDots,
   faUserCircle
 } from "@fortawesome/free-solid-svg-icons";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 class FooterNav extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
   componentDidMount() {
     this.props.getSession();
   }
+
+  handleOpen() {}
 
   render() {
     return (
       <div>
         {this.props.location.pathname !== "/" ? (
           <div className="FooterNav-container">
-            <Link
+            <NavLink
               to="/newsfeed"
-              style={{ color: "inherit", textDecoration: "inherit" }}
+              activeStyle={{
+                color: "red"
+              }}
             >
               <div className="Footernav">
                 <FontAwesomeIcon icon={faHome} size="2x" />
               </div>
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/explore"
               style={{ color: "inherit", textDecoration: "inherit" }}
             >
               <div className="Footernav">
                 <FontAwesomeIcon icon={faSearch} size="2x" />
               </div>
-            </Link>
+            </NavLink>
             <div className="Footernav">
               <FontAwesomeIcon icon={faPlusCircle} size="2x" />
             </div>
-            <Link
+            <NavLink
               to="/chat"
               style={{ color: "inherit", textDecoration: "inherit" }}
             >
               <div className="Footernav">
                 <FontAwesomeIcon icon={faCommentDots} size="2x" />
               </div>
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/profile"
               style={{ color: "inherit", textDecoration: "inherit" }}
             >
               <div className="Footernav">
                 <FontAwesomeIcon icon={faUserCircle} size="2x" />
               </div>
-            </Link>
+            </NavLink>
           </div>
         ) : null}
       </div>
