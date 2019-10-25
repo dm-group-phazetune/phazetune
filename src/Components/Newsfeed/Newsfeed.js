@@ -2,32 +2,31 @@ import React, { Component } from "react";
 import Axios from "axios";
 import AudioUpload from "./AudioUpload";
 
-
 class Newsfeed extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       pastPost: []
-    }
+    };
   }
-  componentDidMount(){
+  componentDidMount() {
     this.fetchPost();
   }
   updatePastPost = postArr => {
-    this.setState({pastPost : postArr});
-  }
+    this.setState({ pastPost: postArr });
+  };
   fetchPost = () => {
-    Axios.get('/api/users/post').then(response => {
-      this.setState({pastPost : response.data})
-    })
-  }
+    Axios.get("/api/users/post").then(response => {
+      this.setState({ pastPost: response.data });
+    });
+  };
   render() {
     return (
       <>
         <div className="Newsfeed-container">
           <div className="Audio-container">
-          <AudioUpload />
-          </div>  
+            <AudioUpload />
+          </div>
         </div>
       </>
     );
