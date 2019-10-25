@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from 'axios'
+import {connect} from 'react-redux'
+import {editProfile} from '../../redux/reducers/profReducer'
+import {getProfile} from '../../redux/reducers/profReducer'
 
 class Profile extends Component {
   constructor(props){
@@ -86,5 +89,9 @@ class Profile extends Component {
     );
   }
 }
+const mapStateToProps = (reduxState) => {
 
-export default Profile;
+
+}
+
+export default connect (undefined, {editProfile, getProfile})(Profile);
