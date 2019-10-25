@@ -1,1 +1,53 @@
-/* No CSS *//*# sourceMappingURL=Landing.css.map */
+.Landing-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: pink;
+}
+
+.Landing-header {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-flow: none;
+      flex-flow: none;
+  background-color: #312e30;
+  background-image: url("../../images/landing-bg.jpeg");
+  background-attachment: scroll;
+  overflow-y: auto;
+}
+
+.Landing-title {
+  font-family: "Archivo black", sans-serif;
+  font-size: 8vw;
+  line-height: 1.1em;
+  color: #ed5eb7;
+  letter-spacing: -1px;
+  -webkit-text-stroke: 3px #5732a8;
+  text-shadow: 0 0 6px #9830b7;
+  font-style: italic;
+}
+
+.Landing-subtitle {
+  width: 40vw;
+  height: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  line-height: 1.618em;
+  letter-spacing: 0.04em;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+/*# sourceMappingURL=Landing.css.map */

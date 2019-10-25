@@ -9,3 +9,30 @@
 @import "../_modules/buttons.scss";
 @import "../_modules/cards.scss";
 @import "../_modules/images.scss";
+
+.Landing-container {
+  @include background-size(100vw, 100vh);
+  background-color: pink;
+}
+
+.Landing-header {
+  @include background-size(100vw, 100vh);
+  @include flex(center, center, column, none);
+  background-color: $d-1;
+  background-image: url("../../images/landing-bg.jpeg");
+  background-attachment: scroll;
+  overflow-y: auto;
+}
+
+.Landing-title {
+  @include logo(8vw, $b-3, $b-1);
+  @include text-shadow-glow(6px, $b-2);
+  font-style: italic;
+}
+
+.Landing-subtitle {
+  @include background-size(40vw, none);
+  @include p;
+  text-align: center;
+  font-weight: bold;
+}
