@@ -14,16 +14,19 @@
   @include flex(center, center, none, none);
   @include background-size(100vw, 8vh);
   background-color: $d-2;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 6px 0px hsla(0, 0%, 0%, 0.2);
+  position: fixed;
 }
 
 .Logo-container {
+  @include flex(none, center, none, none);
   @include background-size(50vw, none);
   padding-left: 30px;
 }
 
 .Logo {
-  @include logo(50px, $b-3, $b-1);
-  @include text-shadow-glow(4px, $b-1);
+  @include logo(35px, $b-3, $b-1);
 }
 
 .Login-Register-container {
@@ -40,14 +43,55 @@
   }
 }
 
-nav {
-  @include oswald(20px, none, none, 0.05em, uppercase);
+.nav {
+  @include oswald(17px, none, none, 0.05em, uppercase);
   color: $white;
 }
 
-nav:hover {
+.nav:hover {
   @include text-shadow-glow(4px, $b-1);
   color: $b-3;
   cursor: pointer;
   transition: 1s;
+}
+
+.Login-title {
+  @include text-shadow-glow(4px, $b-1);
+  color: $b-4;
+  background-color: $d-3;
+  text-transform: uppercase;
+}
+
+// .Login-container {
+//   background-color: black;
+//   opacity: 0.7;
+// }
+
+.Login-content {
+  @include flex(center, center, column, none);
+  color: $white;
+  background-color: $d-3;
+
+  .login-label {
+    width: 80px;
+    text-align: left;
+  }
+
+  .login-input {
+    width: 0px;
+    padding: 5px 0;
+    padding-left: 5px;
+  }
+
+  .input {
+    width: 160px;
+  }
+}
+
+.Login-btn-container {
+  // background-color: white;
+  .Login-btn {
+    margin: 15px 0;
+    width: 250px;
+  }
 }

@@ -13,18 +13,24 @@ class Register extends Component {
     }
     return (
       <div>
-        <Dialog open={this.props.register}>
-          <DialogTitle>Sign Up</DialogTitle>
-          <DialogContent>
+        <Dialog
+          style={{ textAlign: "center" }}
+          onClose={this.props.closeRegister}
+          open={this.props.register}
+          className="Login-container"
+        >
+          <DialogTitle className="Login-title">Sign Up</DialogTitle>
+          <DialogContent className="Login-content">
             <form name="register-form" onSubmit={this.props.handleSubmit}>
               <table>
                 <tbody>
                   <tr>
-                    <td>
+                    <td className="login-label">
                       <label>First Name:</label>
                     </td>
-                    <td>
+                    <td className="login-input">
                       <input
+                        className="input"
                         name="first_name"
                         value={this.props.firstName}
                         onChange={this.props.handleInput}
@@ -32,11 +38,12 @@ class Register extends Component {
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td className="login-label">
                       <label>Last Name:</label>
                     </td>
-                    <td>
+                    <td className="login-input">
                       <input
+                        className="input"
                         name="last_name"
                         value={this.props.lastName}
                         onChange={this.props.handleInput}
@@ -44,11 +51,12 @@ class Register extends Component {
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td className="login-label">
                       <label>Username:</label>
                     </td>
-                    <td>
+                    <td className="login-input">
                       <input
+                        className="input"
                         name="username"
                         value={this.props.username}
                         onChange={this.props.handleInput}
@@ -56,11 +64,12 @@ class Register extends Component {
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td className="login-label">
                       <label>Password:</label>
                     </td>
-                    <td>
+                    <td className="login-input">
                       <input
+                        className="input"
                         name="password"
                         value={this.props.password}
                         onChange={this.props.handleInput}
@@ -69,11 +78,12 @@ class Register extends Component {
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td className="login-label">
                       <label>City:</label>
                     </td>
-                    <td>
+                    <td className="login-input">
                       <input
+                        className="input"
                         name="city"
                         value={this.props.city}
                         onChange={this.props.handleInput}
@@ -82,7 +92,11 @@ class Register extends Component {
                   </tr>
                 </tbody>
               </table>
-              <button type="submit">Register</button>
+              <div className="Login-btn-container">
+                <button className="Login-btn" type="submit">
+                  Register
+                </button>
+              </div>
             </form>
           </DialogContent>
         </Dialog>

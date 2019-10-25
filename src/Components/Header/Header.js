@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
+import logo from "../../images/phazetune-logo.png";
 
 class Header extends Component {
   constructor() {
@@ -34,6 +35,14 @@ class Header extends Component {
 
   openRegister = () => {
     this.setState({ register: true });
+  };
+
+  closeLogin = () => {
+    this.setState({ login: false });
+  };
+
+  closeRegister = () => {
+    this.setState({ register: false });
   };
 
   handleInput = e => {
@@ -73,10 +82,13 @@ class Header extends Component {
         {this.props.location.pathname === "/" ? (
           <div className="Header-container">
             <div className="Logo-container">
+              <img src={logo} width={50} alt="phazetune" />
               <div className="Logo">PHAZETUNE</div>
             </div>
             <div className="Login-Register-container">
-              <nav onClick={this.openLogin}>LOGIN</nav>
+              <div className="nav" onClick={this.openLogin}>
+                LOGIN
+              </div>
               <Login
                 handleSubmit={this.handleSubmit}
                 login={this.state.login}
@@ -84,9 +96,12 @@ class Header extends Component {
                 password={this.state.password}
                 openLogin={this.openLogin}
                 handleInput={this.handleInput}
+                closeLogin={this.closeLogin}
               />
               <div className="Pipe">|</div>
-              <nav onClick={this.openRegister}>REGISTER</nav>
+              <div className="nav" onClick={this.openRegister}>
+                REGISTER
+              </div>
               <Register
                 handleSubmit={this.handleSubmit}
                 register={this.state.register}
@@ -97,6 +112,7 @@ class Header extends Component {
                 city={this.state.city}
                 openRegister={this.openRegister}
                 handleInput={this.handleInput}
+                closeRegister={this.closeRegister}
               />
             </div>
           </div>
