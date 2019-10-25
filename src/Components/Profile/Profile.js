@@ -5,6 +5,7 @@ import {editProfile} from '../../redux/reducers/profReducer'
 import {getProfile} from '../../redux/reducers/profReducer'
 
 
+
 class Profile extends Component {
   constructor(props) {
     super();
@@ -14,6 +15,7 @@ class Profile extends Component {
       editFirstName: "",
       editLastName: "",
       editCity: "",
+      editPhoto: "",
       editBio: ""
     };
   }
@@ -42,8 +44,20 @@ class Profile extends Component {
   //     })
   //   })
   // }
+  checkUploadedPhoto = (event, resultEvent) => {
+    if(resultEvent.event === 'success'){
+        this.setState({editPhoto: resultEvent.info.photo})
+    }
+}
 
   render() {
+
+    var widget = window.cloudinary.createUploadWidget({ 
+      cloudName: "ddxmzokt6", 
+      uploadPreset: "Unveil-upload",
+      sources: ["local", "url", "dropbox", "facebook", "instagram"]},
+      (error, result) => { this.checkUploadedPhoto(error, result)});
+
     return (
       <div className="Profile-container">
         {this.state.editStatus === false ? (
@@ -52,6 +66,7 @@ class Profile extends Component {
             <h3>{this.state.editLastName}</h3>
             <h3>{this.state.editCity}</h3>
             <h3>{this.state.editBio}</h3>
+            <img src ={this.props.photo}/>
           </>
         ) : (
           <>
@@ -71,6 +86,7 @@ class Profile extends Component {
               defaultValue={this.state.editBio}
               onChange={e => this.setState({ editBio: e.target.value })}
             />
+            <button onClick={() => widget.open()}>Change Image</button>
           </>
         )}
 
@@ -87,9 +103,12 @@ class Profile extends Component {
     );
   }
 }
+
+
 const mapStateToProps = (reduxState) => {
-
-
+  return {
+    
+  }
 }
 
-export default connect (undefined, {editProfile, getProfile})(Profile);
+export default connect (undefined, {editProfile, getProfile}) (Profile);
