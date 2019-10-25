@@ -4,9 +4,16 @@ import {peaks} from './peaks'
 
 
 class AudioPlayer extends React.Component {
+
+    constructor() {
+        super();
+        this.audioRef = React.createRef();
+    }
     
     componentDidMount() {
-        const audio = document.querySelector('#song');
+        console.log(this.props.audioUrl)
+        // const audio = document.querySelector('#song');
+        console.dir(this.audioRef.current);
     
         this.wavesurfer = WaveSurfer.create({
         barWidth: 1,
@@ -19,7 +26,7 @@ class AudioPlayer extends React.Component {
         waveColor: 'violet',
         cursorColor: '#4a74a5',
         });
-        this.wavesurfer.load(audio,peaks);
+        this.wavesurfer.load(this.audioRef.current,peaks);
     }
 
     
@@ -58,6 +65,7 @@ class AudioPlayer extends React.Component {
             id="waveform"
             />
             <audio
+            ref={this.audioRef}
             id="song"
             src={this.props.audioUrl}
             />
