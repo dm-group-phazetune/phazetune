@@ -10,21 +10,27 @@ import {
   faCommentDots,
   faUserCircle
 } from "@fortawesome/free-solid-svg-icons";
-import Dialog from "@material-ui/core/Dialog";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import AudioUpload from "./AudioUpload";
 
 class FooterNav extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      upload: false
+    };
   }
 
   componentDidMount() {
     this.props.getSession();
   }
 
-  handleOpen() {}
+  openAudioUpload = () => {
+    this.setState({ upload: true });
+  };
+
+  closeAudioUpload = () => {
+    this.setState({ upload: false });
+  };
 
   render() {
     return (
@@ -49,9 +55,14 @@ class FooterNav extends Component {
                 <FontAwesomeIcon icon={faSearch} size="2x" />
               </div>
             </NavLink>
-            <div className="Footernav">
+            <div className="Footernav" onClick={this.openAudioUpload}>
               <FontAwesomeIcon icon={faPlusCircle} size="2x" />
             </div>
+            <AudioUpload
+              openAudioUpload={this.openAudioUpload}
+              closeAudioUpload={this.closeAudioUpload}
+              upload={this.state.upload}
+            />
             <NavLink
               to="/chat"
               style={{ color: "inherit", textDecoration: "inherit" }}
