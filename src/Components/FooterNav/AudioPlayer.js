@@ -42,29 +42,16 @@ class AudioPlayer extends React.Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.play} style={{ marginLeft: 850 }}>
-          Play
-        </button>
-
-        <button onClick={this.pause} style={{ marginLeft: 850 }}>
-          Pause
-        </button>
-
-        <button onClick={this.skipForward} style={{ marginLeft: 850 }}>
-          Skip Forward
-        </button>
-
-        <button onClick={this.toggleMute} style={{ marginLeft: 850 }}>
-          Mute
-        </button>
-
+      <div className="AudioPlayer-container">
+        <button onClick={this.play}>Play</button>
+        <button onClick={this.pause}>Pause</button>
+        <button onClick={this.skipForward}>Skip Forward</button>
+        <button onClick={this.toggleMute}>Mute</button>
         <div
           style={{
             border: "3px solid grey",
             width: 500,
-            height: 80,
-            marginLeft: 600
+            height: 80
           }}
           id="waveform"
         />

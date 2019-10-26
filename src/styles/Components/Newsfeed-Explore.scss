@@ -10,8 +10,24 @@
 @import "../_modules/cards.scss";
 @import "../_modules/images.scss";
 
-.Explore-container {
+.N-E-container {
   @include background-size(100vw, 100vh);
   @include flex(center, center, column, none);
   overflow-y: auto;
+}
+
+.N-E-title {
+}
+
+.N-E-nav {
+  @include flex(center, center, none, none);
+}
+
+.N-E-content {
+  background-color: black;
+  width: 50vw;
+}
+
+.Audio-container {
+  @include flex(center, center, column, none);
 }
