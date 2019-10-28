@@ -31,7 +31,7 @@ class Newsfeed extends Component {
           </div>
         </div>
         {this.state.pastPost.map(individualPost => {
-          console.log(individualPost.audio_url);
+          console.log(individualPost.genre);
           return (
             <>
             <AudioPlayer

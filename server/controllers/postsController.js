@@ -9,12 +9,12 @@ async function addPost(req, res) {
 }
 async function getPastPosts(req, res) {
     const db = req.app.get('db');
-    const posts = await db.posts.getPastPosts(req.session.user.username)
+    const posts = await db.posts.getPastPosts(req.session.user.user_id)
     res.status(200).json(posts);
 }
 async function getAllPosts(req, res) {
     const db = req.app.get('db');
-    const allPosts = await db.posts.getAllPosts(req.session.user.user_id)
+    const allPosts = await db.posts.getAllPosts(req.session.users.user_id)
     res.status(200).json(allPosts);
 }
 
