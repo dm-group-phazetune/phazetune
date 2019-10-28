@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import AudioUpload from "./AudioUpload";
-import AudioPlayer from "./AudioPlayer";
+// import AudioUpload from "../FooterNav/AudioUpload";
+import AudioPlayer from "../FooterNav/AudioPlayer";
 
 class Newsfeed extends Component {
   constructor() {
@@ -17,47 +17,36 @@ class Newsfeed extends Component {
     this.setState({ pastPost: postArr });
   };
   fetchPost = () => {
-    Axios.get('/api/users/post').then(response => {
-      this.setState({pastPost: response.data})
-    })
-  }
+    Axios.get("/api/users/post").then(response => {
+      this.setState({ pastPost: response.data });
+    });
+  };
   render() {
-    console.log(this.state.pastPost);
+    // console.log(this.state.pastPost);
     return (
-      <>
-        <div className="Newsfeed-container">
-          <div className="Audio-container">
-            <AudioUpload />
-          </div>
-        </div>
-        {this.state.pastPost.map(individualPost => {
-          console.log(individualPost.genre);
-          return (
-            <>
-            <AudioPlayer
-            title = {individualPost.title}
-            genre = {individualPost.genre}
-            audioUrl = {individualPost.audio_url}
-            />
-            </>
-          )
-        })}
-      </>
+      <div className="N-E-container">
+        <header className="N-E-title">Newsfeed</header>
+        <nav className="N-E-nav">
+          <div>Recos</div>
+          <div>Home</div>
+          <div>Favs</div>
+        </nav>
+        <main className="N-E-content">
+          {this.state.pastPost.map(individualPost => {
+            return (
+              <div className="AudioPlayer-Container">
+                <AudioPlayer
+                  title={individualPost.title}
+                  genre={individualPost.genre}
+                  audioUrl={individualPost.audio_url}
+                />
+              </div>
+            );
+          })}
+        </main>
+      </div>
     );
   }
 }
-
-// const mapStateToProps = reduxState => {
-//   return {
-//     user_id: reduxState.authReducer.user_id
-//   };
-// };
-
-// export default withRouter(
-//   connect(
-//     mapStateToProps,
-//     { getSession }
-//   )(Newsfeed)
-// );
 
 export default Newsfeed;

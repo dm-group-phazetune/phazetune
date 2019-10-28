@@ -4,8 +4,19 @@
 // _layout
 @import "../_layout/background.scss";
 @import "../_layout/flex.scss";
-@import "../_layout/grid.scss";
 // _modules
 @import "../_modules/buttons.scss";
 @import "../_modules/cards.scss";
 @import "../_modules/images.scss";
+
+.AudioPlayer-Container {
+  background-color: pink;
+  padding: 15px 0;
+}
+
+.Audio-header-container {
+  .Audio-title {
+  }
+  .Audio-genre {
+  }
+}

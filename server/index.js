@@ -36,7 +36,11 @@ massive(CONNECTION_STRING).then(db => {
 // De-structured controllers
 const { getUser, register, login, logout } = authController;
 const { editUserProf, getUserProf } = profController;
-const {addPost, getPastPosts, getAllPosts} = require("./controllers/postsController");
+const {
+  addPost,
+  getPastPosts,
+  getAllPosts
+} = require("./controllers/postsController");
 
 // Auth Endpoints
 app.get("/auth/user", getUser);
@@ -132,17 +136,18 @@ chat.on("connect", socket => {
 
 // Artists Chat
 let artistsMessages = [];
-let artistsUsers = [];
+let artistsUsers = [{ user: "tramy" }];
 
 // When user connects in Artists Chat
 const artists = io.of("/artists");
 artists.on("connect", socket => {
-  socket.on("addUser", username => {
+  socket.on("addArtist", username => {
     socket.id = username;
     artistsUsers.push({ user: socket.id });
-    artists.emit("usersInChat", { artistsUsers });
+    artists.emit("artistsInChat", { artistsUsers });
+    artistsMessages.push({ message: "Welcome to the Artists Chat" });
     artistsMessages.push({ message: `${socket.id} entered the chat.` });
-    artists.emit("userEntered", { artistsMessages });
+    artists.emit("artistEntered", { artistsMessages });
   });
 
   // When user sends a new message in Artists Chat

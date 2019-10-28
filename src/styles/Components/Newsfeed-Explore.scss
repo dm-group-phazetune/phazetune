@@ -9,8 +9,27 @@
 @import "../_modules/cards.scss";
 @import "../_modules/images.scss";
 
-.Profile-container {
+.N-E-container {
   @include background-size(100vw, 100vh);
   @include flex(center, center, column, none);
   overflow-y: auto;
+}
+
+.N-E-title {
+}
+
+.N-E-nav {
+  @include flex(center, center, none, none);
+}
+
+.N-E-content {
+  @include flex(center, center, column, none);
+  width: 50vw;
+  height: auto;
+  overflow-y: auto;
+}
+
+.Audio-container {
+  @include flex(center, center, column, none);
+  padding: 20px;
 }

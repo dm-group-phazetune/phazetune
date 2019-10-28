@@ -118,10 +118,16 @@ class Header extends Component {
           </div>
         ) : (
           <div className="Header-container">
-            <div>PHAZETUNE</div>
-            <div>
+            <div className="Logo-container">
+              <img src={logo} width={50} alt="phazetune" />
+              <div className="Logo">PHAZETUNE</div>
+            </div>
+            <div className="Login-Register-container">
               <p>Hi, {this.props.first_name}</p>
-              <button onClick={this.handleLogout}>LOG OUT</button>
+              <div className="Pipe">|</div>
+              <div className="nav" onClick={this.handleLogout}>
+                LOG OUT
+              </div>
             </div>
           </div>
         )}
