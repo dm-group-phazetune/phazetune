@@ -4,7 +4,6 @@
 // _layout
 @import "../_layout/background.scss";
 @import "../_layout/flex.scss";
-@import "../_layout/grid.scss";
 // _modules
 @import "../_modules/buttons.scss";
 @import "../_modules/cards.scss";
@@ -12,7 +11,7 @@
 
 .Landing-container {
   @include background-size(100vw, 100vh);
-  background-color: pink;
+  background-color: $d-1;
 }
 
 .Landing-header {
