@@ -10,13 +10,14 @@ function editUserProf(req, res) {
     });
 }
 
-function getUserProf(req, res) {
-  const { username } = req.params;
+async function getUserProf(req, res) {
   const db = req.app.get("db");
+  const { username } = req.params;
 
-  db.prof.getUserProfile(username).then(user => {
-    res.status(200).json(user);
-  });
+  const user = await db.prof.getUserProfile(username);
+  const posts = await db.posts.getUsersPosts(username);
+
+  res.status(200).json([user, posts]);
 }
 
 module.exports = {

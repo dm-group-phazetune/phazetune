@@ -53,8 +53,6 @@ app.put("/api/posts/:post_id");
 app.post("/api/posts/comments/:post_id");
 app.post("/api/posts/favorites/:post_id");
 app.delete("/api/posts/favorites/:post_id");
-// Posts - Profile
-app.get("/api/posts/user");
 // Posts - Newsfeed
 app.get("/api/posts/favorites/:post_id");
 app.get("/api/posts/user/genre");

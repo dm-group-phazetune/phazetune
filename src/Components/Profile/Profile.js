@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { editProfile, getProfile } from "../../redux/reducers/profReducer";
+import AudioPlayer from "../FooterNav/AudioPlayer";
 import { getSession } from "../../redux/reducers/authReducer";
 
 class Profile extends Component {
@@ -18,6 +19,7 @@ class Profile extends Component {
   }
   componentDidMount() {
     this.props.getProfile(this.props.match.params.username);
+    // this.props.getUsersPosts(this.props.match.params.username);
   }
 
   handleClick = () => {
@@ -29,31 +31,9 @@ class Profile extends Component {
   };
 
   render() {
-    console.log(this.props);
-
-    // let userMapped = "Loading...";
-    // if (this.props.user) {
-    //   userMapped = this.props.user.map((el, i) => {
-    //     return (
-    //       <div key={i}>
-    //         <h1>{el.username}</h1>
-    //         <h2>{el.first_name}</h2>
-    //       </div>
-    //     );
-    //   });
-    // }
-    // const { first_name, last_name, bio, photo, follow_count } = this.props.user;
+    console.log(this.props.user);
     return (
       <div className="Profile-container">
-        {/* {this.props.user[0].username ? <h1>{this.props.user[0].username}</h1> : null} */}
-        {/* <h1>{this.props.user[0].username}</h1> */}
-        <h1></h1>
-        <h1></h1>
-        <h1></h1>
-        <h1></h1>
-        <h1></h1>
-        <h1></h1>
-
         {/* {this.state.editStatus === false ? (
           <>
             <h3>{this.state.editFirstName}</h3>
@@ -95,15 +75,27 @@ class Profile extends Component {
         <h1>{this.props.bio}</h1> */}
 
         <h1>Profile</h1>
-        {this.props.user &&
-          this.props.user.map((el, i) => {
-            return (
-              <div key={i}>
-                <h1>{el.username}</h1>
-                <h2>{el.first_name}</h2>
-              </div>
-            );
-          })}
+        <header>
+          <p>{this.props.user && this.props.user[0][0].username}</p>
+          <p>{this.props.user && this.props.user[0][0].city}</p>
+          <p>{this.props.user && this.props.user[0][0].bio}</p>
+          <p>{this.props.user && this.props.user[0][0].photo}</p>
+          <p>{this.props.user && this.props.user[0][0].follow_count}</p>
+        </header>
+        <main>
+          {/* {this.props.posts &&
+            this.props.posts.map((track, i) => {
+              return (
+                <div className="AudioPlayer-Container" key={i}>
+                  <AudioPlayer
+                    title={track.title}
+                    genre={track.genre}
+                    audioUrl={track.audio_url}
+                  />
+                </div>
+              );
+            })} */}
+        </main>
       </div>
     );
   }
