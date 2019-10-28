@@ -1,3 +1,2 @@
-SELECT * FROM users 
-JOIN posts
-ON users.user_id = posts.user_id
+SELECT first_name, last_name, username, city, photo, bio, follow_count FROM users 
+WHERE username = $1;
