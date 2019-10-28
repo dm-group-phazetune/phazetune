@@ -24,10 +24,13 @@
 }
 
 .N-E-content {
-  background-color: black;
+  @include flex(center, center, column, none);
   width: 50vw;
+  height: auto;
+  overflow-y: auto;
 }
 
 .Audio-container {
   @include flex(center, center, column, none);
+  padding: 20px;
 }

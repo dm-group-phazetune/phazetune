@@ -50,7 +50,7 @@ class AudioUpload extends React.Component {
     }
     // console.log(audio);
     this.setState({ audio: files[0].name });
-    this.setState({ hightlight: false });
+    this.setState({ highlight: false });
   }
   //end of drop zone
   handleChange = e => {
@@ -62,7 +62,9 @@ class AudioUpload extends React.Component {
   };
   handleClick = () => {
     const { audio } = this.state;
+
     const uploadTask = storage.ref(`audios/${audio.name}`).put(audio);
+
     const setThisState = url => {
       console.log(url);
       this.setState({ audioUrl: url });
@@ -95,18 +97,19 @@ class AudioUpload extends React.Component {
           });
       }
     );
+    this.props.closeAudioUpload(this.setState({ upload: false }));
   };
   handlePlaceChange = event => {
     this.setState({ genre: event.target.value });
   };
 
   render() {
-    const style = {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      flexDirection: "column"
-    };
+    // const style = {
+    //   display: "flex",
+    //   justifyContent: "center",
+    //   alignItems: "center",
+    //   flexDirection: "column"
+    // };
     return (
       <div>
         <Dialog
@@ -116,7 +119,7 @@ class AudioUpload extends React.Component {
           open={this.props.upload}
         >
           <DialogTitle className="AudioUpload-title">Add Track</DialogTitle>
-          <DialogContent className="AudioUoload-content">
+          <DialogContent className="AudioUpload-content">
             <div>
               <input
                 className="title"
@@ -126,9 +129,9 @@ class AudioUpload extends React.Component {
             </div>
             <div>
               <select name="genre" onChange={this.handlePlaceChange}>
-                <option>SELECT</option>
+                <option>Select</option>
                 <option>Rock</option>
-                <option>R&B/ Hip Hop</option>
+                <option>R&B/ Hip-Hop</option>
                 <option>Pop</option>
                 <option>Country</option>
                 <option>Dance/EDM</option>
@@ -143,7 +146,7 @@ class AudioUpload extends React.Component {
             </div>
             <div>
               <div
-                style={style}
+                // style={style}
                 className={`Dropzone ${
                   this.state.highlight ? "Highlight" : ""
                 }`}

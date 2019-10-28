@@ -33,15 +33,14 @@ class Newsfeed extends Component {
         </nav>
         <main className="N-E-content">
           {this.state.pastPost.map(individualPost => {
-            console.log(individualPost.audio_url);
             return (
-              <>
+              <div className="AudioPlayer-Container">
                 <AudioPlayer
                   title={individualPost.title}
                   genre={individualPost.genre}
                   audioUrl={individualPost.audio_url}
                 />
-              </>
+              </div>
             );
           })}
         </main>

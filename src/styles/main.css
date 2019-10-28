@@ -1,22 +1,5 @@
-.Explore-container {
-  width: 100vw;
-  height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-flow: none;
-      flex-flow: none;
-  overflow-y: auto;
+.AudioPlayer-Container {
+  padding: 10px;
 }
 
 .Header-container {
@@ -44,6 +27,7 @@
           box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 0;
+  z-index: 1;
 }
 
 .Logo-container {
@@ -128,6 +112,7 @@
 .Login-title {
   text-shadow: 0 0 4px #5732a8;
   color: #ef87a9;
+  background-color: #5a5759;
   text-transform: uppercase;
 }
 
@@ -196,6 +181,7 @@
           box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2);
   position: fixed;
   bottom: 0;
+  z-index: 1;
 }
 
 .Footernav {
@@ -217,7 +203,7 @@
   -ms-flex-flow: none;
       flex-flow: none;
   color: white;
-  opacity: 0.9;
+  opacity: 0.7;
 }
 
 .Footernav:hover {
@@ -284,7 +270,7 @@
   font-weight: bold;
 }
 
-.Newsfeed-container {
+.N-E-container {
   width: 100vw;
   height: 100vh;
   display: -webkit-box;
@@ -305,6 +291,44 @@
   overflow-y: auto;
 }
 
+.N-E-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: none;
+          flex-direction: none;
+  -ms-flex-flow: none;
+      flex-flow: none;
+}
+
+.N-E-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-flow: none;
+      flex-flow: none;
+  width: 50vw;
+  overflow-y: auto;
+}
+
 .Audio-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -321,6 +345,7 @@
           flex-direction: column;
   -ms-flex-flow: none;
       flex-flow: none;
+  padding: 20px;
 }
 
 .Profile-container {

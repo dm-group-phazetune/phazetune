@@ -39,24 +39,31 @@ class AudioPlayer extends React.Component {
   toggleMute = () => {
     this.wavesurfer.toggleMute();
   };
+  stop = () => {
+    this.wavesurfer.stop();
+  };
 
   render() {
     return (
-      <div className="AudioPlayer-container">
-        <button onClick={this.play}>Play</button>
-        <button onClick={this.pause}>Pause</button>
-        <button onClick={this.skipForward}>Skip Forward</button>
-        <button onClick={this.toggleMute}>Mute</button>
-        <div
-          style={{
-            border: "3px solid grey",
-            width: 500,
-            height: 80
-          }}
-          id="waveform"
-        />
-        <audio ref={this.audioRef} id="song" src={this.props.audioUrl} />
-      </div>
+      <>
+        <header className="Audio-header-container">
+          <title className="Audio-title">{this.props.title}</title>
+          <p className="Audio-genre">{this.props.genre}</p>
+        </header>
+        <main>
+          <div
+            className="AudioPlayer"
+            style={{ border: "2px solid grey", width: 350, height: 80 }}
+            id="waveform"
+          />
+          <audio ref={this.audioRef} id="song" src={this.props.audioUrl} />
+          <button onClick={this.play}>Play</button>
+          <button onClick={this.pause}>Pause</button>
+          <button onClick={this.skipForward}>Skip Forward</button>
+          <button onClick={this.toggleMute}>Mute</button>
+          <button onClick={this.stop}>Stop</button>
+        </main>
+      </>
     );
   }
 }

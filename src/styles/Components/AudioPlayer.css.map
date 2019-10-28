@@ -1,0 +1,17 @@
+{
+    "version": 3,
+    "mappings": "AAYA,AAAA,sBAAsB,CAAC;EACrB,gBAAgB,EAAE,IAAI;EACtB,OAAO,EAAE,MAAM;CAChB",
+    "sources": [
+        "AudioPlayer.scss",
+        "../_base/colors.scss",
+        "../_base/typography.scss",
+        "../_layout/background.scss",
+        "../_layout/flex.scss",
+        "../_layout/grid.scss",
+        "../_modules/buttons.scss",
+        "../_modules/cards.scss",
+        "../_modules/images.scss"
+    ],
+    "names": [],
+    "file": "AudioPlayer.css"
+}
