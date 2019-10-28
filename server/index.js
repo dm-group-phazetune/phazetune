@@ -103,6 +103,7 @@ chat.on("connect", socket => {
     socket.id = username;
     users.push({ user: socket.id });
     chat.emit("usersInChat", { users });
+    messages.push({ message: "Welcome to the General Chat" });
     messages.push({ message: `${socket.id} entered the chat.` });
     chat.emit("userEntered", { messages });
   });
@@ -136,7 +137,7 @@ chat.on("connect", socket => {
 
 // Artists Chat
 let artistsMessages = [];
-let artistsUsers = [{ user: "tramy" }];
+let artistsUsers = [];
 
 // When user connects in Artists Chat
 const artists = io.of("/artists");
@@ -151,7 +152,7 @@ artists.on("connect", socket => {
   });
 
   // When user sends a new message in Artists Chat
-  socket.on("sendMsg", data => {
+  socket.on("sendArtistsMsg", data => {
     console.log(`Message received: ${data.username}: ${data.message}`);
     const { username, message } = data;
     artistsMessages.push({
@@ -163,16 +164,16 @@ artists.on("connect", socket => {
       // var minutes = num % 60;
       // return hours + ":" + minutes;
     });
-    artists.emit("newMsg", { artistsMessages });
+    artists.emit("newArtistsMsg", { artistsMessages });
   });
 
   // When user disconnects from Artists Chat
   socket.on("disconnect", () => {
     const remainingUsers = users.filter(user => user.user !== socket.id);
     artistUsers = remainingUsers;
-    artists.emit("usersInChat", { artistsUsers });
+    artists.emit("artistsInChat", { artistsUsers });
     artistsMessages.push({ message: `${socket.id} left the chat.` });
-    artists.emit("userLeft", { artistsMessages });
+    artists.emit("artistLeft", { artistsMessages });
   });
 });
 

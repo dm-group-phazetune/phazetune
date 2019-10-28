@@ -105,8 +105,8 @@ function ArtistsChat() {
 
       socket.on("artistsInChat", data => {
         console.log(data);
-        console.log(data.artistUsers);
-        const artistsInChat = data.artistUsers;
+        console.log(data.artistsUsers);
+        const artistsInChat = data.artistsUsers;
         setUsers(artistsInChat);
       });
 
@@ -115,12 +115,12 @@ function ArtistsChat() {
         setMessages(userEnteredMsg);
       });
 
-      socket.on("newMsg", data => {
+      socket.on("newArtistsMsg", data => {
         const newMessages = data.artistsMessages;
         setMessages(newMessages);
       });
 
-      socket.on("userLeft", data => {
+      socket.on("artistLeft", data => {
         const userLeftMsg = data.artistsMessages;
         setMessages(userLeftMsg);
       });
@@ -163,7 +163,7 @@ function ArtistsChat() {
             <header className={classes.chatboxRightTitle}>Artists</header>
             <hr />
             <main className={classes.chatboxRightMessages} ref={messagesEndRef}>
-              {/* {messages.map((message, i) => {
+              {messages.map((message, i) => {
                 return (
                   <div key={i}>
                     <ul>
@@ -176,7 +176,7 @@ function ArtistsChat() {
                     </ul>
                   </div>
                 );
-              })} */}
+              })}
             </main>
             <span>
               <form className={classes.chatboxRightMessageSend}>
@@ -195,7 +195,7 @@ function ArtistsChat() {
                       username: username,
                       message: userMessage
                     };
-                    socket.emit("sendMsg", message);
+                    socket.emit("sendArtistsMsg", message);
                     clearInput();
                   }}
                 >
