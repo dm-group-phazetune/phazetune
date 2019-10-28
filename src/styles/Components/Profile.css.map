@@ -1,13 +1,12 @@
 {
     "version": 3,
-    "mappings": "AAYA,AAAA,kBAAkB,CAAC;EGXjB,KAAK,EHYoB,KAAK;EGX9B,MAAM,EHW0B,KAAK;EIZrC,OAAO,EAAE,IAAI;EACb,eAAe,EJYD,MAAM;EIXpB,WAAW,EJWW,MAAM;EIV5B,cAAc,EJUgB,MAAM;EITpC,SAAS,EJS6B,IAAI;EAC1C,UAAU,EAAE,IAAI;CACjB",
+    "mappings": "AAWA,AAAA,kBAAkB,CAAC;EGVjB,KAAK,EHWoB,KAAK;EGV9B,MAAM,EHU0B,KAAK;EIXrC,OAAO,EAAE,IAAI;EACb,eAAe,EJWD,MAAM;EIVpB,WAAW,EJUW,MAAM;EIT5B,cAAc,EJSgB,MAAM;EIRpC,SAAS,EJQ6B,IAAI;EAC1C,UAAU,EAAE,IAAI;CACjB",
     "sources": [
         "Profile.scss",
         "../_base/colors.scss",
         "../_base/typography.scss",
         "../_layout/background.scss",
         "../_layout/flex.scss",
-        "../_layout/grid.scss",
         "../_modules/buttons.scss",
         "../_modules/cards.scss",
         "../_modules/images.scss"

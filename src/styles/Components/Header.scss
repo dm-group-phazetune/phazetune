@@ -4,7 +4,6 @@
 // _layout
 @import "../_layout/background.scss";
 @import "../_layout/flex.scss";
-@import "../_layout/grid.scss";
 // _modules
 @import "../_modules/buttons.scss";
 @import "../_modules/cards.scss";
@@ -19,6 +18,7 @@
   box-shadow: 0px 2px 6px 0px hsla(0, 0%, 0%, 0.2);
   position: fixed;
   top: 0;
+  z-index: 1;
 }
 
 .Logo-container {
@@ -107,6 +107,7 @@
   box-shadow: 0px 2px 6px 0px hsla(0, 0%, 0%, 0.2);
   position: fixed;
   bottom: 0;
+  z-index: 1;
 }
 
 .Footernav {
