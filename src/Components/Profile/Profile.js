@@ -5,6 +5,7 @@ import {editProfile} from '../../redux/reducers/profReducer'
 import {getProfile} from '../../redux/reducers/profReducer'
 
 
+
 class Profile extends Component {
   constructor(props) {
     super();
@@ -14,17 +15,16 @@ class Profile extends Component {
       editFirstName: "",
       editLastName: "",
       editCity: "",
+      editPhoto: "",
       editBio: ""
     };
   }
   componentDidMount(){
-    axios.get("/api/profile/user/:user_id").then(res => {
-      this.setState({userProf: res.data})
-    })
+    this.props.getProfile()
   }
 
   handleClick = () => {
-    this.setState({ editStatus: false }, this.handleEdit);
+    this.setState({ editStatus: false });
   };
 
   // handleEdit = () => {
@@ -42,7 +42,7 @@ class Profile extends Component {
   //     })
   //   })
   // }
-
+  
   render() {
     return (
       <div className="Profile-container">
@@ -52,6 +52,7 @@ class Profile extends Component {
             <h3>{this.state.editLastName}</h3>
             <h3>{this.state.editCity}</h3>
             <h3>{this.state.editBio}</h3>
+            <img src ={this.props.photo}/>
           </>
         ) : (
           <>
@@ -71,6 +72,7 @@ class Profile extends Component {
               defaultValue={this.state.editBio}
               onChange={e => this.setState({ editBio: e.target.value })}
             />
+            
           </>
         )}
 
@@ -87,9 +89,12 @@ class Profile extends Component {
     );
   }
 }
+
+
 const mapStateToProps = (reduxState) => {
-
-
+  return {
+    
+  }
 }
 
-export default connect (undefined, {editProfile, getProfile})(Profile);
+export default connect (undefined, {editProfile, getProfile}) (Profile);
