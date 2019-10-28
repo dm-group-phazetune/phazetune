@@ -19,7 +19,6 @@ class Profile extends Component {
   }
   componentDidMount() {
     this.props.getProfile(this.props.match.params.username);
-    // this.props.getUsersPosts(this.props.match.params.username);
   }
 
   handleClick = () => {
@@ -32,6 +31,25 @@ class Profile extends Component {
 
   render() {
     console.log(this.props.user);
+    const { user } = this.props;
+
+    // const posts = [...user];
+    const mappedPosts = this.props.user
+      ? user[1].map((track, i) => {
+          return (
+            <div>
+              <div className="AudioPlayer-Container" key={i}>
+                <AudioPlayer
+                  title={track.title}
+                  genre={track.genre}
+                  audioUrl={track.audio_url}
+                />
+              </div>
+            </div>
+          );
+        })
+      : null;
+
     return (
       <div className="Profile-container">
         {/* {this.state.editStatus === false ? (
@@ -83,8 +101,8 @@ class Profile extends Component {
           <p>{this.props.user && this.props.user[0][0].follow_count}</p>
         </header>
         <main>
-          {/* {this.props.posts &&
-            this.props.posts.map((track, i) => {
+          {/* {this.props.user &&
+            this.props.user.map((track, i) => {
               return (
                 <div className="AudioPlayer-Container" key={i}>
                   <AudioPlayer
@@ -95,6 +113,7 @@ class Profile extends Component {
                 </div>
               );
             })} */}
+          {mappedPosts}
         </main>
       </div>
     );

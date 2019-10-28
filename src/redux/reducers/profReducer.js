@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const initialState = {
-  user: {},
+  user: [],
   loading: false
 };
 
@@ -48,7 +48,6 @@ export default function reducer(state = initialState, action) {
       };
     }
     case `${GET_PROFILE}_FULFILLED`: {
-      console.log(payload.data);
       return {
         ...state,
         user: payload.data
