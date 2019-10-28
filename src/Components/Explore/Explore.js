@@ -32,6 +32,7 @@ class Explore extends Component {
         </nav>
         <main className="N-E-content">
           {this.state.pastPost.map(individualPost => {
+            console.log(individualPost.title);
             return (
               <div className="AudioPlayer-Container">
                 <AudioPlayer

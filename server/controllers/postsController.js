@@ -14,7 +14,7 @@ async function getPastPosts(req, res) {
 }
 async function getAllPosts(req, res) {
     const db = req.app.get('db');
-    const allPosts = await db.posts.getAllPosts(req.session.users.user_id)
+    const allPosts = await db.posts.getAllPosts(req.session.user.user_id)
     res.status(200).json(allPosts);
 }
 

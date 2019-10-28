@@ -44,10 +44,11 @@ class AudioPlayer extends React.Component {
   };
 
   render() {
+    console.log(this.props.title);
     return (
       <>
         <header className="Audio-header-container">
-          <title className="Audio-title">{this.props.title}</title>
+          <p className="Audio-title">{this.props.title}</p>
           <p className="Audio-genre">{this.props.genre}</p>
         </header>
         <main>

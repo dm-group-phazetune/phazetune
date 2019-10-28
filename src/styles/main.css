@@ -1,9 +1,12 @@
 .AudioPlayer-Container {
   background-color: pink;
   padding: 15px 0;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
-.ChatNav-Container {
+.ChatNav-container {
   width: 100vw;
   height: 100vh;
   display: -webkit-box;
@@ -24,8 +27,49 @@
   background-color: #312e30;
 }
 
+.ChatNav-title {
+  font-family: "Francois One", sans-serif;
+  font-size: 3em;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 1.618em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  -webkit-text-stroke: 0.5px #ef87a9;
+  color: #5732a8;
+}
+
+hr {
+  position: relative;
+  top: -10px;
+  opacity: 0.2;
+  height: 0px;
+}
+
+.ChatNav-links-container {
+  text-align: center;
+}
+
 .ChatNav-links {
-  list-style-type: none;
+  font-family: "Oswald", sans-serif;
+  font-size: 17px;
+  font-weight: none;
+  font-style: none;
+  line-height: 1.618em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 15px;
+}
+
+.ChatNav-links:hover {
+  text-shadow: 0 0 4px #5732a8;
+  color: #ed5eb7;
+  cursor: pointer;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .Header-container {
