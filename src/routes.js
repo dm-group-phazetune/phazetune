@@ -4,6 +4,7 @@ import Landing from "./Components/Landing/Landing";
 import Newsfeed from "./Components/Newsfeed/Newsfeed";
 import Explore from "./Components/Explore/Explore";
 import Profile from "./Components/Profile/Profile";
+import ChatNav from "./Components/ChatNav/ChatNav";
 import Chat from "./Components/Chat/Chat";
 import ArtistsChat from "./Components/ArtistsChat/ArtistsChat";
 import ProducersChat from "./Components/ProducersChat/ProducersChat";
@@ -14,7 +15,8 @@ export default (
     <Route component={Newsfeed} path="/newsfeed" />
     <Route component={Explore} path="/explore" />
     <Route component={Profile} path="/profile" />
-    <Route component={Chat} path="/chat" />
+    <Route component={ChatNav} exact path="/chat" />
+    <Route component={Chat} exact path="/chat/general" />
     <Route component={ArtistsChat} exact path="/chat/artists" />
     <Route component={ProducersChat} exact path="/chat/producers" />
     <Route

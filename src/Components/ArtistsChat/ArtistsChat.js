@@ -9,9 +9,9 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#6497b1",
     color: "white",
     width: "90vw",
-    height: "90vh",
+    height: "70vh",
     display: "flex",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
     fontFamily: "Raleway, sans-serif",
     fontWeight: "bold",
@@ -77,13 +77,14 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-function Chat() {
+function ArtistsChat() {
   const classes = useStyles();
   const username = useSelector(
     initialState => initialState.authReducer.username
   );
   const [messages, setMessages] = React.useState([]);
-  const [users, setUsers] = React.useState([]);
+  const [artists, setUsers] = React.useState([]);
+  console.log(artists);
   let [userMessage, setUserMessage] = React.useState("");
   const [socket, setSocket] = React.useState(null);
   const messagesEndRef = useRef(null);
@@ -99,32 +100,34 @@ function Chat() {
   useEffect(() => {
     if (socket) {
       socket.on("connect", () => {
-        socket.emit("addUser", username);
+        socket.emit("addArtist", username);
       });
 
-      socket.on("usersInChat", data => {
-        const usersInChat = data.users;
-        setUsers(usersInChat);
+      socket.on("artistsInChat", data => {
+        console.log(data);
+        console.log(data.artistUsers);
+        const artistsInChat = data.artistUsers;
+        setUsers(artistsInChat);
       });
 
-      socket.on("userEntered", data => {
-        const userEnteredMsg = data.messages;
+      socket.on("artistEntered", data => {
+        const userEnteredMsg = data.artistsMessages;
         setMessages(userEnteredMsg);
       });
 
       socket.on("newMsg", data => {
-        const newMessages = data.messages;
+        const newMessages = data.artistsMessages;
         setMessages(newMessages);
       });
 
       socket.on("userLeft", data => {
-        const userLeftMsg = data.messages;
+        const userLeftMsg = data.artistsMessages;
         setMessages(userLeftMsg);
       });
 
       socket.on("reconnect", () => {
         if (username) {
-          socket.emit("addUser", username);
+          socket.emit("addArtist", username);
         }
       });
 
@@ -145,7 +148,7 @@ function Chat() {
             <hr />
             <div>
               Users in the chat:
-              {users.map((user, i) => {
+              {artists.map((user, i) => {
                 return (
                   <div key={i}>
                     <ul>
@@ -157,10 +160,10 @@ function Chat() {
             </div>
           </nav>
           <span className={classes.chatboxRight}>
-            <header className={classes.chatboxRightTitle}>General</header>
+            <header className={classes.chatboxRightTitle}>Artists</header>
             <hr />
             <main className={classes.chatboxRightMessages} ref={messagesEndRef}>
-              {messages.map((message, i) => {
+              {/* {messages.map((message, i) => {
                 return (
                   <div key={i}>
                     <ul>
@@ -173,7 +176,7 @@ function Chat() {
                     </ul>
                   </div>
                 );
-              })}
+              })} */}
             </main>
             <span>
               <form className={classes.chatboxRightMessageSend}>
@@ -207,4 +210,4 @@ function Chat() {
   );
 }
 
-export default Chat;
+export default ArtistsChat;

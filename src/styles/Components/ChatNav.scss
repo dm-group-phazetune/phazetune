@@ -1,0 +1,47 @@
+// _base
+@import "../_base/colors.scss";
+@import "../_base/typography.scss";
+// _layout
+@import "../_layout/background.scss";
+@import "../_layout/flex.scss";
+// _modules
+@import "../_modules/buttons.scss";
+@import "../_modules/cards.scss";
+@import "../_modules/images.scss";
+
+.ChatNav-container {
+  @include background-size(100vw, 100vh);
+  @include flex(center, center, column, none);
+  background-color: $d-1;
+}
+
+.ChatNav-title {
+  @include francois-one(3em, bold, italic, 0.02em, uppercase);
+  -webkit-text-stroke: 0.5px $b-4;
+  color: $b-1;
+}
+
+hr {
+  position: relative;
+  top: -10px;
+  opacity: 0.2;
+  height: 0px;
+}
+
+.ChatNav-links-container {
+  text-align: center;
+}
+
+.ChatNav-links {
+  @include oswald(17px, none, none, 0.05em, uppercase);
+  color: $white;
+  padding: 15px;
+}
+
+.ChatNav-links:hover {
+  @include text-shadow-glow(4px, $b-1);
+  color: $b-3;
+  cursor: pointer;
+  transition: 1s;
+  transform: scale(1.1);
+}
