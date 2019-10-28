@@ -184,16 +184,17 @@ let producersUsers = [];
 // When user connects in Artists Chat
 const producers = io.of("/producers");
 producers.on("connect", socket => {
-  socket.on("addUser", username => {
+  socket.on("addProducer", username => {
     socket.id = username;
     producersUsers.push({ user: socket.id });
-    producers.emit("usersInChat", { producersUsers });
+    producers.emit("producersInChat", { producersUsers });
+    producersMessages.push({ message: "Welcome to the Producers Chat" });
     producersMessages.push({ message: `${socket.id} entered the chat.` });
-    producers.emit("userEntered", { producersMessages });
+    producers.emit("producerEntered", { producersMessages });
   });
 
   // When user sends a new message in Artists Chat
-  socket.on("sendMsg", data => {
+  socket.on("sendProducerMsg", data => {
     console.log(`Message received: ${data.username}: ${data.message}`);
     const { username, message } = data;
     producersMessages.push({
@@ -205,16 +206,16 @@ producers.on("connect", socket => {
       // var minutes = num % 60;
       // return hours + ":" + minutes;
     });
-    producers.emit("newMsg", { producersMessages });
+    producers.emit("newProducerMsg", { producersMessages });
   });
 
   // When user disconnects from Artists Chat
   socket.on("disconnect", () => {
     const remainingUsers = users.filter(user => user.user !== socket.id);
     producersUsers = remainingUsers;
-    producers.emit("usersInChat", { producersUsers });
+    producers.emit("producersInChat", { producersUsers });
     producersMessages.push({ message: `${socket.id} left the chat.` });
-    producers.emit("userLeft", { producersMessages });
+    producers.emit("producerLeft", { producersMessages });
   });
 });
 

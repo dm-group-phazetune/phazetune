@@ -83,7 +83,7 @@ function ProducersChat() {
     initialState => initialState.authReducer.username
   );
   const [messages, setMessages] = React.useState([]);
-  const [users, setUsers] = React.useState([]);
+  const [producers, setUsers] = React.useState([]);
   let [userMessage, setUserMessage] = React.useState("");
   const [socket, setSocket] = React.useState(null);
   const messagesEndRef = useRef(null);
@@ -99,32 +99,32 @@ function ProducersChat() {
   useEffect(() => {
     if (socket) {
       socket.on("connect", () => {
-        socket.emit("addUser", username);
+        socket.emit("addProducer", username);
       });
 
-      socket.on("usersInChat", data => {
-        const usersInChat = data.users;
-        setUsers(usersInChat);
+      socket.on("producersInChat", data => {
+        const producersInChat = data.producersUsers;
+        setUsers(producersInChat);
       });
 
-      socket.on("userEntered", data => {
-        const userEnteredMsg = data.messages;
-        setMessages(userEnteredMsg);
+      socket.on("producerEntered", data => {
+        const producerEnteredMsg = data.producersMessages;
+        setMessages(producerEnteredMsg);
       });
 
-      socket.on("newMsg", data => {
-        const newMessages = data.messages;
+      socket.on("newProducerMsg", data => {
+        const newMessages = data.producersMessages;
         setMessages(newMessages);
       });
 
-      socket.on("userLeft", data => {
-        const userLeftMsg = data.messages;
+      socket.on("producerLeft", data => {
+        const userLeftMsg = data.producersMessages;
         setMessages(userLeftMsg);
       });
 
       socket.on("reconnect", () => {
         if (username) {
-          socket.emit("addUser", username);
+          socket.emit("addProducer", username);
         }
       });
 
@@ -145,7 +145,7 @@ function ProducersChat() {
             <hr />
             <div>
               Users in the chat:
-              {users.map((user, i) => {
+              {producers.map((user, i) => {
                 return (
                   <div key={i}>
                     <ul>
@@ -192,7 +192,7 @@ function ProducersChat() {
                       username: username,
                       message: userMessage
                     };
-                    socket.emit("sendMsg", message);
+                    socket.emit("sendProducerMsg", message);
                     clearInput();
                   }}
                 >
