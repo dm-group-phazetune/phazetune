@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Chat from "../Chat/Chat";
-import ArtistsChat from "../ArtistsChat/ArtistsChat";
-import Producers from "../ProducersChat/ProducersChat";
+// import Chat from "../Chat/Chat";
+// import ArtistsChat from "../ArtistsChat/ArtistsChat";
+// import Producers from "../ProducersChat/ProducersChat";
 
 class ChatNav extends Component {
   render() {
@@ -12,9 +12,15 @@ class ChatNav extends Component {
         <hr width={200} />
         <main className="ChatNav-links-container">
           <ul>
-            <li className="ChatNav-links">General</li>
-            <li className="ChatNav-links">Artists</li>
-            <li className="ChatNav-links">Producers</li>
+            <Link to="/chat/general">
+              <li className="ChatNav-links">General</li>
+            </Link>
+            <Link to="/chat/artists">
+              <li className="ChatNav-links">Artists</li>
+            </Link>
+            <Link to="/chat/producers">
+              <li className="ChatNav-links">Producers</li>
+            </Link>
           </ul>
         </main>
       </div>

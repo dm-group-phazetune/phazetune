@@ -9,9 +9,9 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#6497b1",
     color: "white",
     width: "90vw",
-    height: "90vh",
+    height: "70vh",
     display: "flex",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
     fontFamily: "Raleway, sans-serif",
     fontWeight: "bold",
@@ -77,7 +77,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-function Chat() {
+function ProducersChat() {
   const classes = useStyles();
   const username = useSelector(
     initialState => initialState.authReducer.username
@@ -157,7 +157,7 @@ function Chat() {
             </div>
           </nav>
           <span className={classes.chatboxRight}>
-            <header className={classes.chatboxRightTitle}>General</header>
+            <header className={classes.chatboxRightTitle}>Producers</header>
             <hr />
             <main className={classes.chatboxRightMessages} ref={messagesEndRef}>
               {messages.map((message, i) => {
@@ -207,4 +207,4 @@ function Chat() {
   );
 }
 
-export default Chat;
+export default ProducersChat;

@@ -9,9 +9,9 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#6497b1",
     color: "white",
     width: "90vw",
-    height: "90vh",
+    height: "70vh",
     display: "flex",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
     fontFamily: "Raleway, sans-serif",
     fontWeight: "bold",
@@ -103,6 +103,8 @@ function Chat() {
       });
 
       socket.on("usersInChat", data => {
+        console.log(data);
+        console.log(data.users);
         const usersInChat = data.users;
         setUsers(usersInChat);
       });
