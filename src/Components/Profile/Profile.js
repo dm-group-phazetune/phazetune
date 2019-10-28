@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import axios from 'axios'
-import {connect} from 'react-redux'
-import {editProfile} from '../../redux/reducers/profReducer'
-import {getProfile} from '../../redux/reducers/profReducer'
-import {getSession} from '../../redux/reducers/authReducer'
-
-
+import { connect } from "react-redux";
+import { editProfile, getProfile } from "../../redux/reducers/profReducer";
+import AudioPlayer from "../FooterNav/AudioPlayer";
+import { getSession } from "../../redux/reducers/authReducer";
 
 class Profile extends Component {
   constructor(props) {
@@ -20,46 +17,48 @@ class Profile extends Component {
       editBio: ""
     };
   }
-  componentDidMount(){
-    this.props.getProfile()
+  componentDidMount() {
+    this.props.getProfile(this.props.match.params.username);
   }
 
   handleClick = () => {
     this.setState({ editStatus: false }, this.handleEdit);
   };
 
-
   handleEdit = () => {
-    this.props.editProfile()
-  }
-  // handleEdit = () => {
-  //   axios.put("/api/profile/user"), {
-  //     editFirstName: this.state.editFirstName,
-  //     editLastName: this.state.editLastName,
-  //     editCity: this.state.editCity,
-  //     editBio: this.state.editBio,
-  //   }.then(res => {
-  //     this.setState({
-  //       editFirstName: res.data.first_name,
-  //       editLastName: res.data.last_name,
-  //       editCity: res.data.city,
-  //       editBio: res.data.bio
-  //     })
-  //   })
-  // }
-  
+    this.props.editProfile();
+  };
+
   render() {
-    console.log(this.props)
+    console.log(this.props.user);
+    const { user } = this.props;
+
+    // const posts = [...user];
+    const mappedPosts = this.props.user
+      ? user[1].map((track, i) => {
+          return (
+            <div>
+              <div className="AudioPlayer-Container" key={i}>
+                <AudioPlayer
+                  title={track.title}
+                  genre={track.genre}
+                  audioUrl={track.audio_url}
+                />
+              </div>
+            </div>
+          );
+        })
+      : null;
+
     return (
       <div className="Profile-container">
-
-        {this.state.editStatus === false ? (
+        {/* {this.state.editStatus === false ? (
           <>
             <h3>{this.state.editFirstName}</h3>
             <h3>{this.state.editLastName}</h3>
             <h3>{this.state.editCity}</h3>
             <h3>{this.state.editBio}</h3>
-            <img src ={this.state.editPhoto}/>
+            <img src={this.state.editPhoto} />
           </>
         ) : (
           <>
@@ -79,7 +78,6 @@ class Profile extends Component {
               defaultValue={this.state.editBio}
               onChange={e => this.setState({ editBio: e.target.value })}
             />
-            
           </>
         )}
 
@@ -92,21 +90,43 @@ class Profile extends Component {
         )}
         <h1>{this.props.username}</h1>
         <h1>{this.props.city}</h1>
-        <h1>{this.props.bio}</h1>
+        <h1>{this.props.bio}</h1> */}
 
         <h1>Profile</h1>
+        <header>
+          <p>{this.props.user && this.props.user[0][0].username}</p>
+          <p>{this.props.user && this.props.user[0][0].city}</p>
+          <p>{this.props.user && this.props.user[0][0].bio}</p>
+          <p>{this.props.user && this.props.user[0][0].photo}</p>
+          <p>{this.props.user && this.props.user[0][0].follow_count}</p>
+        </header>
+        <main>
+          {/* {this.props.user &&
+            this.props.user.map((track, i) => {
+              return (
+                <div className="AudioPlayer-Container" key={i}>
+                  <AudioPlayer
+                    title={track.title}
+                    genre={track.genre}
+                    audioUrl={track.audio_url}
+                  />
+                </div>
+              );
+            })} */}
+          {mappedPosts}
+        </main>
       </div>
     );
   }
 }
 
-
-const mapStateToProps = (reduxState) => {
+const mapStateToProps = reduxState => {
   return {
-    user_id: reduxState.profReducer.user_id,
-    city: reduxState.profReducer.city,
-    username: reduxState.profReducer.username
-  }
-}
+    user: reduxState.profReducer.user
+  };
+};
 
-export default connect (mapStateToProps, {editProfile, getProfile}) (Profile);
+export default connect(
+  mapStateToProps,
+  { editProfile, getProfile }
+)(Profile);

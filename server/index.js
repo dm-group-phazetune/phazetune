@@ -53,8 +53,6 @@ app.put("/api/posts/:post_id");
 app.post("/api/posts/comments/:post_id");
 app.post("/api/posts/favorites/:post_id");
 app.delete("/api/posts/favorites/:post_id");
-// Posts - Profile
-app.get("/api/posts/user");
 // Posts - Newsfeed
 app.get("/api/posts/favorites/:post_id");
 app.get("/api/posts/user/genre");
@@ -64,7 +62,7 @@ app.get("/api/users/post", getAllPosts);
 app.get("/api/posts");
 app.get("/api/posts/genre");
 // Profile endpoints
-app.get("/api/profile/user/:user_id", getUserProf);
+app.get("/api/profile/user/:username", getUserProf);
 app.put("/api/profile/user", editUserProf);
 // Follow Endpoints
 app.post("/api/user/:user_id");
