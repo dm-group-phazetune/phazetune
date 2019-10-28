@@ -27,6 +27,10 @@ class Profile extends Component {
     this.setState({ editStatus: false });
   };
 
+
+  handleEdit = () => {
+    this.props.editProfile()
+  }
   // handleEdit = () => {
   //   axios.put("/api/profile/user"), {
   //     editFirstName: this.state.editFirstName,
@@ -91,10 +95,11 @@ class Profile extends Component {
 }
 
 
-const mapStateToProps = (reduxState) => {
-  return {
+// const mapStateToProps = (reduxState) => {
+//   return {
+
     
-  }
-}
+//   }
+// }
 
 export default connect (undefined, {editProfile, getProfile}) (Profile);
