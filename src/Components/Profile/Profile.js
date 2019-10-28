@@ -20,13 +20,11 @@ class Profile extends Component {
     };
   }
   componentDidMount(){
-    axios.get("/api/profile/user/:user_id").then(res => {
-      this.setState({userProf: res.data})
-    })
+    this.props.getProfile()
   }
 
   handleClick = () => {
-    this.setState({ editStatus: false }, this.handleEdit);
+    this.setState({ editStatus: false });
   };
 
   // handleEdit = () => {
@@ -44,20 +42,8 @@ class Profile extends Component {
   //     })
   //   })
   // }
-  checkUploadedPhoto = (event, resultEvent) => {
-    if(resultEvent.event === 'success'){
-        this.setState({editPhoto: resultEvent.info.photo})
-    }
-}
-
+  
   render() {
-
-    var widget = window.cloudinary.createUploadWidget({ 
-      cloudName: "ddxmzokt6", 
-      uploadPreset: "Unveil-upload",
-      sources: ["local", "url", "dropbox", "facebook", "instagram"]},
-      (error, result) => { this.checkUploadedPhoto(error, result)});
-
     return (
       <div className="Profile-container">
         {this.state.editStatus === false ? (
@@ -86,7 +72,7 @@ class Profile extends Component {
               defaultValue={this.state.editBio}
               onChange={e => this.setState({ editBio: e.target.value })}
             />
-            <button onClick={() => widget.open()}>Change Image</button>
+            
           </>
         )}
 
