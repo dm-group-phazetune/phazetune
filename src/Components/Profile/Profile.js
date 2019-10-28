@@ -3,6 +3,7 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {editProfile} from '../../redux/reducers/profReducer'
 import {getProfile} from '../../redux/reducers/profReducer'
+import {getSession} from '../../redux/reducers/authReducer'
 
 
 
@@ -24,9 +25,13 @@ class Profile extends Component {
   }
 
   handleClick = () => {
-    this.setState({ editStatus: false });
+    this.setState({ editStatus: false }, this.handleEdit);
   };
 
+
+  handleEdit = () => {
+    this.props.editProfile()
+  }
   // handleEdit = () => {
   //   axios.put("/api/profile/user"), {
   //     editFirstName: this.state.editFirstName,
@@ -44,15 +49,17 @@ class Profile extends Component {
   // }
   
   render() {
+    console.log(this.props)
     return (
       <div className="Profile-container">
+
         {this.state.editStatus === false ? (
           <>
             <h3>{this.state.editFirstName}</h3>
             <h3>{this.state.editLastName}</h3>
             <h3>{this.state.editCity}</h3>
             <h3>{this.state.editBio}</h3>
-            <img src ={this.props.photo}/>
+            <img src ={this.state.editPhoto}/>
           </>
         ) : (
           <>
@@ -83,6 +90,9 @@ class Profile extends Component {
         ) : (
           <button onClick={this.handleClick}>Save</button>
         )}
+        <h1>{this.props.username}</h1>
+        <h1>{this.props.city}</h1>
+        <h1>{this.props.bio}</h1>
 
         <h1>Profile</h1>
       </div>
@@ -93,8 +103,10 @@ class Profile extends Component {
 
 const mapStateToProps = (reduxState) => {
   return {
-    
+    user_id: reduxState.profReducer.user_id,
+    city: reduxState.profReducer.city,
+    username: reduxState.profReducer.username
   }
 }
 
-export default connect (undefined, {editProfile, getProfile}) (Profile);
+export default connect (mapStateToProps, {editProfile, getProfile}) (Profile);
