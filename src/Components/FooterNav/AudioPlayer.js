@@ -48,7 +48,7 @@ class AudioPlayer extends React.Component {
   render() {
     console.log(this.props.title);
     return (
-      <>
+      <div>
         <header className="Audio-header-container">
           <p className="Audio-title">{this.props.title}</p>
           <p className="Audio-genre">{this.props.genre}</p>
@@ -64,13 +64,8 @@ class AudioPlayer extends React.Component {
           >
             <audio ref={this.audioRef} src={this.props.audioUrl} />
           </div>
-          {/* <button onClick={this.play}>Play</button>
-          <button onClick={this.pause}>Pause</button>
-          <button onClick={this.skipForward}>Skip Forward</button>
-          <button onClick={this.toggleMute}>Mute</button>
-          <button onClick={this.stop}>Stop</button> */}
         </main>
-      </>
+      </div>
     );
   }
 }
