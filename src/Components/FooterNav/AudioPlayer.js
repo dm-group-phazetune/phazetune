@@ -24,6 +24,8 @@ class AudioPlayer extends React.Component {
       waveColor: "violet",
       cursorColor: "#4a74a5"
     });
+
+    console.log(Math.random(peaks));
     this.wavesurfer.load(this.audioRef.current, peaks);
   }
 

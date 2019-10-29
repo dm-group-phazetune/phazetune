@@ -1,13 +1,17 @@
-function editUserProf(req, res) {
+async function editUserProf(req, res) {
+  const db = req.app.get("db");
   const user_id = req.session.user;
   const { first_name, last_name, city, photo, bio } = req.body;
-  const db = req.app.get("db");
 
-  db.prof
-    .editUserProfile(first_name, last_name, city, photo, bio, user_id)
-    .then(info => {
-      res.status(200).json(info);
-    });
+  const editedProfile = db.prof.editUserProfile([
+    first_name,
+    last_name,
+    city,
+    photo,
+    bio,
+    user_id
+  ]);
+  res.status(200).json(editedProfile);
 }
 
 async function getUserProf(req, res) {
