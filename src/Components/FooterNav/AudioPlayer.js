@@ -1,8 +1,6 @@
 import React from "react";
 import WaveSurfer from "wavesurfer";
-import WaveformData from 'waveform-data'
-import { peaks } from "./peaks";
-
+// import { peaks } from "./peaks";
 
 class AudioPlayer extends React.Component {
   constructor() {
@@ -11,7 +9,6 @@ class AudioPlayer extends React.Component {
   }
 
   componentDidMount() {
-
     console.log(this.props.audioUrl);
     console.dir(this.audioRef.current);
     // const audio = document.querySelector('#song');
@@ -20,7 +17,7 @@ class AudioPlayer extends React.Component {
       cursorWidth: 0,
       container: "#waveform",
       backend: "MediaElement",
-      mediaControls: true,
+      mediaControls: true
       // height: 80,
       // fillParent: true,
       // normalize: true,
@@ -29,7 +26,11 @@ class AudioPlayer extends React.Component {
       // waveColor: "black",
       // cursorColor: "#4a74a5"
     });
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> master
     this.wavesurfer.load(this.audioRef.current);
   }
 
@@ -61,22 +62,19 @@ class AudioPlayer extends React.Component {
           <div
             className="AudioPlayer-Container"
             id="waveform"
-            style={{  
-                      // border: "2px solid grey", 
-                      width: 0, 
-                      height: 100
-                    }}
+            style={{
+              // border: "2px solid grey",
+              width: 0,
+              height: 100
+            }}
           >
-
-          <audio ref={this.audioRef} src={this.props.audioUrl} />
-        
+            <audio ref={this.audioRef} src={this.props.audioUrl} />
           </div>
           <button onClick={this.play}>Play</button>
           <button onClick={this.pause}>Pause</button>
           <button onClick={this.skipForward}>Skip Forward</button>
           <button onClick={this.toggleMute}>Mute</button>
           <button onClick={this.stop}>Stop</button>
-
         </main>
       </>
     );
@@ -84,5 +82,3 @@ class AudioPlayer extends React.Component {
 }
 
 export default AudioPlayer;
-
-

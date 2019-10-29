@@ -130,6 +130,7 @@ class Profile extends Component {
 
     return (
       <div className="Profile-container">
+<<<<<<< HEAD
         {/* {this.state.editStatus === false ? (
           <>
             <h3>{this.state.editFirstName}</h3>
@@ -169,6 +170,8 @@ class Profile extends Component {
         <h1>{this.props.city}</h1>
         <h1>{this.props.bio}</h1> */}
 
+=======
+>>>>>>> master
         <h1>Profile</h1>
         <header>
           <p>{this.props.user && this.props.user[0][0].username}</p>
