@@ -55,7 +55,6 @@ class AudioPlayer extends React.Component {
         </header>
         <main>
           <div
-            className="AudioPlayer-Container"
             id="waveform"
             style={{
               // border: "2px solid grey",
@@ -65,11 +64,11 @@ class AudioPlayer extends React.Component {
           >
             <audio ref={this.audioRef} src={this.props.audioUrl} />
           </div>
-          <button onClick={this.play}>Play</button>
+          {/* <button onClick={this.play}>Play</button>
           <button onClick={this.pause}>Pause</button>
           <button onClick={this.skipForward}>Skip Forward</button>
           <button onClick={this.toggleMute}>Mute</button>
-          <button onClick={this.stop}>Stop</button>
+          <button onClick={this.stop}>Stop</button> */}
         </main>
       </>
     );
