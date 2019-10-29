@@ -6,7 +6,16 @@
           justify-content: space-evenly;
 }
 
-.ChatNav-container {
+.AudioPlayer{
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+  border: "2px solid grey"; 
+  width: 350;
+  height: 80 
+}
+
+.ChatNav-Container {
   width: 100vw;
   height: 100vh;
   display: -webkit-box;

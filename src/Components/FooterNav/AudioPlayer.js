@@ -1,6 +1,8 @@
 import React from "react";
 import WaveSurfer from "wavesurfer";
+import WaveformData from 'waveform-data'
 import { peaks } from "./peaks";
+
 
 class AudioPlayer extends React.Component {
   constructor() {
@@ -9,22 +11,26 @@ class AudioPlayer extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.audioUrl);
-    // const audio = document.querySelector('#song');
-    console.dir(this.audioRef.current);
 
+    console.log(this.props.audioUrl);
+    console.dir(this.audioRef.current);
+    // const audio = document.querySelector('#song');
     this.wavesurfer = WaveSurfer.create({
       barWidth: 1,
-      cursorWidth: 1,
+      cursorWidth: 0,
       container: "#waveform",
       backend: "MediaElement",
-      height: 80,
-      progressColor: "grey",
-      responsive: true,
-      waveColor: "violet",
-      cursorColor: "#4a74a5"
+      mediaControls: true,
+      // height: 80,
+      // fillParent: true,
+      // normalize: true,
+      // progressColor: "grey",
+      // responsive: true,
+      // waveColor: "black",
+      // cursorColor: "#4a74a5"
     });
-    this.wavesurfer.load(this.audioRef.current, peaks);
+    
+    this.wavesurfer.load(this.audioRef.current);
   }
 
   play = () => {
@@ -53,16 +59,24 @@ class AudioPlayer extends React.Component {
         </header>
         <main>
           <div
-            className="AudioPlayer"
-            style={{ border: "2px solid grey", width: 350, height: 80 }}
+            className="AudioPlayer-Container"
             id="waveform"
-          />
-          <audio ref={this.audioRef} id="song" src={this.props.audioUrl} />
+            style={{  
+                      // border: "2px solid grey", 
+                      width: 0, 
+                      height: 100
+                    }}
+          >
+
+          <audio ref={this.audioRef} src={this.props.audioUrl} />
+        
+          </div>
           <button onClick={this.play}>Play</button>
           <button onClick={this.pause}>Pause</button>
           <button onClick={this.skipForward}>Skip Forward</button>
           <button onClick={this.toggleMute}>Mute</button>
           <button onClick={this.stop}>Stop</button>
+
         </main>
       </>
     );
@@ -71,4 +85,4 @@ class AudioPlayer extends React.Component {
 
 export default AudioPlayer;
 
-// "https://firebasestorage.googleapis.com/v0/b/phazetune.appspot.com/o/1-02%20Light%20(feat.%20Jeremih).mp3?alt=media&token=be0f7e8a-4dfe-4bc6-a795-2cd1a7ba25ad"
+
