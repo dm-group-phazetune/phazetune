@@ -10,7 +10,8 @@ class Profile extends Component {
     this.state = {
       editStatus: false,
       title: "",
-      genre: ""
+      genre: "",
+      photo: ""
     };
   }
   componentDidMount() {
