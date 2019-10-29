@@ -14,7 +14,7 @@ export default (
     <Route component={Landing} exact path="/" />
     <Route component={Newsfeed} path="/newsfeed" />
     <Route component={Explore} path="/explore" />
-    <Route component={Profile} path="/profile" />
+    <Route component={Profile} path="/profile/user/:username" />
     <Route component={ChatNav} exact path="/chat" />
     <Route component={Chat} exact path="/chat/general" />
     <Route component={ArtistsChat} exact path="/chat/artists" />

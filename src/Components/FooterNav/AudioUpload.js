@@ -162,7 +162,7 @@ class AudioUpload extends React.Component {
               <progress value={this.state.progress} max="100" />
             </div>
             <div>
-              <input
+            <input
                 onChange={this.handleChange}
                 ref={this.fileInputRef}
                 type="file"
