@@ -2,21 +2,40 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { editProfile, getProfile } from "../../redux/reducers/profReducer";
 import { editPost, deletePost } from "../../redux/reducers/postsReducer";
+import { getSession } from "../../redux/reducers/authReducer";
 import AudioPlayer from "../FooterNav/AudioPlayer";
 
 class Profile extends Component {
-  constructor(props) {
+  constructor() {
     super();
+
     this.state = {
-      editStatus: false,
       title: "",
-      genre: ""
+      genre: "",
+      photo: "",
+      bio: "",
+      city: "",
+      first_name: "",
+      last_name: ""
     };
   }
+
   componentDidMount() {
     this.props.getProfile(this.props.match.params.username);
+    const { first_name, last_name, photo, city, bio } = this.props;
+    this.setState({
+      first_name: first_name,
+      last_name: last_name,
+      photo: photo,
+      city: city,
+      bio: bio
+    });
   }
-
+  checkUploadResult = (error, resultEvent) => {
+    if (resultEvent.event === "success") {
+      this.setState({ photo: resultEvent.info.url });
+    }
+  };
   handleEditPost = (e, post_id) => {
     e.preventDefault();
     const { title, genre } = this.state;
@@ -36,15 +55,32 @@ class Profile extends Component {
     console.log("hit");
     this.props.deletePost(post_id);
   };
-
+  handleInput = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
   handleEditProfile = () => {
-    this.props.editProfile();
+    const { first_name, last_name, photo, bio, city } = this.state;
+    const editedProfile = { first_name, last_name, photo, bio, city };
+    this.props.editProfile(editedProfile);
+    alert("You've changed your profile settings.");
   };
 
   render() {
-    const { user } = this.props;
+    // cloudinary widget
+    const widget = window.cloudinary.createUploadWidget(
+      {
+        cloudName: "phazetune",
+        uploadPreset: "vaawqi0h",
+        sources: ["local", "url", "dropbox", "facebook", "instagram"],
+        cropping: true,
+        cropping_aspect_ratio: 1
+      },
+      (error, result) => {
+        this.checkUploadResult(error, result);
+      }
+    );
 
-    // const posts = [...user];
+    const { user } = this.props;
     const mappedPosts = this.props.user
       ? user[1].map((track, i) => {
           return (
@@ -123,6 +159,35 @@ class Profile extends Component {
                   console.log(undefined)
                 )}
               </div>
+
+              <button>Edit Profile</button>
+              <div className="Edit-profile-container">
+                <input
+                  name="first_name"
+                  onChange={this.handleInput}
+                  placeholder="First Name"
+                />
+                <input
+                  name="last_name"
+                  onChange={this.handleInput}
+                  placeholder="Last Name"
+                />
+                <input
+                  name="city"
+                  onChange={this.handleInput}
+                  placeholder="City"
+                />
+                <textarea
+                  name="bio"
+                  rows="4"
+                  onChange={this.handleInput}
+                  placeholder="Bio"
+                />
+                <button onClick={() => widget.open()}>Upload Photo</button>
+                <button onClick={() => this.handleEditProfile()}>
+                  Change Profile Settings
+                </button>
+              </div>
             </div>
           );
         })
@@ -147,11 +212,16 @@ class Profile extends Component {
 const mapStateToProps = reduxState => {
   return {
     user: reduxState.profReducer.user,
-    user_id: reduxState.authReducer.user_id
+    user_id: reduxState.authReducer.user_id,
+    first_name: reduxState.authReducer.first_name,
+    last_name: reduxState.authReducer.last_name,
+    city: reduxState.authReducer.city,
+    photo: reduxState.authReducer.photo,
+    bio: reduxState.authReducer.bio
   };
 };
 
 export default connect(
   mapStateToProps,
-  { editProfile, getProfile, editPost, deletePost }
+  { editProfile, getProfile, editPost, deletePost, getSession }
 )(Profile);
