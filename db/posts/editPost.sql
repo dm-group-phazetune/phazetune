@@ -1,5 +1,4 @@
 UPDATE posts 
-SET genre = $1,
-sound_url = $2,
-youtube = $3,
-WHERE post_id = $4
+SET title = $1,
+genre = $2
+WHERE user_id = $4 AND post_id = $3;

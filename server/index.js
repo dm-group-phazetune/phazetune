@@ -39,7 +39,9 @@ const { editUserProf, getUserProf } = profController;
 const {
   addPost,
   getPastPosts,
-  getAllPosts
+  getAllPosts,
+  editPost,
+  deletePost
 } = require("./controllers/postsController");
 
 // Auth Endpoints
@@ -49,9 +51,10 @@ app.post("/auth/login", login);
 app.post("/auth/logout", logout);
 // Posts Endpoints
 app.post("/api/posts", addPost);
-app.put("/api/posts/:post_id");
 app.post("/api/posts/comments/:post_id");
 app.post("/api/posts/favorites/:post_id");
+app.put("/api/posts/:post_id", editPost);
+app.delete("/api/posts/:post_id", deletePost);
 app.delete("/api/posts/favorites/:post_id");
 // Posts - Newsfeed
 app.get("/api/posts/favorites/:post_id");

@@ -24,10 +24,31 @@ async function getUsersPosts(req, res) {
   res.status(200).json(posts);
 }
 
+async function editPost(req, res) {
+  const db = req.app.get("db");
+  const post_id = +req.params.post_id;
+  const { user_id } = req.session.user;
+  const { title, genre } = req.body;
+  console.log(req.body, post_id, user_id);
+
+  const editedPost = await db.posts.editPost([title, genre, post_id, user_id]);
+  res.status(200).json(editedPost);
+}
+
+async function deletePost(req, res) {
+  const db = req.app.get("db");
+  const post_id = +req.params.post_id;
+  const { user_id } = req.session.user;
+  const deletedPost = await db.posts.deletePost([post_id, user_id]);
+  res.status(200).json(deletedPost);
+}
+
 //export all
 module.exports = {
   addPost,
   getPastPosts,
   getAllPosts,
-  getUsersPosts
+  getUsersPosts,
+  editPost,
+  deletePost
 };
