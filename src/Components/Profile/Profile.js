@@ -11,13 +11,22 @@ class Profile extends Component {
       editStatus: false,
       title: "",
       genre: "",
-      photo: ""
+      photo: "",
+      bio: "",
+      city: "",
+      first_name: "",
+      last_name: ""
     };
   }
+
   componentDidMount() {
     this.props.getProfile(this.props.match.params.username);
   }
-
+  checkUploadResult = (error, resultEvent) => {
+    if (resultEvent.event === "success") {
+      this.setState({ photo: resultEvent.info.url });
+    }
+  };
   handleEditPost = (e, post_id) => {
     e.preventDefault();
     const { title, genre } = this.state;
@@ -43,9 +52,21 @@ class Profile extends Component {
   };
 
   render() {
-    const { user } = this.props;
+    // cloudinary widget
+    const widget = window.cloudinary.createUploadWidget(
+      {
+        cloudName: "phazetune",
+        uploadPreset: "vaawqi0h",
+        sources: ["local", "url", "dropbox", "facebook", "instagram"],
+        cropping: true,
+        cropping_aspect_ratio: 1
+      },
+      (error, result) => {
+        this.checkUploadResult(error, result);
+      }
+    );
 
-    // const posts = [...user];
+    const { user } = this.props;
     const mappedPosts = this.props.user
       ? user[1].map((track, i) => {
           return (
@@ -123,6 +144,14 @@ class Profile extends Component {
                 ) : (
                   console.log(undefined)
                 )}
+              </div>
+
+              <button>Edit Profile</button>
+              <div className="Edit-profile-container">
+                <button onClick={() => widget.open()}>Upload Photo</button>
+                <button onClick={() => this.handleEditProfile()}>
+                  Change Profile Settings
+                </button>
               </div>
             </div>
           );
