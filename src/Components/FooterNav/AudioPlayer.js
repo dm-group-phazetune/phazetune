@@ -29,14 +29,8 @@ class AudioPlayer extends React.Component {
       // waveColor: "black",
       // cursorColor: "#4a74a5"
     });
-<<<<<<< HEAD
-
-    console.log(Math.random(peaks));
-    this.wavesurfer.load(this.audioRef.current, peaks);
-=======
     
     this.wavesurfer.load(this.audioRef.current);
->>>>>>> master
   }
 
   play = () => {
