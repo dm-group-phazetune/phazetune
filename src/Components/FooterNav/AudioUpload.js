@@ -2,7 +2,6 @@ import React from "react";
 import "./dropzone.css";
 import Axios from "axios";
 import { storage } from "../FireAudioUpload/firebase";
-import AudioPlayer from "./AudioPlayer";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -171,7 +170,7 @@ class AudioUpload extends React.Component {
             <button onClick={this.handleClick}> Upload </button>
           </DialogContent>
         </Dialog>
-        {/* <AudioPlayer audioUrl={this.state.audioUrl} /> */}
+        
       </div>
     );
   }
