@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { editProfile, getProfile } from "../../redux/reducers/profReducer";
-import AudioPlayer from "../FooterNav/AudioPlayer";
-import { getSession } from "../../redux/reducers/authReducer";
+import {connect} from 'react-redux'
+import {editProfile} from '../../redux/reducers/profReducer'
+import {getProfile} from '../../redux/reducers/profReducer'
 
 class Profile extends Component {
   constructor(props) {
@@ -58,7 +57,6 @@ class Profile extends Component {
             <h3>{this.state.editLastName}</h3>
             <h3>{this.state.editCity}</h3>
             <h3>{this.state.editBio}</h3>
-            <img src={this.state.editPhoto} />
           </>
         ) : (
           <>
