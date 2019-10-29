@@ -130,6 +130,48 @@ class Profile extends Component {
 
     return (
       <div className="Profile-container">
+<<<<<<< HEAD
+        {/* {this.state.editStatus === false ? (
+          <>
+            <h3>{this.state.editFirstName}</h3>
+            <h3>{this.state.editLastName}</h3>
+            <h3>{this.state.editCity}</h3>
+            <h3>{this.state.editBio}</h3>
+          </>
+        ) : (
+          <>
+            <input
+              defaultValue={this.state.editFirstName}
+              onChange={e => this.setState({ editFirstName: e.target.value })}
+            />
+            <input
+              defaultValue={this.state.editLastName}
+              onChange={e => this.setState({ editLastName: e.target.value })}
+            />
+            <input
+              defaultValue={this.state.editCity}
+              onChange={e => this.setState({ editCity: e.target.value })}
+            />
+            <input
+              defaultValue={this.state.editBio}
+              onChange={e => this.setState({ editBio: e.target.value })}
+            />
+          </>
+        )}
+
+        {this.state.editStatus === true ? (
+          <button onClick={() => this.setState({ editStatus: true })}>
+            Edit
+          </button>
+        ) : (
+          <button onClick={this.handleClick}>Save</button>
+        )}
+        <h1>{this.props.username}</h1>
+        <h1>{this.props.city}</h1>
+        <h1>{this.props.bio}</h1> */}
+
+=======
+>>>>>>> master
         <h1>Profile</h1>
         <header>
           <p>{this.props.user && this.props.user[0][0].username}</p>
