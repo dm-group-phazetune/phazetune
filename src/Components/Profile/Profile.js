@@ -48,8 +48,8 @@ class Profile extends Component {
     const mappedPosts = this.props.user
       ? user[1].map((track, i) => {
           return (
-            <div>
-              <div className="AudioPlayer-Container" key={i}>
+            <div className="AudioPlayer-Container" key={i}>
+              <div>
                 <AudioPlayer
                   title={track.title}
                   genre={track.genre}
