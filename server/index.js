@@ -59,8 +59,8 @@ app.delete("/api/posts/favorites/:post_id");
 // Posts - Newsfeed
 app.get("/api/posts/favorites/:post_id");
 app.get("/api/posts/user/genre");
-app.get("/api/posts/:user_id");
-app.get("/api/users/post", getAllPosts);
+app.get("/api/posts/:user_id",getPastPosts);
+app.get('/api/users/post', getAllPosts);
 // Posts - Explore
 app.get("/api/posts");
 app.get("/api/posts/genre");
