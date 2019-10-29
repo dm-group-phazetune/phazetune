@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import axios from 'axios'
+
 import {connect} from 'react-redux'
 import {editProfile} from '../../redux/reducers/profReducer'
 import {getProfile} from '../../redux/reducers/profReducer'
-import {getSession} from '../../redux/reducers/authReducer'
+
 
 
 
@@ -59,7 +59,7 @@ class Profile extends Component {
             <h3>{this.state.editLastName}</h3>
             <h3>{this.state.editCity}</h3>
             <h3>{this.state.editBio}</h3>
-            <img src ={this.state.editPhoto}/>
+            
           </>
         ) : (
           <>
