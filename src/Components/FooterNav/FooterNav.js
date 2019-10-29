@@ -33,6 +33,7 @@ class FooterNav extends Component {
   };
 
   render() {
+    const { username } = this.props;
     return (
       <div>
         {this.props.location.pathname !== "/" ? (
@@ -72,7 +73,7 @@ class FooterNav extends Component {
               </div>
             </NavLink>
             <NavLink
-              to="/profile"
+              to={`/profile/user/${username}`}
               style={{ color: "inherit", textDecoration: "inherit" }}
             >
               <div className="Footernav">
@@ -88,7 +89,8 @@ class FooterNav extends Component {
 
 const mapStateToProps = reduxState => {
   return {
-    user_id: reduxState.authReducer.user_id
+    user_id: reduxState.authReducer.user_id,
+    username: reduxState.authReducer.username
   };
 };
 
