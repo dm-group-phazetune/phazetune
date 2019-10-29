@@ -51,7 +51,7 @@ app.post("/auth/login", login);
 app.post("/auth/logout", logout);
 // Posts Endpoints
 app.post("/api/posts", addPost);
-app.post("/api/posts/comments/:post_id");
+// app.post("/api/posts/comments/:post_id");
 app.post("/api/posts/favorites/:post_id");
 app.put("/api/posts/:post_id", editPost);
 app.delete("/api/posts/:post_id", deletePost);
