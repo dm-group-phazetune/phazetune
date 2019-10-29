@@ -1,7 +1,5 @@
 import React from "react";
 import WaveSurfer from "wavesurfer";
-// import { peaks } from "./peaks";
-
 class AudioPlayer extends React.Component {
   constructor() {
     super();
@@ -11,7 +9,6 @@ class AudioPlayer extends React.Component {
   componentDidMount() {
     console.log(this.props.audioUrl);
     console.dir(this.audioRef.current);
-    // const audio = document.querySelector('#song');
     this.wavesurfer = WaveSurfer.create({
       barWidth: 1,
       cursorWidth: 0,
@@ -29,22 +26,6 @@ class AudioPlayer extends React.Component {
     this.wavesurfer.load(this.audioRef.current);
   }
 
-  play = () => {
-    this.wavesurfer.play();
-  };
-  pause = () => {
-    this.wavesurfer.pause();
-  };
-  skipForward = () => {
-    this.wavesurfer.skipForward();
-  };
-  toggleMute = () => {
-    this.wavesurfer.toggleMute();
-  };
-  stop = () => {
-    this.wavesurfer.stop();
-  };
-
   render() {
     console.log(this.props.title);
     return (
@@ -57,7 +38,6 @@ class AudioPlayer extends React.Component {
           <div
             id="waveform"
             style={{
-              // border: "2px solid grey",
               width: 0,
               height: 100
             }}
