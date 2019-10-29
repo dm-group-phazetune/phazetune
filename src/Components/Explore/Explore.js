@@ -31,9 +31,9 @@ class Explore extends Component {
           <div>Genre</div>
         </nav>
         <main className="N-E-content">
-          {this.state.pastPost.map(individualPost => {
+          {this.state.pastPost.map((individualPost, i) => {
             return (
-              <div className="AudioPlayer-Container">
+              <div className="AudioPlayer-Container" key={i}>
                 <AudioPlayer
                   title={individualPost.title}
                   genre={individualPost.genre}
