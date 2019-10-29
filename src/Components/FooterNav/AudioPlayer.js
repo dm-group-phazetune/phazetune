@@ -12,35 +12,6 @@ class AudioPlayer extends React.Component {
 
   componentDidMount() {
 
-    const audioContext = new AudioContext();
-
-    fetch(this.props.audioUrl)
-      .then(response => response.arrayBuffer())
-      .then(buffer => {
-        const options = {
-          audio_context: audioContext,
-          array_buffer: buffer,
-          scale: 128
-        };
-
-        return new Promise((resolve, reject) => {
-          WaveformData.createFromAudio(options, (err, waveform) => {
-            if (err) {
-              reject(err);
-            }
-            else {
-              resolve(waveform);
-            }
-          });
-        });
-      }).then(waveform => {
-        console.log(`Waveform has ${waveform.channels} channels`);
-        console.log(`Waveform has length ${waveform.length} points`);
-      });
-
-
-
-
     console.log(this.props.audioUrl);
     console.dir(this.audioRef.current);
     // const audio = document.querySelector('#song');
