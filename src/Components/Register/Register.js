@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { Redirect, withRouter } from "react-router-dom";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
 
 class Register extends Component {
   render() {
@@ -19,7 +18,7 @@ class Register extends Component {
           open={this.props.register}
           className="Login-container"
         >
-          <DialogTitle className="Login-title">Sign Up</DialogTitle>
+          <DialogContent className="Login-title">Sign Up</DialogContent>
           <DialogContent className="Login-content">
             <form name="register-form" onSubmit={this.props.handleSubmit}>
               <table>
@@ -30,10 +29,11 @@ class Register extends Component {
                     </td>
                     <td className="login-input">
                       <input
-                        className="input"
+                        className="input-text"
                         name="first_name"
                         value={this.props.firstName}
                         onChange={this.props.handleInput}
+                        autoFocus
                       />
                     </td>
                   </tr>
@@ -43,7 +43,7 @@ class Register extends Component {
                     </td>
                     <td className="login-input">
                       <input
-                        className="input"
+                        className="input-text"
                         name="last_name"
                         value={this.props.lastName}
                         onChange={this.props.handleInput}
@@ -56,7 +56,7 @@ class Register extends Component {
                     </td>
                     <td className="login-input">
                       <input
-                        className="input"
+                        className="input-text"
                         name="username"
                         value={this.props.username}
                         onChange={this.props.handleInput}
@@ -69,7 +69,7 @@ class Register extends Component {
                     </td>
                     <td className="login-input">
                       <input
-                        className="input"
+                        className="input-text"
                         name="password"
                         value={this.props.password}
                         onChange={this.props.handleInput}
@@ -83,7 +83,7 @@ class Register extends Component {
                     </td>
                     <td className="login-input">
                       <input
-                        className="input"
+                        className="input-text"
                         name="city"
                         value={this.props.city}
                         onChange={this.props.handleInput}
@@ -93,7 +93,7 @@ class Register extends Component {
                 </tbody>
               </table>
               <div className="Login-btn-container">
-                <button className="Login-btn" type="submit">
+                <button className="Login-btn Login-btn-style" type="submit">
                   Register
                 </button>
               </div>

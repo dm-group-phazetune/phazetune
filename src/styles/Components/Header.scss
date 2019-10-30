@@ -74,7 +74,7 @@
   text-transform: uppercase;
 
   .login-label {
-    width: 80px;
+    width: 115px;
     text-align: left;
     opacity: 0.8;
   }
@@ -82,7 +82,6 @@
   .login-input {
     width: 0px;
     padding: 5px 0;
-    padding-left: 5px;
   }
 
   .input-text {
@@ -95,14 +94,19 @@
 }
 
 .Login-btn {
-  @include button-primary(290px, 45px);
+  @include btn-primary(295px, 45px);
   @include oswald(17px, none, none, 0.1em, uppercase);
   color: $white;
   margin: 15px 0;
 }
 
+.Login-btn-style {
+  @include btn-gradient;
+}
+
 .Login-btn:hover {
-  @include button-primary-hover;
+  // @include button-primary-hover;
+  @include btn-primary-hover;
 }
 
 // FOOTER NAV
