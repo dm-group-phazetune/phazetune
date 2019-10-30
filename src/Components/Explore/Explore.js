@@ -89,6 +89,7 @@ class Explore extends Component {
           ) : (
             null
           )}
+          
         <main className="N-E-content">
           {this.state.pastPost.map((individualPost, i) => {
             return (
