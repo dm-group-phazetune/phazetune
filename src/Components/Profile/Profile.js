@@ -165,22 +165,26 @@ class Profile extends Component {
                 <input
                   name="first_name"
                   onChange={this.handleInput}
+                  value={this.state.first_name}
                   placeholder="First Name"
                 />
                 <input
                   name="last_name"
                   onChange={this.handleInput}
+                  value={this.state.last_name}
                   placeholder="Last Name"
                 />
                 <input
                   name="city"
                   onChange={this.handleInput}
+                  value={this.state.city}
                   placeholder="City"
                 />
                 <textarea
                   name="bio"
                   rows="4"
                   onChange={this.handleInput}
+                  value={this.state.bio}
                   placeholder="Bio"
                 />
                 <button onClick={() => widget.open()}>Upload Photo</button>
