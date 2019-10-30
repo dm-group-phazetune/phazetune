@@ -85,7 +85,6 @@ class Explore extends Component {
                   </tbody>
                 </table>
               </form>
-
             </div>
           </div>
         ) : (
