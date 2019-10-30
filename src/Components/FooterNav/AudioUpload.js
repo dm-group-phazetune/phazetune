@@ -115,6 +115,7 @@ class AudioUpload extends React.Component {
           className="Dialog-container"
           onClose={this.props.closeAudioUpload}
           open={this.props.upload}
+          className="Dialog-container"
         >
           <DialogContent className="Dialog-title">Add Track</DialogContent>
           <DialogContent className="Dialog-content">
@@ -184,17 +185,24 @@ class AudioUpload extends React.Component {
                     <label className="Dialog-label">upload:</label>
                   </td>
                   <td className="Dialog-input">
+                    <label for="file-upload" className="Input-file">
+                      Choose File
+                    </label>
                     <input
-                      // className="Btn-secondary"
+                      id="file-upload"
                       onChange={this.handleChange}
                       ref={this.fileInputRef}
                       type="file"
                     />
                   </td>
                 </tr>
+                <tr>
+                  <td>
+                    <label className="Dialog-label">Drop & Drop:</label>
+                  </td>
+                </tr>
               </tbody>
             </table>
-
             <div>
               <div
                 // style={style}
@@ -209,9 +217,10 @@ class AudioUpload extends React.Component {
                 onFilesAdded={this.onFilesAdded}
               />
             </div>
-            <div>
+
+            {/* <div>
               <progress value={this.state.progress} max="100" />
-            </div>
+            </div> */}
             {/* <div>
               <input
                 onChange={this.handleChange}

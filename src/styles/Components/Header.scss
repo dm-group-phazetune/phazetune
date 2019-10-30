@@ -65,23 +65,25 @@
   @include francois-one(3em, bold, italic, -0.01em, uppercase);
   color: $b-4;
   background-color: $d-3;
+  margin: -15px 0;
 }
 
 .Dialog-content {
   @include flex(center, center, column, none);
-  @include poppins(1em, none, none, 0.03em, uppercase);
+  @include poppins(1em, none, none, 0.03em, none);
   background-color: $d-3;
   color: $white;
   font-weight: bold;
-  text-transform: uppercase;
+  text-align: left;
 
   .Dialog-label {
-    width: 115px;
+    width: 100px;
     text-align: left;
+    text-transform: uppercase;
   }
 
   .Dialog-input {
-    padding: 5px 0;
+    padding: 5px;
   }
 
   .input-text {
@@ -92,6 +94,7 @@
   .input-select {
     @include input-select(160px, 35px);
     @include p;
+    font-weight: bold;
   }
 }
 
@@ -99,7 +102,7 @@
   @include btn-primary(270px, 45px);
   @include oswald(17px, none, none, 0.1em, uppercase);
   color: $white;
-  margin: 30px 0;
+  margin: 20px 0;
 }
 
 .Dialog-btn-style {
@@ -108,6 +111,17 @@
 
 .Dialog-btn:hover {
   @include btn-primary-hover;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.Input-file {
+  @include btn-secondary(160px, 35px);
+  @include flex(center, center, none, none);
+  @include p;
+  cursor: pointer;
 }
 
 .Btn-secondary {
