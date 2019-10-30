@@ -18,6 +18,7 @@ async function getAllPosts(req, res) {
 }
 
 async function getUsersPosts(req, res) {
+  console.log('getUsersPost')
   const db = req.app.get("db");
   const { username } = req.params;
   const posts = await db.posts.getUsersPosts(username);

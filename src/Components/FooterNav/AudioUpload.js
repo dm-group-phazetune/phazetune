@@ -58,6 +58,7 @@ class AudioUpload extends React.Component {
       this.setState(() => ({ audio }));
     }
   };
+  //firebase upload
   handleClick = () => {
     const { audio } = this.state;
 

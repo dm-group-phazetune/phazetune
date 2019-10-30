@@ -12,7 +12,9 @@ class Explore extends Component {
     };
   }
   componentDidMount() {
+    // this.genrePost()
     this.fetchPost();
+    // this.genreClick()
   }
   updatePastPost = postArr => {
     this.setState({ pastPost: postArr });
@@ -22,14 +24,24 @@ class Explore extends Component {
       this.setState({ pastPost: response.data });
     });
   };
-  genreChange = e => {
-    this.setState({ genre: e.target.value });
-  };
+  // updateGenrePost = (genreArr) => {
+  //   this.setState({genrePost: genreArr})
+  // }
+  // genrePost = () => {
+  //   Axios.get("/api/posts").then(res => {
+  //     this.setState({genrePost: res.data})
+  //   })
+  // }
+
+  genreChange = (e) => {
+    this.setState({genre: e.target.value})
+  }
   genreClick = () => {
-    Axios.get(`/api/posts/genre?genre=${this.state.genre}`).then(res => {
-      this.setState({ posts: [...res.data] });
-    });
-  };
+    Axios.get(`/api/type?genre=${this.state.genre}`).then(response => {
+      this.setState({ pastPost: [...response.data]})
+      console.log(response.data)
+    })
+  }
   render() {
     // console.log(this.state.pastPost);
     return (
@@ -39,45 +51,44 @@ class Explore extends Component {
         <nav className="N-E-nav">
           <div className="N-E-nav-links">All</div>
         </nav>
-        {this.props.user_id !== null ? (
-          <div className="Genre-container">
-            <button onClick={this.genreClick}>Choose Genre</button>
+          {this.props.user_id !== null ? (
             <div>
-              <form>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <label>Genre: </label>
-                      </td>
-                      <td>
-                        <select onChange={this.genreChange}>
-                          <option>Select</option>
-                          <option value="Rock">Rock</option>
-                          <option value="R&B/ Hip-Hop">R&B/ Hip-Hop</option>
-                          <option value="Pop">Pop</option>
-                          <option value="Country">Country</option>
-                          <option value="Dance">Dance/EDM</option>
-                          <option value="Christian/Gospel">
-                            Christian/Gospel
-                          </option>
-                          <option value="Holiday/Seasonal">
-                            Holiday/Seasonal
-                          </option>
-                          <option value="Latin">Latin</option>
-                          <option value="Jazz">Jazz</option>
-                          <option value="Classical">Classical</option>
-                          <option value="Kids Music">Kids Music</option>
-                          <option value="Other">Other</option>
-                        </select>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </form>
+              <button onClick={this.genreClick}>Choose Genre</button>
+              <div>
+                <form>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <label>Genre: </label>
+                        </td>
+                        <td>
+                          <select onChange={this.genreChange}>
+                            <option>Select</option>
+                            <option value='Rock'>Rock</option>
+                            <option value='R&B/ Hip-Hop'>R&B/ Hip-Hop</option>
+                            <option value='Pop'>Pop</option>
+                            <option value='Country'>Country</option>
+                            <option value='Dance'>Dance/EDM</option>
+                            <option value='Christian/Gospel'>Christian/Gospel</option>
+                            <option value='Holiday/Seasonal'>Holiday/Seasonal</option>
+                            <option value='Latin'>Latin</option>
+                            <option value='Jazz'>Jazz</option>
+                            <option value='Classical'>Classical</option>
+                            <option value='Kids Music'>Kids Music</option>
+                            <option value='Other'>Other</option>
+                          </select>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </form>
+              </div>
             </div>
-          </div>
-        ) : null}
+          ) : (
+            null
+          )}
+          
         <main className="N-E-content">
           {this.state.pastPost.map((individualPost, i) => {
             return (
