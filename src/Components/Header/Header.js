@@ -56,10 +56,30 @@ class Header extends Component {
     const { loginUser, registerUser } = this.props;
 
     if (formName === "login-form") {
-      loginUser({ username, password });
+      if (username === "" || password === "") {
+        return alert("Please enter a valid username and/or password");
+      } else {
+        loginUser({ username, password });
+      }
       this.setState({ login: false, username: "", password: "" });
     } else if (formName === "register-form") {
-      registerUser({ username, password, first_name, last_name, city });
+      if (
+        username === "" ||
+        password === "" ||
+        first_name === "" ||
+        last_name === "" ||
+        city === ""
+      ) {
+        return alert("Please don't leave any inputs empty.");
+      } else {
+        registerUser({
+          username,
+          password,
+          first_name,
+          last_name,
+          city
+        });
+      }
       this.setState({
         register: false,
         username: "",

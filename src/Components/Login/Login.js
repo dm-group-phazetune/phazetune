@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { Redirect, withRouter } from "react-router-dom";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
 
 class Login extends Component {
   render() {
@@ -20,7 +19,7 @@ class Login extends Component {
           open={this.props.login}
           className="Login-container"
         >
-          <DialogTitle className="Login-title">Welcome Back</DialogTitle>
+          <DialogContent className="Login-title">Welcome Back</DialogContent>
           <DialogContent className="Login-content">
             <form name="login-form" onSubmit={this.props.handleSubmit}>
               <table>
@@ -31,10 +30,11 @@ class Login extends Component {
                     </td>
                     <td className="login-input">
                       <input
-                        className="input"
+                        className="input-text"
                         name="username"
                         value={this.props.username}
                         onChange={this.props.handleInput}
+                        autoFocus
                       />
                     </td>
                   </tr>
@@ -44,7 +44,7 @@ class Login extends Component {
                     </td>
                     <td className="login-input">
                       <input
-                        className="input"
+                        className="input-text"
                         name="password"
                         value={this.props.password}
                         onChange={this.props.handleInput}

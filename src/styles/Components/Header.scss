@@ -8,6 +8,7 @@
 @import "../_modules/buttons.scss";
 @import "../_modules/cards.scss";
 @import "../_modules/images.scss";
+@import "../_modules/inputs.scss";
 
 // HEADER NAV
 .Header-container {
@@ -58,25 +59,24 @@
 }
 
 .Login-title {
-  @include text-shadow-glow(4px, $b-1);
+  @include text-shadow-glow(10px, $b-1);
+  @include francois-one(3.5em, bold, italic, -0.01em, uppercase);
   color: $b-4;
   background-color: $d-3;
-  text-transform: uppercase;
 }
-
-// .Login-container {
-//   background-color: black;
-//   opacity: 0.7;
-// }
 
 .Login-content {
   @include flex(center, center, column, none);
-  color: $white;
+  @include poppins(1em, none, none, 0.03em, uppercase);
   background-color: $d-3;
+  color: $white;
+  font-weight: bold;
+  text-transform: uppercase;
 
   .login-label {
     width: 80px;
     text-align: left;
+    opacity: 0.8;
   }
 
   .login-input {
@@ -85,17 +85,24 @@
     padding-left: 5px;
   }
 
-  .input {
-    width: 160px;
+  .input-text {
+    @include input-text(180px, 35px);
+    @include p;
   }
 }
 
 .Login-btn-container {
-  // background-color: white;
-  .Login-btn {
-    margin: 15px 0;
-    width: 250px;
-  }
+}
+
+.Login-btn {
+  @include button-primary(290px, 45px);
+  @include oswald(17px, none, none, 0.1em, uppercase);
+  color: $white;
+  margin: 15px 0;
+}
+
+.Login-btn:hover {
+  @include button-primary-hover;
 }
 
 // FOOTER NAV

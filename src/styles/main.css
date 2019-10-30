@@ -184,9 +184,15 @@ hr {
 }
 
 .Login-title {
-  text-shadow: 0 0 4px #5732a8;
   color: #ef87a9;
   background-color: #5a5759;
+  text-shadow: 0 0 4px #5732a8;
+  font-family: "Poppins", sans-serif;
+  font-size: 4em;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 1.618em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
@@ -206,13 +212,21 @@ hr {
           flex-direction: column;
   -ms-flex-flow: none;
       flex-flow: none;
-  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  line-height: 1.618em;
+  letter-spacing: 0.04em;
+  color: white;
   background-color: #5a5759;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .Login-content .login-label {
   width: 80px;
   text-align: left;
+  opacity: 0.8;
 }
 
 .Login-content .login-input {
@@ -366,6 +380,25 @@ hr {
   background-color: #312e30;
 }
 
+.N-E-title {
+  font-family: "Francois One", sans-serif;
+  font-size: 3em;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 1.618em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  -webkit-text-stroke: 0.5px #ef87a9;
+  color: #5732a8;
+}
+
+hr {
+  position: relative;
+  top: -10px;
+  opacity: 0.2;
+  height: 0px;
+}
+
 .N-E-nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -382,6 +415,28 @@ hr {
           flex-direction: none;
   -ms-flex-flow: none;
       flex-flow: none;
+}
+
+.N-E-nav-links {
+  font-family: "Oswald", sans-serif;
+  font-size: 17px;
+  font-weight: none;
+  font-style: none;
+  line-height: 1.618em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 10px;
+}
+
+.N-E-nav-links:hover {
+  text-shadow: 0 0 4px #5732a8;
+  color: #ed5eb7;
+  cursor: pointer;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .N-E-content {
@@ -403,6 +458,32 @@ hr {
   width: 50vw;
   height: auto;
   overflow-y: auto;
+}
+
+.Genre-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-flow: none;
+      flex-flow: none;
+  font-family: "Oswald", sans-serif;
+  font-size: 17px;
+  font-weight: none;
+  font-style: none;
+  line-height: 1.618em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
 .Audio-container {
