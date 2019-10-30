@@ -14,6 +14,7 @@
 .Header-container {
   @include flex(center, center, none, none);
   @include background-size(100vw, 7vh);
+  @include p;
   background-color: $d-2;
   box-sizing: border-box;
   box-shadow: 0px 2px 6px 0px hsla(0, 0%, 0%, 0.2);

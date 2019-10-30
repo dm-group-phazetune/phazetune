@@ -83,6 +83,7 @@ class Explore extends Component {
             return (
               <div className="AudioPlayer-Container" key={i}>
                 <AudioPlayer
+                  username={individualPost.username}
                   title={individualPost.title}
                   genre={individualPost.genre}
                   audioUrl={individualPost.audio_url}

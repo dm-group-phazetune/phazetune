@@ -16,6 +16,11 @@
       flex-flow: none;
   width: 100vw;
   height: 7vh;
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  line-height: 1.618em;
+  letter-spacing: 0.04em;
+  color: white;
   background-color: #454244;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
