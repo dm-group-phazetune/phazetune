@@ -88,6 +88,11 @@
     @include input-text(160px, 35px);
     @include p;
   }
+
+  .input-select {
+    @include input-select(160px, 35px);
+    @include p;
+  }
 }
 
 .Dialog-btn {
@@ -105,6 +110,15 @@
   @include btn-primary-hover;
 }
 
+.Btn-secondary {
+  @include btn-secondary(160px, 35px);
+  @include flex(center, center, none, none);
+  @include p;
+}
+
+.Btn-secondary:hover {
+  @include btn-secondary-hover;
+}
 // FOOTER NAV
 .FooterNav-container {
   @include background-size(100vw, 7vh);

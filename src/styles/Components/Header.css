@@ -176,6 +176,23 @@
   color: white;
 }
 
+.Dialog-content .input-select {
+  background-color: #ed5eb7;
+  width: 160px;
+  height: 35px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  border: 3px solid #ed5eb7;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  line-height: 1.618em;
+  letter-spacing: 0.04em;
+  color: white;
+}
+
 .Dialog-btn {
   width: 270px;
   height: 45px;
@@ -213,6 +230,44 @@
   transition: 1s;
   background-position: right center;
   cursor: pointer;
+}
+
+.Btn-secondary {
+  width: 160px;
+  height: 35px;
+  background-color: #ed5eb7;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: none;
+          flex-direction: none;
+  -ms-flex-flow: none;
+      flex-flow: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  line-height: 1.618em;
+  letter-spacing: 0.04em;
+  color: white;
+}
+
+.Btn-secondary:hover {
+  background-color: transparent;
+  color: white;
+  border: 2px solid #ed5eb7;
 }
 
 .FooterNav-container {

@@ -28,7 +28,7 @@ class Login extends Component {
                     <td className="Dialog-label">
                       <label>username:</label>
                     </td>
-                    <td className="login-input">
+                    <td className="Dialog-input">
                       <input
                         className="input-text"
                         name="username"
