@@ -206,6 +206,13 @@ class Profile extends Component {
           <p>{this.props.user && this.props.user[0][0].bio}</p>
           <p>{this.props.user && this.props.user[0][0].photo}</p>
           <p>{this.props.user && this.props.user[0][0].follow_count}</p>
+          {this.props.username !== this.props.match.params.username
+          ?
+          <button>Follow</button>
+          : null
+          }
+          <button className="following-button">
+          </button>
         </header>
         <main>{mappedPosts}</main>
       </div>

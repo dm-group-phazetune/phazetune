@@ -20,3 +20,8 @@ city = 'Dallas/Fort Worth',
 photo = '',
 bio = 'I love music'
 WHERE user_id = 16;
+
+INSERT INTO following
+(user_id, follow_id)
+VALUES
+(48, 1);
