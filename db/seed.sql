@@ -10,3 +10,13 @@ SET bio = 'hasdiuhfuhds',
   city = 'CA' 
 WHERE
   username = '8';
+
+  -- update user table
+UPDATE users
+SET 
+first_name = 'Tramy',
+last_name = 'Nguyen',
+city = 'Dallas/Fort Worth',
+photo = '',
+bio = 'I love music'
+WHERE user_id = 16;
