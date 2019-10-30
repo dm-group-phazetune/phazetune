@@ -5,9 +5,10 @@ class Newsfeed extends Component {
     return (
       <div className="N-E-container">
         <header className="N-E-title">Newsfeed</header>
+        <hr width={200} />
         <nav className="N-E-nav">
-          <div>Home</div>
-          <div>Favs</div>
+          <div className="N-E-nav-links">Home</div>
+          <div className="N-E-nav-links">Favs</div>
         </nav>
         <main className="N-E-content"></main>
       </div>
