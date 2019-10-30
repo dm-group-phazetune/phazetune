@@ -4,7 +4,6 @@ import Axios from "axios";
 import { storage } from "../FireAudioUpload/firebase";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
 
 class AudioUpload extends React.Component {
   constructor(props) {
@@ -59,6 +58,7 @@ class AudioUpload extends React.Component {
       this.setState(() => ({ audio }));
     }
   };
+  //firebase upload
   handleClick = () => {
     const { audio } = this.state;
 
@@ -113,36 +113,97 @@ class AudioUpload extends React.Component {
       <div>
         <Dialog
           style={{ textAlign: "center" }}
-          className="AudioUpload-container"
+          className="Dialog-container"
           onClose={this.props.closeAudioUpload}
           open={this.props.upload}
+          className="Dialog-container"
         >
-          <DialogTitle className="AudioUpload-title">Add Track</DialogTitle>
-          <DialogContent className="AudioUpload-content">
-            <div>
-              <input
-                className="title"
-                placeholder="title"
-                onChange={e => this.setState({ title: e.target.value })}
-              />
-            </div>
-            <div>
-              <select name="genre" onChange={this.handlePlaceChange}>
-                <option>Select</option>
-                <option>Rock</option>
-                <option>R&B/ Hip-Hop</option>
-                <option>Pop</option>
-                <option>Country</option>
-                <option>Dance/EDM</option>
-                <option>Christian/Gospel</option>
-                <option>Holiday/Seasonal</option>
-                <option>Latin</option>
-                <option>Jazz</option>
-                <option>Classical</option>
-                <option>Kids Music</option>
-                <option>Other</option>
-              </select>
-            </div>
+          <DialogContent className="Dialog-title">Add Track</DialogContent>
+          <DialogContent className="Dialog-content">
+            {/* <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <label>title:</label>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>genre:</label>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>upload:</label>
+                  </td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table> */}
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <label className="Dialog-label">title:</label>
+                  </td>
+                  <td className="Dialog-input">
+                    <input
+                      className="input-text"
+                      onChange={e => this.setState({ title: e.target.value })}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="Dialog-label">genre:</label>
+                  </td>
+                  <td className="Dialog-input">
+                    <select
+                      name="genre"
+                      className="input-select"
+                      onChange={this.handlePlaceChange}
+                    >
+                      <option>Select</option>
+                      <option>Rock</option>
+                      <option>R&B/ Hip-Hop</option>
+                      <option>Pop</option>
+                      <option>Country</option>
+                      <option>Dance/EDM</option>
+                      <option>Christian/Gospel</option>
+                      <option>Holiday/Seasonal</option>
+                      <option>Latin</option>
+                      <option>Jazz</option>
+                      <option>Classical</option>
+                      <option>Kids Music</option>
+                      <option>Other</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="Dialog-label">upload:</label>
+                  </td>
+                  <td className="Dialog-input">
+                    <label for="file-upload" className="Input-file">
+                      Choose File
+                    </label>
+                    <input
+                      id="file-upload"
+                      onChange={this.handleChange}
+                      ref={this.fileInputRef}
+                      type="file"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="Dialog-label">Drop & Drop:</label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
             <div>
               <div
                 // style={style}
@@ -157,20 +218,26 @@ class AudioUpload extends React.Component {
                 onFilesAdded={this.onFilesAdded}
               />
             </div>
-            <div>
+
+            {/* <div>
               <progress value={this.state.progress} max="100" />
-            </div>
-            <div>
-            <input
+            </div> */}
+            {/* <div>
+              <input
                 onChange={this.handleChange}
                 ref={this.fileInputRef}
                 type="file"
               />
-            </div>
-            <button onClick={this.handleClick}> Upload </button>
+            </div> */}
+            <button
+              className="Dialog-btn Dialog-btn-style"
+              onClick={this.handleClick}
+            >
+              {" "}
+              Upload{" "}
+            </button>
           </DialogContent>
         </Dialog>
-        
       </div>
     );
   }

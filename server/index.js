@@ -18,6 +18,11 @@ const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 // Middleware
 app.use(express.json());
 
+// app.use((req, res, next) => {
+//   console.log(req)
+//   next();
+// })
+
 app.use(
   session({
     secret: SESSION_SECRET,
@@ -38,6 +43,8 @@ massive(CONNECTION_STRING).then(db => {
 // De-structured controllers
 const { getUser, register, login, logout } = authController;
 const { editUserProf, getUserProf } = profController;
+const { genreType } = genreController
+
 const {
   addPost,
   getPastPosts,
@@ -64,8 +71,8 @@ app.get("/api/posts/user/genre");
 app.get("/api/posts/:user_id", getPastPosts);
 app.get("/api/users/post", getAllPosts);
 // Posts - Explore
-app.get("/api/posts");
-app.get("/api/posts/genre");
+// app.get("/api/posts");
+app.get("/api/type", genreType);
 // Profile endpoints
 app.get("/api/profile/user/:username", getUserProf);
 app.put("/api/profile/user", editUserProf);

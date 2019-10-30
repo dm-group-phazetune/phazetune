@@ -1,21 +1,16 @@
 .AudioPlayer-Container {
   background-color: pink;
-  padding: 15px 0;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  display: block;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.AudioPlayer{
-  display: "flex";
-  justify-content: "center";
-  align-items: "center";
-  border: "2px solid grey"; 
-  width: 350;
-  height: 80 
-}
-
-.ChatNav-Container {
+.ChatNav-container {
   width: 100vw;
   height: 100vh;
   display: -webkit-box;
@@ -188,14 +183,21 @@ hr {
   transition: 1s;
 }
 
-.Login-title {
-  text-shadow: 0 0 4px #5732a8;
+.Dialog-title {
+  text-shadow: 0 0 10px #5732a8;
+  font-family: "Francois One", sans-serif;
+  font-size: 3em;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 1.618em;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
   color: #ef87a9;
   background-color: #5a5759;
-  text-transform: uppercase;
+  margin: -15px 0;
 }
 
-.Login-content {
+.Dialog-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -211,28 +213,179 @@ hr {
           flex-direction: column;
   -ms-flex-flow: none;
       flex-flow: none;
-  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  font-weight: none;
+  font-style: none;
+  line-height: 1.618em;
+  letter-spacing: 0.03em;
+  text-transform: none;
   background-color: #5a5759;
-}
-
-.Login-content .login-label {
-  width: 80px;
+  color: #ffffff;
+  font-weight: bold;
   text-align: left;
 }
 
-.Login-content .login-input {
-  width: 0px;
+.Dialog-content .Dialog-label {
+  width: 100px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.Dialog-content .Dialog-input {
   padding: 5px 0;
-  padding-left: 5px;
 }
 
-.Login-content .input {
+.Dialog-content .input-text {
+  display: inline;
   width: 160px;
+  height: 35px;
+  background-color: transparent;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  border: 2px solid #ed5eb7;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  line-height: 1.618em;
+  letter-spacing: 0.04em;
+  color: white;
 }
 
-.Login-btn-container .Login-btn {
-  margin: 15px 0;
-  width: 250px;
+.Dialog-content .input-select {
+  background-color: #ed5eb7;
+  width: 160px;
+  height: 35px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  border: 3px solid #ed5eb7;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  line-height: 1.618em;
+  letter-spacing: 0.04em;
+  color: white;
+  font-weight: bold;
+}
+
+.Dialog-btn {
+  width: 270px;
+  height: 45px;
+  background-color: white;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-size: 200% auto;
+  font-family: "Oswald", sans-serif;
+  font-size: 17px;
+  font-weight: none;
+  font-style: none;
+  line-height: 1.618em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 20px 0;
+}
+
+.Dialog-btn-style {
+  background-image: -webkit-gradient(linear, left top, right top, from(#5732a8), color-stop(51%, #9830b7), to(#ef87a9));
+  background-image: linear-gradient(to right, #5732a8 0%, #9830b7 51%, #ef87a9 100%);
+}
+
+.Dialog-btn:hover {
+  -webkit-transition: 1s;
+  transition: 1s;
+  background-position: right center;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.Input-file {
+  width: 160px;
+  height: 35px;
+  background-color: #ed5eb7;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: none;
+          flex-direction: none;
+  -ms-flex-flow: none;
+      flex-flow: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  line-height: 1.618em;
+  letter-spacing: 0.04em;
+  color: white;
+  cursor: pointer;
+}
+
+.Btn-secondary {
+  width: 160px;
+  height: 35px;
+  background-color: #ed5eb7;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: none;
+          flex-direction: none;
+  -ms-flex-flow: none;
+      flex-flow: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  line-height: 1.618em;
+  letter-spacing: 0.04em;
+  color: white;
+}
+
+.Btn-secondary:hover {
+  background-color: transparent;
+  color: white;
+  border: 2px solid #ed5eb7;
 }
 
 .FooterNav-container {
@@ -368,6 +521,26 @@ hr {
   -ms-flex-flow: none;
       flex-flow: none;
   overflow-y: auto;
+  background-color: #312e30;
+}
+
+.N-E-title {
+  font-family: "Francois One", sans-serif;
+  font-size: 3em;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 1.618em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  -webkit-text-stroke: 0.5px #ef87a9;
+  color: #5732a8;
+}
+
+hr {
+  position: relative;
+  top: -10px;
+  opacity: 0.2;
+  height: 0px;
 }
 
 .N-E-nav {
@@ -386,6 +559,28 @@ hr {
           flex-direction: none;
   -ms-flex-flow: none;
       flex-flow: none;
+}
+
+.N-E-nav-links {
+  font-family: "Oswald", sans-serif;
+  font-size: 17px;
+  font-weight: none;
+  font-style: none;
+  line-height: 1.618em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 10px;
+}
+
+.N-E-nav-links:hover {
+  text-shadow: 0 0 4px #5732a8;
+  color: #ed5eb7;
+  cursor: pointer;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .N-E-content {
@@ -409,7 +604,7 @@ hr {
   overflow-y: auto;
 }
 
-.Audio-container {
+.Genre-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -425,7 +620,14 @@ hr {
           flex-direction: column;
   -ms-flex-flow: none;
       flex-flow: none;
-  padding: 20px;
+  font-family: "Oswald", sans-serif;
+  font-size: 17px;
+  font-weight: none;
+  font-style: none;
+  line-height: 1.618em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
 .Profile-container {

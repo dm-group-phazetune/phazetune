@@ -8,18 +8,44 @@
 @import "../_modules/buttons.scss";
 @import "../_modules/cards.scss";
 @import "../_modules/images.scss";
+@import "../_modules/inputs.scss";
 
 .N-E-container {
   @include background-size(100vw, 100vh);
   @include flex(center, center, column, none);
   overflow-y: auto;
+  background-color: $d-1;
 }
 
 .N-E-title {
+  @include francois-one(3em, bold, italic, 0.02em, uppercase);
+  -webkit-text-stroke: 0.5px $b-4;
+  color: $b-1;
+}
+
+hr {
+  position: relative;
+  top: -10px;
+  opacity: 0.2;
+  height: 0px;
 }
 
 .N-E-nav {
   @include flex(center, center, none, none);
+}
+
+.N-E-nav-links {
+  @include oswald(17px, none, none, 0.05em, uppercase);
+  color: $white;
+  padding: 10px;
+}
+
+.N-E-nav-links:hover {
+  @include text-shadow-glow(4px, $b-1);
+  color: $b-3;
+  cursor: pointer;
+  transition: 1s;
+  transform: scale(1.1);
 }
 
 .N-E-content {
@@ -29,7 +55,13 @@
   overflow-y: auto;
 }
 
-.Audio-container {
+.Genre-container {
   @include flex(center, center, column, none);
-  padding: 20px;
+  @include oswald(17px, none, none, 0.05em, uppercase);
+  color: $white;
 }
+
+// .Audio-container {
+//   @include flex(center, center, column, none);
+//   padding: 20px;
+// }

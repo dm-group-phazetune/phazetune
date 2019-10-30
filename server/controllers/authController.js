@@ -52,7 +52,10 @@ async function login(req, res) {
   if (!foundUser) {
     res.status(400).json("Username or Password is incorrect.");
   } else {
-    const isAuthenticated = bcrypt.compareSync(password, foundUser[0].hash);
+    const isAuthenticated = await bcrypt.compareSync(
+      password,
+      foundUser[0].hash
+    );
     if (!isAuthenticated) {
       res.status(403).json("Username or Password is incorrect.");
     } else {
@@ -69,7 +72,6 @@ async function login(req, res) {
       res.status(200).json(req.session.user);
     }
   }
-
   console.log("User logged in");
 }
 

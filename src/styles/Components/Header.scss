@@ -8,11 +8,13 @@
 @import "../_modules/buttons.scss";
 @import "../_modules/cards.scss";
 @import "../_modules/images.scss";
+@import "../_modules/inputs.scss";
 
 // HEADER NAV
 .Header-container {
   @include flex(center, center, none, none);
   @include background-size(100vw, 7vh);
+  @include p;
   background-color: $d-2;
   box-sizing: border-box;
   box-shadow: 0px 2px 6px 0px hsla(0, 0%, 0%, 0.2);
@@ -57,47 +59,81 @@
   transition: 1s;
 }
 
-.Login-title {
-  @include text-shadow-glow(4px, $b-1);
+// Dialog styling
+
+.Dialog-title {
+  @include text-shadow-glow(10px, $b-1);
+  @include francois-one(3em, bold, italic, -0.01em, uppercase);
   color: $b-4;
   background-color: $d-3;
-  text-transform: uppercase;
+  margin: -15px 0;
 }
 
-// .Login-container {
-//   background-color: black;
-//   opacity: 0.7;
-// }
-
-.Login-content {
+.Dialog-content {
   @include flex(center, center, column, none);
-  color: $white;
+  @include poppins(1em, none, none, 0.03em, none);
   background-color: $d-3;
+  color: $white;
+  font-weight: bold;
+  text-align: left;
 
-  .login-label {
-    width: 80px;
+  .Dialog-label {
+    width: 100px;
     text-align: left;
+    text-transform: uppercase;
   }
 
-  .login-input {
-    width: 0px;
-    padding: 5px 0;
-    padding-left: 5px;
+  .Dialog-input {
+    padding: 5px;
   }
 
-  .input {
-    width: 160px;
+  .input-text {
+    @include input-text(160px, 35px);
+    @include p;
   }
-}
 
-.Login-btn-container {
-  // background-color: white;
-  .Login-btn {
-    margin: 15px 0;
-    width: 250px;
+  .input-select {
+    @include input-select(160px, 35px);
+    @include p;
+    font-weight: bold;
   }
 }
 
+.Dialog-btn {
+  @include btn-primary(270px, 45px);
+  @include oswald(17px, none, none, 0.1em, uppercase);
+  color: $white;
+  margin: 20px 0;
+}
+
+.Dialog-btn-style {
+  @include btn-gradient;
+}
+
+.Dialog-btn:hover {
+  @include btn-primary-hover;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.Input-file {
+  @include btn-secondary(160px, 35px);
+  @include flex(center, center, none, none);
+  @include p;
+  cursor: pointer;
+}
+
+.Btn-secondary {
+  @include btn-secondary(160px, 35px);
+  @include flex(center, center, none, none);
+  @include p;
+}
+
+.Btn-secondary:hover {
+  @include btn-secondary-hover;
+}
 // FOOTER NAV
 .FooterNav-container {
   @include background-size(100vw, 7vh);
@@ -126,3 +162,5 @@
 .Footernav-icon {
   size: 10px;
 }
+
+// MEDIA QUERIES
