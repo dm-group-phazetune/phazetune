@@ -7,8 +7,11 @@ const initialState = {
 
 const GET_PROFILE = "GET_PROFILE";
 const EDIT_PROFILE = "EDIT_PROFILE";
+const RESET_ACTION = "RESET_ACTION";
 
 export function getProfile(username) {
+  console.log(initialState.user);
+
   return {
     type: GET_PROFILE,
     payload: axios.get(`/api/profile/user/${username}`)
@@ -19,6 +22,12 @@ export function editProfile(profile) {
   return {
     type: EDIT_PROFILE,
     payload: axios.put("/api/profile/user", profile)
+  };
+}
+
+export function resetAction() {
+  return {
+    type: RESET_ACTION
   };
 }
 
@@ -50,7 +59,12 @@ export default function reducer(state = initialState, action) {
     case `${GET_PROFILE}_FULFILLED`: {
       return {
         ...state,
-        user: payload.data
+        user: [...payload.data]
+      };
+    }
+    case RESET_ACTION: {
+      return {
+        user: initialState.user
       };
     }
     default:

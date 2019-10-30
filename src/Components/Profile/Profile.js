@@ -1,14 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { editProfile, getProfile } from "../../redux/reducers/profReducer";
+import {
+  editProfile,
+  getProfile,
+  resetAction
+} from "../../redux/reducers/profReducer";
 import { editPost, deletePost } from "../../redux/reducers/postsReducer";
 import { getSession } from "../../redux/reducers/authReducer";
 import AudioPlayer from "../FooterNav/AudioPlayer";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
 
 class Profile extends Component {
   constructor() {
     super();
-
     this.state = {
       title: "",
       genre: "",
@@ -16,20 +21,27 @@ class Profile extends Component {
       bio: "",
       city: "",
       first_name: "",
-      last_name: ""
+      last_name: "",
+      editPost: false,
+      editProfile: false
     };
   }
 
   componentDidMount() {
     this.props.getProfile(this.props.match.params.username);
     const { first_name, last_name, photo, city, bio } = this.props;
-    this.setState({
-      first_name: first_name,
-      last_name: last_name,
-      photo: photo,
-      city: city,
-      bio: bio
-    });
+    if (
+      this.props.user_id &&
+      this.props.match.params.username === this.props.username
+    ) {
+      this.setState({
+        first_name: first_name,
+        last_name: last_name,
+        photo: photo,
+        city: city,
+        bio: bio
+      });
+    }
   }
   checkUploadResult = (error, resultEvent) => {
     if (resultEvent.event === "success") {
@@ -65,6 +77,27 @@ class Profile extends Component {
     alert("You've changed your profile settings.");
   };
 
+  openEditPost = () => {
+    this.setState({ editPost: true });
+  };
+
+  openEditProfile = () => {
+    this.setState({ editProfile: true });
+  };
+
+  closeEditPost = () => {
+    this.setState({ editPost: false });
+  };
+
+  closeEditProfile = () => {
+    this.setState({ editProfile: false });
+  };
+
+
+  componentWillUnmount() {
+    this.props.resetAction();
+  }
+
   render() {
     // cloudinary widget
     const widget = window.cloudinary.createUploadWidget(
@@ -81,7 +114,7 @@ class Profile extends Component {
     );
 
     const { user } = this.props;
-    const mappedPosts = this.props.user
+    const mappedPosts = this.props.user && this.props.user[1] 
       ? user[1].map((track, i) => {
           return (
             <div className="AudioPlayer-Container" key={i}>
@@ -91,9 +124,12 @@ class Profile extends Component {
                   genre={track.genre}
                   audioUrl={track.audio_url}
                 />
-                {this.props.user_id === track.user_id ? (
+                {/* IF USER ON SESSION SHOW EDIT/DELETE ON TRACK */}
+                {this.props.user_id === track.user_id &&
+                this.props.user_id &&
+                this.props.match.params.username === this.props.username ? (
                   <div>
-                    <button>Edit</button>
+                    <button>EDIT TRACK</button>
                     <div>
                       <form>
                         <table>
@@ -155,47 +191,50 @@ class Profile extends Component {
                       </button>
                     </div>
                   </div>
-                ) : (
-                  console.log(undefined)
-                )}
+                ) : null}
               </div>
-
-              <button>Edit Profile</button>
-              <div className="Edit-profile-container">
-                <input
-                  name="first_name"
-                  onChange={this.handleInput}
-                  value={this.state.first_name}
-                  placeholder="First Name"
-                />
-                <input
-                  name="last_name"
-                  onChange={this.handleInput}
-                  value={this.state.last_name}
-                  placeholder="Last Name"
-                />
-                <input
-                  name="city"
-                  onChange={this.handleInput}
-                  value={this.state.city}
-                  placeholder="City"
-                />
-                <textarea
-                  name="bio"
-                  rows="4"
-                  onChange={this.handleInput}
-                  value={this.state.bio}
-                  placeholder="Bio"
-                />
-                <button onClick={() => widget.open()}>Upload Photo</button>
-                <button onClick={() => this.handleEditProfile()}>
-                  Change Profile Settings
-                </button>
-              </div>
+              {/* IF USER ON SESSION SHOW EDIT PROFILE BUTTON */}
+              {this.props.user_id &&
+              this.props.match.params.username === this.props.username ? (
+                <div>
+                  <button>EDIT PROFILE</button>
+                  <div className="Edit-profile-container">
+                    <input
+                      name="first_name"
+                      onChange={this.handleInput}
+                      value={this.state.first_name}
+                      placeholder="First Name"
+                    />
+                    <input
+                      name="last_name"
+                      onChange={this.handleInput}
+                      value={this.state.last_name}
+                      placeholder="Last Name"
+                    />
+                    <input
+                      name="city"
+                      onChange={this.handleInput}
+                      value={this.state.city}
+                      placeholder="City"
+                    />
+                    <textarea
+                      name="bio"
+                      rows="4"
+                      onChange={this.handleInput}
+                      value={this.state.bio}
+                      placeholder="Bio"
+                    />
+                    <button onClick={() => widget.open()}>Upload Photo</button>
+                    <button onClick={() => this.handleEditProfile()}>
+                      Change Profile Settings
+                    </button>
+                  </div>
+                </div>
+              ) : null}
             </div>
           );
         })
-      : null;
+      : this.props.user;
 
     return (
       <div className="Profile-container">
@@ -217,6 +256,7 @@ const mapStateToProps = reduxState => {
   return {
     user: reduxState.profReducer.user,
     user_id: reduxState.authReducer.user_id,
+    username: reduxState.authReducer.username,
     first_name: reduxState.authReducer.first_name,
     last_name: reduxState.authReducer.last_name,
     city: reduxState.authReducer.city,
@@ -227,5 +267,5 @@ const mapStateToProps = reduxState => {
 
 export default connect(
   mapStateToProps,
-  { editProfile, getProfile, editPost, deletePost, getSession }
+  { editProfile, getProfile, editPost, deletePost, getSession, resetAction }
 )(Profile);

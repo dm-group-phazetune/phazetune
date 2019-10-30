@@ -115,7 +115,6 @@ class AudioUpload extends React.Component {
           className="Dialog-container"
           onClose={this.props.closeAudioUpload}
           open={this.props.upload}
-          className="Dialog-container"
         >
           <DialogContent className="Dialog-title">Add Track</DialogContent>
           <DialogContent className="Dialog-content">
