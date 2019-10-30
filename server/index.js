@@ -10,6 +10,7 @@ const io = require("socket.io")(http);
 const authController = require("./controllers/authController");
 const postsController = require("./controllers/postsController");
 const profController = require("./controllers/profController");
+const genreController = require("./controllers/genreController");
 // Dotenv
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
@@ -70,6 +71,7 @@ app.put("/api/profile/user", editUserProf);
 // Follow Endpoints
 app.post("/api/user/:user_id");
 app.delete("/api/user/:user_id");
+//genre
 
 io.of("/chat");
 io.on("connection", socket => {
