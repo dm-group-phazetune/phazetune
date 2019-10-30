@@ -17,6 +17,11 @@ const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 // Middleware
 app.use(express.json());
 
+// app.use((req, res, next) => {
+//   console.log(req)
+//   next();
+// })
+
 app.use(
   session({
     secret: SESSION_SECRET,
@@ -37,6 +42,8 @@ massive(CONNECTION_STRING).then(db => {
 // De-structured controllers
 const { getUser, register, login, logout } = authController;
 const { editUserProf, getUserProf } = profController;
+const { genreType } = genreController
+
 const {
   addPost,
   getPastPosts,
@@ -52,28 +59,27 @@ app.post("/auth/login", login);
 app.post("/auth/logout", logout);
 // Posts Endpoints
 app.post("/api/posts", addPost);
-app.post("/api/posts/comments/:post_id");
-app.post("/api/posts/favorites/:post_id");
+// app.post("/api/posts/comments/:post_id");
+// app.post("/api/posts/favorites/:post_id");
 app.put("/api/posts/:post_id", editPost);
 app.delete("/api/posts/:post_id", deletePost);
-app.delete("/api/posts/favorites/:post_id");
+// app.delete("/api/posts/favorites/:post_id");
 // Posts - Newsfeed
-app.get("/api/posts/favorites/:post_id");
-app.get("/api/posts/user/genre");
+// app.get("/api/posts/favorites/:post_id");
+// app.get("/api/posts/user/genre");
 app.get("/api/posts/:user_id", getPastPosts);
 app.get("/api/users/post", getAllPosts);
 // Posts - Explore
-app.get("/api/posts");
-app.get("/api/posts/genre");
+// app.get("/api/posts");
+app.get("/api/type", genreType);
 // Profile endpoints
 app.get("/api/profile/user/:username", getUserProf);
 app.put("/api/profile/user", editUserProf);
 // Follow Endpoints
-app.post("/api/user/:user_id");
-app.delete("/api/user/:user_id");
-//genre
+// app.post("/api/user/:user_id");
+// app.delete("/api/user/:user_id");
 
-a
+
 
 io.of("/chat");
 io.on("connection", socket => {

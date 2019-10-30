@@ -1,6 +1,6 @@
-import {deletePost, editPost} from '../redux/reducers/postsReducer'
-import {editProfile} from '../redux/reducers/profReducer'
-import {handlePlaceChange} from '../Components/FooterNav/AudioUpload'
+import {deletePost, editPost, getUsersPosts} from '../redux/reducers/postsReducer'
+import {editProfile, getProfile} from '../redux/reducers/profReducer'
+import {getGenre} from '../redux/reducers/genreReducer'
 
 
 describe("post reducer test", () => {
@@ -13,7 +13,12 @@ describe("post reducer test", () => {
     test('editProfile returns right type', () => {
         expect(editProfile({}).type).toBe('EDIT_PROFILE')
     })
-    
+    test('getUsersPost returns right data type', ()=> {
+        expect(getUsersPosts({}).type).toBe('GET_USERS_POSTS')
+    })
+    test('getGenre returns right type', () => {
+        expect(getGenre({}).type).toBe('GET_GENRE')
+    })
 
     
 })
