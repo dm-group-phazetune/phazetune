@@ -64,7 +64,7 @@ export default function reducer(state = initialState, action) {
     }
     case RESET_ACTION: {
       return {
-        user: initialState.user
+        user: []
       };
     }
     default:

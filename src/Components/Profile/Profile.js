@@ -93,10 +93,15 @@ class Profile extends Component {
     this.setState({ editProfile: false });
   };
 
-
-  componentWillUnmount() {
-    this.props.resetAction();
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.match.params.username !== this.props.match.params.username) {
+      this.props.resetAction();
+    }
   }
+
+  // componentWillUnmount() {
+  //   this.props.resetAction();
+  // }
 
   render() {
     // cloudinary widget
@@ -114,137 +119,146 @@ class Profile extends Component {
     );
 
     const { user } = this.props;
-    const mappedPosts = this.props.user && this.props.user[1] 
-      ? user[1].map((track, i) => {
-          return (
-            <div className="AudioPlayer-Container" key={i}>
-              <div>
-                <AudioPlayer
-                  title={track.title}
-                  genre={track.genre}
-                  audioUrl={track.audio_url}
-                />
-                {/* IF USER ON SESSION SHOW EDIT/DELETE ON TRACK */}
-                {this.props.user_id === track.user_id &&
-                this.props.user_id &&
-                this.props.match.params.username === this.props.username ? (
-                  <div>
-                    <button>EDIT TRACK</button>
+    const mappedPosts =
+      this.props.user && this.props.user[1]
+        ? user[1].map((track, i) => {
+            return (
+              <div className="AudioPlayer-Container" key={i}>
+                <div>
+                  <AudioPlayer
+                    title={track.title}
+                    genre={track.genre}
+                    audioUrl={track.audio_url}
+                  />
+                  {/* IF USER ON SESSION SHOW EDIT/DELETE ON TRACK */}
+                  {this.props.user_id === track.user_id &&
+                  this.props.user_id &&
+                  this.props.match.params.username === this.props.username ? (
                     <div>
-                      <form>
-                        <table>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <label>Title</label>
-                              </td>
-                              <td>
-                                <input
-                                  className="title"
-                                  onChange={e =>
-                                    this.setState({ title: e.target.value })
-                                  }
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <label>Genre</label>
-                              </td>
-                              <td>
-                                <select
-                                  name="genre"
-                                  onChange={this.handlePlaceChange}
-                                >
-                                  <option>Select</option>
-                                  <option>Rock</option>
-                                  <option>R&B/ Hip-Hop</option>
-                                  <option>Pop</option>
-                                  <option>Country</option>
-                                  <option>Dance/EDM</option>
-                                  <option>Christian/Gospel</option>
-                                  <option>Holiday/Seasonal</option>
-                                  <option>Latin</option>
-                                  <option>Jazz</option>
-                                  <option>Classical</option>
-                                  <option>Kids Music</option>
-                                  <option>Other</option>
-                                </select>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                      <button>EDIT TRACK</button>
+                      <div>
+                        <form>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <label>Title</label>
+                                </td>
+                                <td>
+                                  <input
+                                    className="title"
+                                    onChange={e =>
+                                      this.setState({ title: e.target.value })
+                                    }
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <label>Genre</label>
+                                </td>
+                                <td>
+                                  <select
+                                    name="genre"
+                                    onChange={this.handlePlaceChange}
+                                  >
+                                    <option>Select</option>
+                                    <option>Rock</option>
+                                    <option>R&B/ Hip-Hop</option>
+                                    <option>Pop</option>
+                                    <option>Country</option>
+                                    <option>Dance/EDM</option>
+                                    <option>Christian/Gospel</option>
+                                    <option>Holiday/Seasonal</option>
+                                    <option>Latin</option>
+                                    <option>Jazz</option>
+                                    <option>Classical</option>
+                                    <option>Kids Music</option>
+                                    <option>Other</option>
+                                  </select>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <button
+                            onClick={e => {
+                              this.handleEditPost(e, track.post_id);
+                            }}
+                          >
+                            Save
+                          </button>
+                        </form>
                         <button
-                          onClick={e => {
-                            this.handleEditPost(e, track.post_id);
+                          onClick={() => {
+                            this.handleDeletePost(track.post_id);
                           }}
                         >
-                          Save
+                          Delete
                         </button>
-                      </form>
-                      <button
-                        onClick={() => {
-                          this.handleDeletePost(track.post_id);
-                        }}
-                      >
-                        Delete
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+                {/* IF USER ON SESSION SHOW EDIT PROFILE BUTTON */}
+                {this.props.user_id &&
+                this.props.match.params.username === this.props.username ? (
+                  <div>
+                    <button>EDIT PROFILE</button>
+                    <div className="Edit-profile-container">
+                      <input
+                        name="first_name"
+                        onChange={this.handleInput}
+                        value={this.state.first_name}
+                        placeholder="First Name"
+                      />
+                      <input
+                        name="last_name"
+                        onChange={this.handleInput}
+                        value={this.state.last_name}
+                        placeholder="Last Name"
+                      />
+                      <input
+                        name="city"
+                        onChange={this.handleInput}
+                        value={this.state.city}
+                        placeholder="City"
+                      />
+                      <textarea
+                        name="bio"
+                        rows="4"
+                        onChange={this.handleInput}
+                        value={this.state.bio}
+                        placeholder="Bio"
+                      />
+                      <button onClick={() => widget.open()}>
+                        Upload Photo
+                      </button>
+                      <button onClick={() => this.handleEditProfile()}>
+                        Change Profile Settings
                       </button>
                     </div>
                   </div>
                 ) : null}
               </div>
-              {/* IF USER ON SESSION SHOW EDIT PROFILE BUTTON */}
-              {this.props.user_id &&
-              this.props.match.params.username === this.props.username ? (
-                <div>
-                  <button>EDIT PROFILE</button>
-                  <div className="Edit-profile-container">
-                    <input
-                      name="first_name"
-                      onChange={this.handleInput}
-                      value={this.state.first_name}
-                      placeholder="First Name"
-                    />
-                    <input
-                      name="last_name"
-                      onChange={this.handleInput}
-                      value={this.state.last_name}
-                      placeholder="Last Name"
-                    />
-                    <input
-                      name="city"
-                      onChange={this.handleInput}
-                      value={this.state.city}
-                      placeholder="City"
-                    />
-                    <textarea
-                      name="bio"
-                      rows="4"
-                      onChange={this.handleInput}
-                      value={this.state.bio}
-                      placeholder="Bio"
-                    />
-                    <button onClick={() => widget.open()}>Upload Photo</button>
-                    <button onClick={() => this.handleEditProfile()}>
-                      Change Profile Settings
-                    </button>
-                  </div>
-                </div>
-              ) : null}
-            </div>
-          );
-        })
-      : this.props.user;
+            );
+          })
+        : this.props.user;
 
     return (
       <div className="Profile-container">
         <h1>Profile</h1>
         <header>
-          <p>{this.props.user && this.props.user[0][0].username}</p>
-          <p>{this.props.user && this.props.user[0][0].city}</p>
-          <p>{this.props.user && this.props.user[0][0].bio}</p>
-          <p>{this.props.user && this.props.user[0][0].photo}</p>
-          <p>{this.props.user && this.props.user[0][0].follow_count}</p>
+          {this.props.user && this.props.user[0] ? (
+            <>
+              <p>{this.props.user && this.props.user[0][0].username}</p>
+              <p>{this.props.user && this.props.user[0][0].city}</p>
+              <p>{this.props.user && this.props.user[0][0].bio}</p>
+              <p>{this.props.user && this.props.user[0][0].photo}</p>
+              <p>{this.props.user && this.props.user[0][0].follow_count}</p>
+            </>
+          ) : (
+            "Loading..."
+          )}
         </header>
         <main>{mappedPosts}</main>
       </div>
