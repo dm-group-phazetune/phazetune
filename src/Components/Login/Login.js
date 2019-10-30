@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { Redirect, withRouter } from "react-router-dom";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
 
 class Login extends Component {
   render() {
@@ -18,33 +17,34 @@ class Login extends Component {
           style={{ textAlign: "center" }}
           onClose={this.props.closeLogin}
           open={this.props.login}
-          className="Login-container"
+          className="Dialog-container"
         >
-          <DialogTitle className="Login-title">Welcome Back</DialogTitle>
-          <DialogContent className="Login-content">
+          <DialogContent className="Dialog-title">Welcome Back</DialogContent>
+          <DialogContent className="Dialog-content">
             <form name="login-form" onSubmit={this.props.handleSubmit}>
               <table>
                 <tbody>
                   <tr>
-                    <td className="login-label">
+                    <td className="Dialog-label">
                       <label>username:</label>
                     </td>
-                    <td className="login-input">
+                    <td className="Dialog-input">
                       <input
-                        className="input"
+                        className="input-text"
                         name="username"
                         value={this.props.username}
                         onChange={this.props.handleInput}
+                        autoFocus
                       />
                     </td>
                   </tr>
                   <tr>
-                    <td className="login-label">
+                    <td className="Dialog-label">
                       <label>password:</label>
                     </td>
-                    <td className="login-input">
+                    <td className="Dialog-input">
                       <input
-                        className="input"
+                        className="input-text"
                         name="password"
                         value={this.props.password}
                         onChange={this.props.handleInput}
@@ -54,8 +54,8 @@ class Login extends Component {
                   </tr>
                 </tbody>
               </table>
-              <div className="Login-btn-container">
-                <button className="Login-btn" type="submit">
+              <div className="Dialog-btn-container">
+                <button className="Dialog-btn Dialog-btn-style" type="submit">
                   LOG IN
                 </button>
               </div>
