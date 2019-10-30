@@ -17,15 +17,15 @@ class Login extends Component {
           style={{ textAlign: "center" }}
           onClose={this.props.closeLogin}
           open={this.props.login}
-          className="Login-container"
+          className="Dialog-container"
         >
-          <DialogContent className="Login-title">Welcome Back</DialogContent>
-          <DialogContent className="Login-content">
+          <DialogContent className="Dialog-title">Welcome Back</DialogContent>
+          <DialogContent className="Dialog-content">
             <form name="login-form" onSubmit={this.props.handleSubmit}>
               <table>
                 <tbody>
                   <tr>
-                    <td className="login-label">
+                    <td className="Dialog-label">
                       <label>username:</label>
                     </td>
                     <td className="login-input">
@@ -39,10 +39,10 @@ class Login extends Component {
                     </td>
                   </tr>
                   <tr>
-                    <td className="login-label">
+                    <td className="Dialog-label">
                       <label>password:</label>
                     </td>
-                    <td className="login-input">
+                    <td className="Dialog-input">
                       <input
                         className="input-text"
                         name="password"
@@ -54,8 +54,8 @@ class Login extends Component {
                   </tr>
                 </tbody>
               </table>
-              <div className="Login-btn-container">
-                <button className="Login-btn Login-btn-style" type="submit">
+              <div className="Dialog-btn-container">
+                <button className="Dialog-btn Dialog-btn-style" type="submit">
                   LOG IN
                 </button>
               </div>

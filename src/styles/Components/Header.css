@@ -105,10 +105,10 @@
   transition: 1s;
 }
 
-.Login-title {
+.Dialog-title {
   text-shadow: 0 0 10px #5732a8;
   font-family: "Francois One", sans-serif;
-  font-size: 3.5em;
+  font-size: 3em;
   font-weight: bold;
   font-style: italic;
   line-height: 1.618em;
@@ -118,7 +118,7 @@
   background-color: #5a5759;
 }
 
-.Login-content {
+.Dialog-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -147,20 +147,18 @@
   text-transform: uppercase;
 }
 
-.Login-content .login-label {
+.Dialog-content .Dialog-label {
   width: 115px;
   text-align: left;
-  opacity: 0.8;
 }
 
-.Login-content .login-input {
-  width: 0px;
+.Dialog-content .Dialog-input {
   padding: 5px 0;
 }
 
-.Login-content .input-text {
+.Dialog-content .input-text {
   display: inline;
-  width: 180px;
+  width: 160px;
   height: 35px;
   background-color: transparent;
   -webkit-box-sizing: border-box;
@@ -178,8 +176,8 @@
   color: white;
 }
 
-.Login-btn {
-  width: 295px;
+.Dialog-btn {
+  width: 270px;
   height: 45px;
   background-color: white;
   -webkit-box-sizing: border-box;
@@ -202,15 +200,15 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #ffffff;
-  margin: 15px 0;
+  margin: 30px 0;
 }
 
-.Login-btn-style {
+.Dialog-btn-style {
   background-image: -webkit-gradient(linear, left top, right top, from(#5732a8), color-stop(51%, #9830b7), to(#ef87a9));
   background-image: linear-gradient(to right, #5732a8 0%, #9830b7 51%, #ef87a9 100%);
 }
 
-.Login-btn:hover {
+.Dialog-btn:hover {
   -webkit-transition: 1s;
   transition: 1s;
   background-position: right center;

@@ -16,18 +16,18 @@ class Register extends Component {
           style={{ textAlign: "center" }}
           onClose={this.props.closeRegister}
           open={this.props.register}
-          className="Login-container"
+          className="Dialog-container"
         >
-          <DialogContent className="Login-title">Sign Up</DialogContent>
-          <DialogContent className="Login-content">
+          <DialogContent className="Dialog-title">Sign Up</DialogContent>
+          <DialogContent className="Dialog-content">
             <form name="register-form" onSubmit={this.props.handleSubmit}>
               <table>
                 <tbody>
                   <tr>
-                    <td className="login-label">
+                    <td className="Dialog-label">
                       <label>First Name:</label>
                     </td>
-                    <td className="login-input">
+                    <td className="Dialog-input">
                       <input
                         className="input-text"
                         name="first_name"
@@ -38,10 +38,10 @@ class Register extends Component {
                     </td>
                   </tr>
                   <tr>
-                    <td className="login-label">
+                    <td className="Dialog-label">
                       <label>Last Name:</label>
                     </td>
-                    <td className="login-input">
+                    <td className="Dialog-input">
                       <input
                         className="input-text"
                         name="last_name"
@@ -51,10 +51,10 @@ class Register extends Component {
                     </td>
                   </tr>
                   <tr>
-                    <td className="login-label">
+                    <td className="Dialog-label">
                       <label>Username:</label>
                     </td>
-                    <td className="login-input">
+                    <td className="Dialog-input">
                       <input
                         className="input-text"
                         name="username"
@@ -64,10 +64,10 @@ class Register extends Component {
                     </td>
                   </tr>
                   <tr>
-                    <td className="login-label">
+                    <td className="Dialog-label">
                       <label>Password:</label>
                     </td>
-                    <td className="login-input">
+                    <td className="Dialog-input">
                       <input
                         className="input-text"
                         name="password"
@@ -78,10 +78,10 @@ class Register extends Component {
                     </td>
                   </tr>
                   <tr>
-                    <td className="login-label">
+                    <td className="Dialog-label">
                       <label>City:</label>
                     </td>
-                    <td className="login-input">
+                    <td className="Dialog-input">
                       <input
                         className="input-text"
                         name="city"
@@ -92,8 +92,8 @@ class Register extends Component {
                   </tr>
                 </tbody>
               </table>
-              <div className="Login-btn-container">
-                <button className="Login-btn Login-btn-style" type="submit">
+              <div className="Dialog-btn-container">
+                <button className="Dialog-btn Dialog-btn-style" type="submit">
                   Register
                 </button>
               </div>
