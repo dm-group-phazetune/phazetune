@@ -1,0 +1,43 @@
+@mixin btn-primary($width, $height) {
+  width: $width;
+  height: $height;
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+  transition: 0.5s;
+  flex: 1 1 auto;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-size: 200% auto;
+}
+
+@mixin btn-gradient {
+  background-image: linear-gradient(
+    to right,
+    #5732a8 0%,
+    #9830b7 51%,
+    #ef87a9 100%
+  );
+}
+
+@mixin btn-primary-hover {
+  transition: 1s;
+  background-position: right center;
+  cursor: pointer;
+}
+
+@mixin btn-secondary($width, $height) {
+  width: $width;
+  height: $height;
+  background-color: #ed5eb7;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@mixin btn-secondary-hover {
+  background-color: transparent;
+  color: white;
+  border: 2px solid #ed5eb7;
+}

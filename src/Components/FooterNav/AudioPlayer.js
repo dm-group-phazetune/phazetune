@@ -1,5 +1,7 @@
 import React from "react";
 import WaveSurfer from "wavesurfer";
+import { Link } from "react-router-dom";
+
 class AudioPlayer extends React.Component {
   constructor() {
     super();
@@ -31,6 +33,9 @@ class AudioPlayer extends React.Component {
     return (
       <div>
         <header className="Audio-header-container">
+          <Link to={`/profile/user/${this.props.username}`}>
+            <p>{this.props.username}</p>
+          </Link>
           <p className="Audio-title">{this.props.title}</p>
           <p className="Audio-genre">{this.props.genre}</p>
         </header>

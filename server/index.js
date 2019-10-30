@@ -10,7 +10,7 @@ const io = require("socket.io")(http);
 const authController = require("./controllers/authController");
 const postsController = require("./controllers/postsController");
 const profController = require("./controllers/profController");
-const genreController = require('./controllers/genreController')
+const genreController = require("./controllers/genreController");
 // Dotenv
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
@@ -59,7 +59,7 @@ app.post("/auth/login", login);
 app.post("/auth/logout", logout);
 // Posts Endpoints
 app.post("/api/posts", addPost);
-app.post("/api/posts/comments/:post_id");
+// app.post("/api/posts/comments/:post_id");
 app.post("/api/posts/favorites/:post_id");
 app.put("/api/posts/:post_id", editPost);
 app.delete("/api/posts/:post_id", deletePost);
@@ -78,8 +78,6 @@ app.put("/api/profile/user", editUserProf);
 // Follow Endpoints
 app.post("/api/user/:user_id");
 app.delete("/api/user/:user_id");
-
-
 
 io.of("/chat");
 io.on("connection", socket => {

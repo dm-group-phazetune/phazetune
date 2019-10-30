@@ -8,8 +8,7 @@ class Explore extends Component {
     super();
     this.state = {
       pastPost: [],
-      // genrePost: [],
-      genre: ''
+      genre: ""
     };
   }
   componentDidMount() {
@@ -48,9 +47,9 @@ class Explore extends Component {
     return (
       <div className="N-E-container">
         <header className="N-E-title">Explore</header>
+        <hr width={200} />
         <nav className="N-E-nav">
-          <div>All</div>
-          <div>Genre</div>
+          <div className="N-E-nav-links">All</div>
         </nav>
           {this.props.user_id !== null ? (
             <div>
@@ -95,20 +94,19 @@ class Explore extends Component {
             return (
               <div className="AudioPlayer-Container" key={i}>
                 <AudioPlayer
+                  username={individualPost.username}
                   title={individualPost.title}
                   genre={individualPost.genre}
                   audioUrl={individualPost.audio_url}
-                  />
+                />
               </div>
             );
           })}
         </main>
-        
       </div>
     );
   }
 }
-
 
 // const mapStateToProps = reduxState => {
 //   return {
