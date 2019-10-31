@@ -53,7 +53,6 @@ class AudioUpload extends React.Component {
   }
   //end of drop zone
   handleChange = e => {
-    console.log(e.target.files);
     if (e.target.files[0]) {
       const audio = e.target.files[0];
       this.setState(() => ({ audio }));
@@ -65,7 +64,6 @@ class AudioUpload extends React.Component {
     const uploadTask = storage.ref(`audios/${audio.name}`).put(audio);
 
     const setThisState = url => {
-      console.log(url);
       this.setState({ audioUrl: url });
     };
     uploadTask.on(
@@ -158,7 +156,7 @@ class AudioUpload extends React.Component {
                     <label className="Dialog-label">upload:</label>
                   </td>
                   <td className="Dialog-input">
-                    <label for="file-upload" className="Input-file">
+                    <label htmlFor="file-upload" className="Input-file">
                       Choose File
                     </label>
                     <input

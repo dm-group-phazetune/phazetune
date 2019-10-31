@@ -1,13 +1,63 @@
-.AudioPlayer-Container {
-  background-color: pink;
-  display: block;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+.AudioPlayer-container {
+  width: 400px;
+  height: 100%;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #454244;
+  color: #ffffff;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.AudioPlayer-header-container {
+  margin-left: 15px;
+  padding-top: 5px;
+}
+
+.AudioPlayer-header-container .AudioPlayer-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  line-height: 1.618em;
+  letter-spacing: 0.04em;
+  color: white;
+  font-weight: bold;
+}
+
+.AudioPlayer-header-container .AudioPlayer-genre {
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  line-height: 1.618em;
+  letter-spacing: 0.04em;
+  color: white;
+  opacity: 0.6;
+  line-height: 0.8em;
+}
+
+.AudioPlayer-username {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 1.618em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ef87a9;
+}
+
+.AudioPlayer-username:hover {
+  color: none;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  cursor: pointer;
+}
+
+.Audio-player {
+  position: relative;
+  top: 25px;
+  left: 42px;
 }
 
 .ChatNav-container {
@@ -239,7 +289,7 @@ hr {
 }
 
 .Dialog-content .Dialog-input {
-  padding: 5px;
+  padding: 5px 0;
 }
 
 .Dialog-content .input-text {
@@ -538,9 +588,9 @@ input[type="file"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -550,8 +600,30 @@ input[type="file"] {
           flex-direction: column;
   -ms-flex-flow: none;
       flex-flow: none;
-  overflow-y: auto;
   background-color: #312e30;
+  overflow-y: auto;
+}
+
+.N-E-top {
+  width: 60%;
+  height: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-flow: none;
+      flex-flow: none;
+  position: relative;
+  top: 10vh;
 }
 
 .N-E-title {
@@ -613,7 +685,9 @@ hr {
           transform: scale(1.1);
 }
 
-.N-E-content {
+.N-E-bottom {
+  width: 60%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -629,9 +703,9 @@ hr {
           flex-direction: column;
   -ms-flex-flow: none;
       flex-flow: none;
-  width: 50vw;
-  height: auto;
-  overflow-y: auto;
+  padding-top: 100px;
+  position: relative;
+  top: 0vh;
 }
 
 .Genre-container {
@@ -683,35 +757,45 @@ hr {
 }
 
 .Profile-body {
-  width: 60vw;
+  width: 50vw;
   height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-flow: none;
-      flex-flow: none;
-  background-color: #838182;
+}
+
+.Profile-body .Divider {
+  position: relative;
+  top: 60px;
 }
 
 .Profile-top {
   width: 100%;
-  height: 30vh;
+  height: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: none;
+          flex-direction: none;
+  -ms-flex-flow: none;
+      flex-flow: none;
+  padding-top: 15px;
+}
+
+.Profile-top .Profile-left {
+  width: 30%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: none;
+      -ms-flex-pack: none;
+          justify-content: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -721,16 +805,156 @@ hr {
           flex-direction: column;
   -ms-flex-flow: none;
       flex-flow: none;
+  position: relative;
+  top: 80px;
 }
 
-.Profile-top .Profile-username {
+.Profile-top .Profile-right {
+  width: 70%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-flow: none;
+      flex-flow: none;
+  position: relative;
+  top: 60px;
+  color: #ffffff;
+  padding-left: 15px;
+}
+
+.Profile-image {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.Profile-username {
   font-family: "Poppins", sans-serif;
-  font-size: 2em;
+  font-size: 2.5em;
   font-weight: bold;
   font-style: italic;
   line-height: 1.618em;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: #ffbbb1;
+  color: #ef87a9;
+}
+
+.Profile-city {
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  font-weight: none;
+  font-style: none;
+  line-height: 1.618em;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  opacity: 0.7;
+}
+
+.Profile-bio {
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  line-height: 1.618em;
+  letter-spacing: 0.04em;
+  color: white;
+  position: relative;
+  top: 100px;
+}
+
+.Profile-tracks {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.5em;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 1.618em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ef87a9;
+  position: relative;
+  top: 50px;
+  left: 10px;
+  padding: 10px 0;
+}
+
+.Profile-tracks-body {
+  position: relative;
+  top: 40px;
+  left: 10px;
+}
+
+.Dialog-btn-p {
+  width: 150px;
+  height: 45px;
+  background-color: white;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-size: 200% auto;
+  font-family: "Oswald", sans-serif;
+  font-size: 17px;
+  font-weight: none;
+  font-style: none;
+  line-height: 1.618em;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 20px 0;
+}
+
+.Dialog-btn-style {
+  background-image: -webkit-gradient(linear, left top, right top, from(#5732a8), color-stop(51%, #9830b7), to(#ef87a9));
+  background-image: linear-gradient(to right, #5732a8 0%, #9830b7 51%, #ef87a9 100%);
+}
+
+.Dialog-btn-p:hover {
+  -webkit-transition: 1s;
+  transition: 1s;
+  background-position: right center;
+  cursor: pointer;
+}
+
+.Edit-delete-btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: none;
+          flex-direction: none;
+  -ms-flex-flow: none;
+      flex-flow: none;
+}
+
+.Edit-delete-btn {
+  padding: 2px;
+}
+
+.Edit-delete-btn {
+  color: transparent;
 }
 /*# sourceMappingURL=main.css.map */

@@ -155,36 +155,32 @@ class Profile extends Component {
                   this.props.user_id &&
                   this.props.match.params.username === this.props.username ? (
                     <div>
-                      {/* <div>
-                        <FontAwesomeIcon
-                          icon={faEdit}
-                          color="#ffffff"
-                          size="2x"
-                          className="Edit-btn"
-                        />
+                      <div className="Edit-delete-btn-container">
+                        <div
+                          className="Edit-delete-btn"
+                          onClick={() => this.openEditPost()}
+                        >
+                          <FontAwesomeIcon
+                            icon={faEdit}
+                            color="#ffffff"
+                            size="1x"
+                            className="Edit-btn"
+                          />
+                        </div>
+                        <div
+                          className="Edit-delete-btn"
+                          onClick={() => {
+                            this.handleDeletePost(track.post_id);
+                          }}
+                        >
+                          <FontAwesomeIcon
+                            icon={faTrash}
+                            color="#ffffff"
+                            size="1x"
+                            className="Delete-btn"
+                          />
+                        </div>
                       </div>
-                      <div>
-                        <FontAwesomeIcon
-                          icon={faTrash}
-                          color="#ffffff"
-                          size="2x"
-                          className="Delete-btn"
-                        />
-                      </div> */}
-                      <button
-                        className="Btn-secondary"
-                        onClick={() => this.openEditPost()}
-                      >
-                        EDIT
-                      </button>
-                      <button
-                        className="Btn-secondary"
-                        onClick={() => {
-                          this.handleDeletePost(track.post_id);
-                        }}
-                      >
-                        DELETE
-                      </button>
                       <Dialog
                         style={{ textAlign: "center" }}
                         className="Dialog-container"

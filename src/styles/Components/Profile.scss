@@ -102,10 +102,13 @@
   @include btn-primary-hover;
 }
 
-.Edit-btn {
-
+.Edit-delete-btn-container {
+  @include flex(flex-start, flex-start, none, none);
+}
+.Edit-delete-btn {
+  padding: 2px;
 }
 
-.Delete-btn {
-  
+.Edit-delete-btn {
+  color: transparent;
 }

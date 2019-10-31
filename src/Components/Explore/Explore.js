@@ -26,8 +26,8 @@ class Explore extends Component {
     this.setState({ genre: e.target.value });
   };
   genreClick = () => {
-    Axios.get(`/api/posts/genre?genre=${this.state.genre}`).then(res => {
-      this.setState({ posts: [...res.data] });
+    Axios.get(`/api/type?genre=${this.state.genre}`).then(response => {
+      this.setState({ pastPost: [...response.data] });
     });
   };
 
@@ -42,7 +42,7 @@ class Explore extends Component {
             <div className="N-E-nav-links">All</div>
           </nav>
           {this.props.user_id !== null ? (
-            <div className="Genre-container">
+            <div>
               <button onClick={this.genreClick}>Choose Genre</button>
               <div>
                 <form>
@@ -53,10 +53,10 @@ class Explore extends Component {
                           <label>Genre: </label>
                         </td>
                         <td>
-                          <select onChange={this.genreChange}>
+                          <select name="genre" onChange={this.genreChange}>
                             <option>Select</option>
                             <option value="Rock">Rock</option>
-                            <option value="R&B/ Hip-Hop">R&B/ Hip-Hop</option>
+                            <option value="RB/ Hip-Hop">R&B/ Hip-Hop</option>
                             <option value="Pop">Pop</option>
                             <option value="Country">Country</option>
                             <option value="Dance">Dance/EDM</option>
@@ -100,18 +100,5 @@ class Explore extends Component {
     );
   }
 }
-
-// const mapStateToProps = reduxState => {
-//   return {
-//     user_id: reduxState.authReducer.user_id
-//   };
-// };
-
-// export default withRouter(
-//   connect(
-//     mapStateToProps,
-//     { getSession }
-//   )(Newsfeed)
-// );
 
 export default Explore;
