@@ -1,7 +1,7 @@
 import React from "react";
 import "./dropzone.css";
 import Axios from "axios";
-import { storage } from "../FireAudioUpload/firebase";
+import { storage } from "../FireAudioUpload/Firebase"; 
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import { withRouter } from "react-router-dom";
@@ -58,6 +58,7 @@ class AudioUpload extends React.Component {
       this.setState(() => ({ audio }));
     }
   };
+  //firebase upload
   handleClick = () => {
     const { audio } = this.state;
 
@@ -137,7 +138,7 @@ class AudioUpload extends React.Component {
                     >
                       <option>Select</option>
                       <option>Rock</option>
-                      <option>R&B/ Hip-Hop</option>
+                      <option>RB/ Hip-Hop</option>
                       <option>Pop</option>
                       <option>Country</option>
                       <option>Dance/EDM</option>
