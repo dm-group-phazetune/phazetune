@@ -167,7 +167,7 @@ class AudioUpload extends React.Component {
                     >
                       <option>Select</option>
                       <option>Rock</option>
-                      <option>R&B/ Hip-Hop</option>
+                      <option>RB/ Hip-Hop</option>
                       <option>Pop</option>
                       <option>Country</option>
                       <option>Dance/EDM</option>

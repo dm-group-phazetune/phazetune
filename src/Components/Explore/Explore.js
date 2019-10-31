@@ -66,7 +66,7 @@ class Explore extends Component {
                           <select onChange={this.genreChange}>
                             <option>Select</option>
                             <option value='Rock'>Rock</option>
-                            <option value='R&B/ Hip-Hop'>R&B/ Hip-Hop</option>
+                            <option value='RB/ Hip-Hop'>R&B/ Hip-Hop</option>
                             <option value='Pop'>Pop</option>
                             <option value='Country'>Country</option>
                             <option value='Dance'>Dance/EDM</option>
