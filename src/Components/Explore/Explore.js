@@ -46,11 +46,12 @@ class Explore extends Component {
     // console.log(this.state.pastPost);
     return (
       <div className="N-E-container">
-        <header className="N-E-title">Explore</header>
-        <hr width={200} />
-        <nav className="N-E-nav">
-          <div className="N-E-nav-links">All</div>
-        </nav>
+        <div className="N-E-top">
+          <header className="N-E-title">Explore</header>
+          <hr width={200} />
+          <nav className="N-E-nav">
+            <div className="N-E-nav-links">All</div>
+          </nav>
           {this.props.user_id !== null ? (
             <div>
               <button onClick={this.genreClick}>Choose Genre</button>
@@ -66,7 +67,7 @@ class Explore extends Component {
                           <select onChange={this.genreChange}>
                             <option>Select</option>
                             <option value='Rock'>Rock</option>
-                            <option value='R&B/ Hip-Hop'>R&B/ Hip-Hop</option>
+                            <option value='RB/ Hip-Hop'>R&B/ Hip-Hop</option>
                             <option value='Pop'>Pop</option>
                             <option value='Country'>Country</option>
                             <option value='Dance'>Dance/EDM</option>
@@ -85,14 +86,13 @@ class Explore extends Component {
                 </form>
               </div>
             </div>
-          ) : (
-            null
-          )}
-          
-        <main className="N-E-content">
+          ) : null}
+        </div>
+
+        <main className="N-E-bottom">
           {this.state.pastPost.map((individualPost, i) => {
             return (
-              <div className="AudioPlayer-Container" key={i}>
+              <div className="AudioPlayer" key={i}>
                 <AudioPlayer
                   username={individualPost.username}
                   title={individualPost.title}
@@ -107,18 +107,5 @@ class Explore extends Component {
     );
   }
 }
-
-// const mapStateToProps = reduxState => {
-//   return {
-//     user_id: reduxState.authReducer.user_id
-//   };
-// };
-
-// export default withRouter(
-//   connect(
-//     mapStateToProps,
-//     { getSession }
-//   )(Newsfeed)
-// );
 
 export default Explore;

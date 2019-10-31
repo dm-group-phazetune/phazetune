@@ -9,22 +9,45 @@
 @import "../_modules/cards.scss";
 @import "../_modules/images.scss";
 
-.AudioPlayer-Container {
-  background-color: pink;
-  // padding: 15px 0;
-  display: block;
-  flex-direction: column;
-  align-items: center;
-
-  // justify-content: center;
-
-
+.AudioPlayer-container {
+  @include background-size(400px, 100%);
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: $d-2;
+  color: $white;
+  margin: 10px 0;
+  padding: 10px;
 }
 
+.AudioPlayer-header-container {
+  margin-left: 15px;
+  padding-top: 5px;
 
-.Audio-header-container {
-  .Audio-title {
+  .AudioPlayer-title {
+    @include p;
+    font-weight: bold;
   }
-  .Audio-genre {
+  .AudioPlayer-genre {
+    @include p;
+    opacity: 0.6;
+    line-height: 0.8em;
   }
+}
+
+.AudioPlayer-username {
+  @include poppins(1.4em, bold, italic, 0.02em, uppercase);
+  color: $b-4;
+}
+
+.AudioPlayer-username:hover {
+  color: none;
+  transition: 0.6s;
+  cursor: pointer;
+}
+
+.Audio-player {
+  position: relative;
+  top: 25px;
+  left: 42px;
 }

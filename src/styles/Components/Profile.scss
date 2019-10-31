@@ -8,9 +8,107 @@
 @import "../_modules/buttons.scss";
 @import "../_modules/cards.scss";
 @import "../_modules/images.scss";
+@import "../_modules/inputs.scss";
 
 .Profile-container {
   @include background-size(100vw, 100vh);
   @include flex(center, center, column, none);
   overflow-y: auto;
+  background-color: $d-1;
+}
+
+.Profile-body {
+  @include background-size(50vw, 100vh);
+  // background-color: $d-3;
+
+  .Divider {
+    position: relative;
+    top: 60px;
+  }
+}
+
+.Profile-top {
+  @include background-size(100%, 300px);
+  @include flex(flex-start, center, none, none);
+  padding-top: 15px;
+
+  .Profile-left {
+    @include background-size(30%, 100%);
+    @include flex(none, center, column, none);
+    position: relative;
+    top: 80px;
+  }
+
+  .Profile-right {
+    @include background-size(70%, 100%);
+    @include flex(flex-start, flex-start, column, none);
+    position: relative;
+    top: 60px;
+    color: $white;
+    padding-left: 15px;
+  }
+}
+
+.Profile-image {
+  @include img-avatar(200px, 200px);
+  border-radius: 50%;
+}
+
+.Profile-username {
+  @include poppins(2.5em, bold, italic, 0.02em, uppercase);
+  color: $b-4;
+}
+
+.Profile-city {
+  @include poppins(1em, none, none, 0.03em, none);
+  opacity: 0.7;
+}
+
+.Profile-bio {
+  @include p;
+  position: relative;
+  top: 100px;
+}
+
+.Profile-bottom {
+  // @include background-size(100%, scroll);
+}
+
+.Profile-tracks {
+  @include poppins(2.5em, bold, italic, 0.02em, uppercase);
+  color: $b-4;
+  position: relative;
+  top: 50px;
+  left: 10px;
+  padding: 10px 0;
+}
+.Profile-tracks-body {
+  position: relative;
+  top: 40px;
+  left: 10px;
+}
+.Dialog-btn-p {
+  @include btn-primary(150px, 45px);
+  @include oswald(17px, none, none, 0.07em, uppercase);
+  color: $white;
+  margin: 20px 0;
+}
+
+.Dialog-btn-style {
+  @include btn-gradient;
+}
+
+.Dialog-btn-p:hover {
+  @include btn-primary-hover;
+}
+
+.Edit-delete-btn-container {
+  @include flex(flex-start, flex-start, none, none);
+}
+.Edit-delete-btn {
+  padding: 2px;
+}
+
+.Edit-delete-btn {
+  color: transparent;
 }

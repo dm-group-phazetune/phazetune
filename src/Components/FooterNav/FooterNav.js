@@ -38,16 +38,16 @@ class FooterNav extends Component {
       <div>
         {this.props.location.pathname !== "/" ? (
           <div className="FooterNav-container">
-            <NavLink
+            {/* <NavLink
               to="/newsfeed"
               activeStyle={{
-                color: "red"
+                color: "inherit"
               }}
             >
               <div className="Footernav">
                 <FontAwesomeIcon icon={faHome} size="2x" />
               </div>
-            </NavLink>
+            </NavLink> */}
             <NavLink
               to="/explore"
               style={{ color: "inherit", textDecoration: "inherit" }}
