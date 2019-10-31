@@ -6,21 +6,21 @@ import io from "socket.io-client";
 
 const useStyles = makeStyles(() => ({
   chatbox: {
-    backgroundColor: "#6497b1",
+    backgroundColor: "#5a5759",
     color: "white",
     width: "90vw",
-    height: "70vh",
+    height: "82vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    fontFamily: "Raleway, sans-serif",
-    fontWeight: "bold",
+    fontFamily: "Poppins, sans-serif",
+    fontWeight: "none",
     marginTop: "8.5vh",
     letterSpacing: ".06em"
   },
   chatboxLeft: {
     width: "20%",
-    height: "100%",
+    height: "90%",
     padding: "10px",
     borderRight: "1px solid white",
     textTransform: "uppercase",
@@ -31,11 +31,12 @@ const useStyles = makeStyles(() => ({
     textTransform: "uppercase",
     paddingTop: "15px",
     fontWeight: "bold",
-    fontStyle: "italic"
+    fontStyle: "italic",
+    height: "25px"
   },
   chatboxRight: {
     width: "80%",
-    height: "95%",
+    height: "90%",
     padding: "10px"
   },
   chatboxRightTitle: {
@@ -43,7 +44,8 @@ const useStyles = makeStyles(() => ({
     textTransform: "uppercase",
     paddingTop: "1px",
     fontWeight: "bold",
-    fontStyle: "italic"
+    fontStyle: "italic",
+    height: "25px"
   },
   chatboxRightMessages: {
     height: "90%",
@@ -60,20 +62,32 @@ const useStyles = makeStyles(() => ({
     padding: "6px",
     borderRadius: "5px",
     border: "1px solid transparent",
-    backgroundColor: "#e7eff6"
+    backgroundColor: "#e7eff6",
+    display: "inline",
+    backgroundColor: "transparent",
+    boxSizing: "border-box",
+    border: "2px solid #ed5eb7",
+    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    color: "#FFFFFF",
+    fontFamily: "Poppins, sans-serif",
+    fontSize: "1em"
   },
   button: {
     width: "20%",
     boxSizing: "border-box",
-    padding: "5px",
-    color: "#024a81",
+    padding: "0px",
+    color: "#FFFFFF",
     borderRadius: "5px",
     border: "1px solid transparent",
-    backgroundColor: "#9fbea1",
+    backgroundColor: "#ed5eb7",
     fontSize: "16px",
-    fontFamily: "$body-fontfamily",
+    fontFamily: "Oswald, sans-serif",
     letterSpacing: "0.12em",
     textTransform: "uppercase"
+  },
+  buttonHover: {
+    backgroundColor: "#FFFFFF",
+    cursor: "pointer"
   }
 }));
 

@@ -33,15 +33,15 @@ class Explore extends Component {
   //   })
   // }
 
-  genreChange = (e) => {
-    this.setState({genre: e.target.value})
-  }
+  genreChange = e => {
+    this.setState({ genre: e.target.value });
+  };
   genreClick = () => {
     Axios.get(`/api/type?genre=${this.state.genre}`).then(response => {
-      this.setState({ pastPost: [...response.data]})
-      console.log(response.data)
-    })
-  }
+      this.setState({ pastPost: [...response.data] });
+      console.log(response.data);
+    });
+  };
   render() {
     // console.log(this.state.pastPost);
     return (
@@ -50,35 +50,46 @@ class Explore extends Component {
           <header className="N-E-title">Explore</header>
           <hr width={200} />
           <nav className="N-E-nav">
-            <div className="N-E-nav-links">All</div>
+            {/* <div className="N-E-nav-links">All</div> */}
           </nav>
           {this.props.user_id !== null ? (
             <div>
-              <button onClick={this.genreClick}>Choose Genre</button>
               <div>
                 <form>
                   <table>
                     <tbody>
                       <tr>
                         <td>
-                          <label>Genre: </label>
+                          <select
+                            className="Btn-secondary-select"
+                            onChange={this.genreChange}
+                          >
+                            <option>Select</option>
+                            <option value="Rock">Rock</option>
+                            <option value="RB/ Hip-Hop">R&B/ Hip-Hop</option>
+                            <option value="Pop">Pop</option>
+                            <option value="Country">Country</option>
+                            <option value="Dance">Dance/EDM</option>
+                            <option value="Christian/Gospel">
+                              Christian/Gospel
+                            </option>
+                            <option value="Holiday/Seasonal">
+                              Holiday/Seasonal
+                            </option>
+                            <option value="Latin">Latin</option>
+                            <option value="Jazz">Jazz</option>
+                            <option value="Classical">Classical</option>
+                            <option value="Kids Music">Kids Music</option>
+                            <option value="Other">Other</option>
+                          </select>
                         </td>
                         <td>
-                          <select onChange={this.genreChange}>
-                            <option>Select</option>
-                            <option value='Rock'>Rock</option>
-                            <option value='RB/ Hip-Hop'>R&B/ Hip-Hop</option>
-                            <option value='Pop'>Pop</option>
-                            <option value='Country'>Country</option>
-                            <option value='Dance'>Dance/EDM</option>
-                            <option value='Christian/Gospel'>Christian/Gospel</option>
-                            <option value='Holiday/Seasonal'>Holiday/Seasonal</option>
-                            <option value='Latin'>Latin</option>
-                            <option value='Jazz'>Jazz</option>
-                            <option value='Classical'>Classical</option>
-                            <option value='Kids Music'>Kids Music</option>
-                            <option value='Other'>Other</option>
-                          </select>
+                          <button
+                            className="Btn-secondary"
+                            onClick={this.genreClick}
+                          >
+                            Choose Genre
+                          </button>
                         </td>
                       </tr>
                     </tbody>

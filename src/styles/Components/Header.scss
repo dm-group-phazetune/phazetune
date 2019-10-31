@@ -138,6 +138,7 @@ input[type="file"] {
   background-color: transparent;
   @include border(2px, solid, $b-3);
 }
+
 .Btn-secondary {
   @include btn-secondary(160px, 35px);
   @include flex(center, center, none, none);
@@ -148,6 +149,14 @@ input[type="file"] {
   @include btn-secondary-hover;
 }
 
+.Btn-secondary-select {
+  @include btn-secondary(160px, 35px);
+  @include flex(center, center, none, none);
+  @include p;
+  margin-right: 10px;
+  background-color: transparent;
+  @include border(2px, solid, $b-3);
+}
 // FOOTER NAV
 .FooterNav-container {
   @include background-size(100vw, 7vh);
