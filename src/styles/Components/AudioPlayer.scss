@@ -9,22 +9,40 @@
 @import "../_modules/cards.scss";
 @import "../_modules/images.scss";
 
-.AudioPlayer-Container {
-  background-color: pink;
-  // padding: 15px 0;
-  display: block;
-  flex-direction: column;
-  align-items: center;
+// .AudioPlayer {
+//   @include background-size(100vw, 10vh);
+//   background-color: black;
+// }
 
-  // justify-content: center;
-
-
+.AudioPlayer-container {
+  @include background-size(30vw, 100%);
+  border-radius: 4px;
+  background-color: $d-3;
+  color: $white;
+  margin: 15px 0;
 }
 
+.AudioPlayer-header-container {
+  margin-left: 15px;
+  padding-top: 5px;
 
-.Audio-header-container {
-  .Audio-title {
+  .AudioPlayer-username {
+    @include poppins(1.2em, bold, italic, 0.02em, uppercase);
+    color: $b-4;
   }
-  .Audio-genre {
+
+  .AudioPlayer-title {
+    @include p;
   }
+  .AudioPlayer-genre {
+    @include p;
+  }
+}
+
+.Audio-player {
+  // @include flex(flex-start, center, none, none);
+  // background-color: blue;
+  position: relative;
+  top: 25px;
+  left: 65px;
 }

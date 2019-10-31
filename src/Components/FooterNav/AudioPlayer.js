@@ -31,15 +31,18 @@ class AudioPlayer extends React.Component {
   render() {
     console.log(this.props.title);
     return (
-      <div>
-        <header className="Audio-header-container">
-          <Link to={`/profile/user/${this.props.username}`}>
-            <p>{this.props.username}</p>
+      <div className="AudioPlayer-container">
+        <header className="AudioPlayer-header-container">
+          <Link
+            style={{ color: "inherit", textDecoration: "inherit" }}
+            to={`/profile/user/${this.props.username}`}
+          >
+            <p className="AudioPlayer-username">{this.props.username}</p>
           </Link>
-          <p className="Audio-title">{this.props.title}</p>
-          <p className="Audio-genre">{this.props.genre}</p>
+          <p className="AudioPlayer-title">{this.props.title}</p>
+          <p className="AudioPlayer-genre">{this.props.genre}</p>
         </header>
-        <main>
+        <main className="Audio-player">
           <div
             id="waveform"
             style={{

@@ -21,7 +21,7 @@
   @include background-size(60%, 55%);
   @include flex(center, center, column, none);
   position: relative;
-  top: 200px;
+  top: 400px;
 }
 
 .N-E-title {
@@ -60,12 +60,11 @@ hr {
   @include flex(center, center, column, none);
   padding: 40px 0;
   position: relative;
-  top: 200px;
+  top: 380px;
 }
 
 .Genre-container {
   @include flex(center, center, column, none);
   @include oswald(17px, none, none, 0.05em, uppercase);
   color: $white;
-  background-color: blue;
 }

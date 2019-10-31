@@ -86,7 +86,7 @@ class Explore extends Component {
         <main className="N-E-bottom">
           {this.state.pastPost.map((individualPost, i) => {
             return (
-              <div className="AudioPlayer-Container" key={i}>
+              <div className="AudioPlayer" key={i}>
                 <AudioPlayer
                   username={individualPost.username}
                   title={individualPost.title}

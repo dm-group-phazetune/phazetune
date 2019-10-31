@@ -39,7 +39,7 @@
   -ms-flex-flow: none;
       flex-flow: none;
   position: relative;
-  top: 200px;
+  top: 400px;
 }
 
 .N-E-title {
@@ -121,7 +121,7 @@ hr {
       flex-flow: none;
   padding: 40px 0;
   position: relative;
-  top: 200px;
+  top: 380px;
 }
 
 .Genre-container {
@@ -148,6 +148,5 @@ hr {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #ffffff;
-  background-color: blue;
 }
 /*# sourceMappingURL=Newsfeed-Explore.css.map */

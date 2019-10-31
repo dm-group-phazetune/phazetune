@@ -1,12 +1,47 @@
-.AudioPlayer-Container {
-  background-color: pink;
-  display: block;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+.AudioPlayer-container {
+  width: 30vw;
+  height: 100%;
+  border-radius: 4px;
+  background-color: #5a5759;
+  color: #ffffff;
+  margin: 15px 0;
+}
+
+.AudioPlayer-header-container {
+  margin-left: 15px;
+  padding-top: 5px;
+}
+
+.AudioPlayer-header-container .AudioPlayer-username {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 1.618em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ef87a9;
+}
+
+.AudioPlayer-header-container .AudioPlayer-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  line-height: 1.618em;
+  letter-spacing: 0.04em;
+  color: white;
+}
+
+.AudioPlayer-header-container .AudioPlayer-genre {
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  line-height: 1.618em;
+  letter-spacing: 0.04em;
+  color: white;
+}
+
+.Audio-player {
+  position: relative;
+  top: 25px;
+  left: 65px;
 }
 /*# sourceMappingURL=AudioPlayer.css.map */
