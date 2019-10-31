@@ -4,6 +4,7 @@ import Axios from "axios";
 import { storage } from "../FireAudioUpload/firebase";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
+import { withRouter } from "react-router-dom";
 
 class AudioUpload extends React.Component {
   constructor(props) {
@@ -96,18 +97,13 @@ class AudioUpload extends React.Component {
       }
     );
     this.props.closeAudioUpload(this.setState({ upload: false }));
+    this.props.history.push("/explore");
   };
   handlePlaceChange = event => {
     this.setState({ genre: event.target.value });
   };
 
   render() {
-    // const style = {
-    //   display: "flex",
-    //   justifyContent: "center",
-    //   alignItems: "center",
-    //   flexDirection: "column"
-    // };
     return (
       <div>
         <Dialog
@@ -217,4 +213,4 @@ class AudioUpload extends React.Component {
     );
   }
 }
-export default AudioUpload;
+export default withRouter(AudioUpload);

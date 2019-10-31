@@ -10,6 +10,8 @@ import { getSession } from "../../redux/reducers/authReducer";
 import AudioPlayer from "../FooterNav/AudioPlayer";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
 class Profile extends Component {
   constructor() {
@@ -90,8 +92,28 @@ class Profile extends Component {
     const editedProfile = { first_name, last_name, photo, bio, city };
     this.props.editProfile(editedProfile);
     alert("You've changed your profile settings.");
+    this.setState({ editProfile: false });
     this.props.getProfile(this.props.match.params.username);
   };
+
+  componentDidUpdate(prevProps) {
+    if (this.props.user_id !== prevProps.user_id) {
+      this.props.getProfile(this.props.match.params.username);
+      const { first_name, last_name, photo, city, bio } = this.props;
+      if (
+        this.props.user_id ||
+        this.props.match.params.username === this.props.username
+      ) {
+        this.setState({
+          first_name: first_name,
+          last_name: last_name,
+          photo: photo,
+          city: city,
+          bio: bio
+        });
+      }
+    }
+  }
 
   async componentWillUnmount() {
     await this.props.resetAction();
@@ -219,114 +241,145 @@ class Profile extends Component {
       <div className="Profile-container">
         <div className="Profile-body">
           <div>
-            <p className="Profile-username">Profile</p>
-            <header>
+            <header className="Profile-top">
+              <div className="Profile-left">
+                {this.props.user &&
+                this.props.user[0] &&
+                this.props.user[0][0].photo !== "" ? (
+                  <>
+                    <img
+                      src={this.props.user[0][0].photo}
+                      alt={`${this.props.match.params.username}'s profile avatar`}
+                      className="Profile-image"
+                    />
+                  </>
+                ) : (
+                  <FontAwesomeIcon
+                    icon={faUserCircle}
+                    color="#ffffff"
+                    size="10x"
+                    className="User-avatar"
+                  />
+                )}
+                {this.props.user_id &&
+                this.props.match.params.username === this.props.username ? (
+                  <div>
+                    <button
+                      className="Dialog-btn-p Dialog-btn-style"
+                      onClick={this.openEditProfile}
+                    >
+                      EDIT PROFILE
+                    </button>
+                    <Dialog
+                      style={{ textAlign: "center" }}
+                      className="Dialog-container"
+                      onClose={this.closeEditProfile}
+                      open={this.state.editProfile}
+                    >
+                      <DialogContent className="Dialog-title">
+                        Edit Profile
+                      </DialogContent>
+                      <DialogContent className="Dialog-content">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td className="Dialog-label">
+                                <label>First Name:</label>
+                              </td>
+                              <td className="Dialog-input">
+                                <input
+                                  name="first_name"
+                                  className="input-text"
+                                  onChange={this.handleInput}
+                                  value={this.state.first_name}
+                                />
+                              </td>
+                            </tr>
+                            <tr>
+                              <td className="Dialog-label">
+                                <label>Last Name:</label>
+                              </td>
+                              <td className="Dialog-input">
+                                <input
+                                  name="last_name"
+                                  className="input-text"
+                                  onChange={this.handleInput}
+                                  value={this.state.last_name}
+                                />
+                              </td>
+                            </tr>
+                            <tr>
+                              <td className="Dialog-label">
+                                <label>City:</label>
+                              </td>
+                              <td className="Dialog-input">
+                                <input
+                                  name="city"
+                                  className="input-text"
+                                  onChange={this.handleInput}
+                                  value={this.state.city}
+                                />
+                              </td>
+                            </tr>
+                            <tr>
+                              <td className="Dialog-label">
+                                <label>Bio:</label>
+                              </td>
+                              <td className="Dialog-input">
+                                <textarea
+                                  name="bio"
+                                  rows="4"
+                                  className="input-textarea"
+                                  onChange={this.handleInput}
+                                  value={this.state.bio}
+                                />
+                              </td>
+                            </tr>
+                            <tr>
+                              <td className="Dialog-label">
+                                <label>Photo:</label>
+                              </td>
+                              <td className="Dialog-input">
+                                <button
+                                  className="Input-file"
+                                  onClick={() => widget.open()}
+                                >
+                                  Upload
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <button
+                          className="Dialog-btn Dialog-btn-style"
+                          onClick={() => this.handleEditProfile()}
+                        >
+                          Save
+                        </button>
+                      </DialogContent>
+                    </Dialog>
+                  </div>
+                ) : null}
+              </div>
               {this.props.user && this.props.user[0] ? (
-                <>
-                  <p>{this.props.user && this.props.user[0][0].username}</p>
-                  <p>{this.props.user && this.props.user[0][0].city}</p>
-                  <p>{this.props.user && this.props.user[0][0].bio}</p>
-                  <p>{this.props.user && this.props.user[0][0].photo}</p>
-                  <p>{this.props.user && this.props.user[0][0].follow_count}</p>
-                </>
-              ) : null}
-              {this.props.user_id &&
-              this.props.match.params.username === this.props.username ? (
-                <div>
-                  <button onClick={this.openEditProfile}>EDIT PROFILE</button>
-                  <Dialog
-                    style={{ textAlign: "center" }}
-                    className="Dialog-container"
-                    onClose={this.closeEditProfile}
-                    open={this.state.editProfile}
-                  >
-                    <DialogContent className="Dialog-title">
-                      Edit Profile
-                    </DialogContent>
-                    <DialogContent className="Dialog-content">
-                      <table>
-                        <tbody>
-                          <tr>
-                            <td className="Dialog-label">
-                              <label>First Name:</label>
-                            </td>
-                            <td className="Dialog-input">
-                              <input
-                                name="first_name"
-                                className="input-text"
-                                onChange={this.handleInput}
-                                value={this.state.first_name}
-                              />
-                            </td>
-                          </tr>
-                          <tr>
-                            <td className="Dialog-label">
-                              <label>Last Name:</label>
-                            </td>
-                            <td className="Dialog-input">
-                              <input
-                                name="last_name"
-                                className="input-text"
-                                onChange={this.handleInput}
-                                value={this.state.last_name}
-                              />
-                            </td>
-                          </tr>
-                          <tr>
-                            <td className="Dialog-label">
-                              <label>City:</label>
-                            </td>
-                            <td className="Dialog-input">
-                              <input
-                                name="city"
-                                className="input-text"
-                                onChange={this.handleInput}
-                                value={this.state.city}
-                              />
-                            </td>
-                          </tr>
-                          <tr>
-                            <td className="Dialog-label">
-                              <label>Bio:</label>
-                            </td>
-                            <td className="Dialog-input">
-                              <textarea
-                                name="bio"
-                                rows="4"
-                                className="input-textarea"
-                                onChange={this.handleInput}
-                                value={this.state.bio}
-                              />
-                            </td>
-                          </tr>
-                          <tr>
-                            <td className="Dialog-label">
-                              <label>Photo:</label>
-                            </td>
-                            <td className="Dialog-input">
-                              <button
-                                className="Input-file"
-                                onClick={() => widget.open()}
-                              >
-                                Upload
-                              </button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <button
-                        className="Dialog-btn Dialog-btn-style"
-                        onClick={() => this.handleEditProfile()}
-                      >
-                        Save
-                      </button>
-                    </DialogContent>
-                  </Dialog>
+                <div className="Profile-right">
+                  <div className="Profile-username">
+                    {this.props.user[0][0].username}
+                  </div>
+                  <div className="Profile-city">
+                    {this.props.user[0][0].city}
+                  </div>
+                  <div className="Profile-bio">{this.props.user[0][0].bio}</div>
+                  {/* <div>
+                    {this.props.user && this.props.user[0][0].follow_count}
+                  </div> */}
                 </div>
               ) : null}
             </header>
           </div>
+
           <hr width={800} />
+
           <main className="Profile-bottom">{mappedPosts}</main>
         </div>
       </div>
