@@ -11,7 +11,11 @@ import AudioPlayer from "../FooterNav/AudioPlayer";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserCircle,
+  faTrash,
+  faEdit
+} from "@fortawesome/free-solid-svg-icons";
 
 class Profile extends Component {
   constructor() {
@@ -151,8 +155,30 @@ class Profile extends Component {
                   this.props.user_id &&
                   this.props.match.params.username === this.props.username ? (
                     <div>
-                      <button onClick={() => this.openEditPost()}>EDIT</button>
+                      {/* <div>
+                        <FontAwesomeIcon
+                          icon={faEdit}
+                          color="#ffffff"
+                          size="2x"
+                          className="Edit-btn"
+                        />
+                      </div>
+                      <div>
+                        <FontAwesomeIcon
+                          icon={faTrash}
+                          color="#ffffff"
+                          size="2x"
+                          className="Delete-btn"
+                        />
+                      </div> */}
                       <button
+                        className="Btn-secondary"
+                        onClick={() => this.openEditPost()}
+                      >
+                        EDIT
+                      </button>
+                      <button
+                        className="Btn-secondary"
                         onClick={() => {
                           this.handleDeletePost(track.post_id);
                         }}
@@ -381,7 +407,7 @@ class Profile extends Component {
 
           <main className="Profile-bottom">
             <header className="Profile-tracks">Tracks</header>
-            <body className="Profile-tracks-body">{mappedPosts}</body>
+            <div className="Profile-tracks-body">{mappedPosts}</div>
           </main>
         </div>
       </div>
