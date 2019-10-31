@@ -1,9 +1,10 @@
 import React from "react";
 import "./dropzone.css";
 import Axios from "axios";
-import { storage } from "../FireAudioUpload/FireBase";
+import { storage } from "../FireAudioUpload/Firebase"; 
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
+import { withRouter } from "react-router-dom";
 
 class AudioUpload extends React.Component {
   constructor(props) {
@@ -52,7 +53,6 @@ class AudioUpload extends React.Component {
   }
   //end of drop zone
   handleChange = e => {
-    console.log(e.target.files);
     if (e.target.files[0]) {
       const audio = e.target.files[0];
       this.setState(() => ({ audio }));
@@ -65,7 +65,6 @@ class AudioUpload extends React.Component {
     const uploadTask = storage.ref(`audios/${audio.name}`).put(audio);
 
     const setThisState = url => {
-      console.log(url);
       this.setState({ audioUrl: url });
     };
     uploadTask.on(
@@ -97,18 +96,13 @@ class AudioUpload extends React.Component {
       }
     );
     this.props.closeAudioUpload(this.setState({ upload: false }));
+    this.props.history.push("/explore");
   };
   handlePlaceChange = event => {
     this.setState({ genre: event.target.value });
   };
 
   render() {
-    // const style = {
-    //   display: "flex",
-    //   justifyContent: "center",
-    //   alignItems: "center",
-    //   flexDirection: "column"
-    // };
     return (
       <div>
         <Dialog
@@ -116,37 +110,14 @@ class AudioUpload extends React.Component {
           className="Dialog-container"
           onClose={this.props.closeAudioUpload}
           open={this.props.upload}
-          className="Dialog-container"
         >
           <DialogContent className="Dialog-title">Add Track</DialogContent>
           <DialogContent className="Dialog-content">
-            {/* <table>
-              <tbody>
-                <tr>
-                  <td>
-                    <label>title:</label>
-                  </td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <label>genre:</label>
-                  </td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <label>upload:</label>
-                  </td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table> */}
             <table>
               <tbody>
                 <tr>
-                  <td>
-                    <label className="Dialog-label">title:</label>
+                  <td className="Dialog-label">
+                    <label>title:</label>
                   </td>
                   <td className="Dialog-input">
                     <input
@@ -156,8 +127,8 @@ class AudioUpload extends React.Component {
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label className="Dialog-label">genre:</label>
+                  <td className="Dialog-label">
+                    <label>genre:</label>
                   </td>
                   <td className="Dialog-input">
                     <select
@@ -186,7 +157,7 @@ class AudioUpload extends React.Component {
                     <label className="Dialog-label">upload:</label>
                   </td>
                   <td className="Dialog-input">
-                    <label for="file-upload" className="Input-file">
+                    <label htmlFor="file-upload" className="Input-file">
                       Choose File
                     </label>
                     <input
@@ -199,14 +170,13 @@ class AudioUpload extends React.Component {
                 </tr>
                 <tr>
                   <td>
-                    <label className="Dialog-label">Drop & Drop:</label>
+                    <label className="Dialog-label">Drag&Drop:</label>
                   </td>
                 </tr>
               </tbody>
             </table>
             <div>
               <div
-                // style={style}
                 className={`Dropzone ${
                   this.state.highlight ? "Highlight" : ""
                 }`}
@@ -233,8 +203,7 @@ class AudioUpload extends React.Component {
               className="Dialog-btn Dialog-btn-style"
               onClick={this.handleClick}
             >
-              {" "}
-              Upload{" "}
+              Upload
             </button>
           </DialogContent>
         </Dialog>
@@ -242,4 +211,4 @@ class AudioUpload extends React.Component {
     );
   }
 }
-export default AudioUpload;
+export default withRouter(AudioUpload);

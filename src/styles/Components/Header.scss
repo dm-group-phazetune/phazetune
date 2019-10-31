@@ -78,13 +78,15 @@
   text-align: left;
 
   .Dialog-label {
-    width: 100px;
+    width: 110px;
     text-align: left;
     text-transform: uppercase;
+    top: 0;
   }
 
   .Dialog-input {
-    padding: 5px;
+    padding: 5px 0;
+    // padding-left: 5px;
   }
 
   .input-text {
@@ -97,11 +99,18 @@
     @include p;
     font-weight: bold;
   }
+
+  .input-textarea {
+    @include input-select(160px, 70px);
+    @include p;
+    background-color: transparent;
+    color: $white;
+  }
 }
 
 .Dialog-btn {
   @include btn-primary(270px, 45px);
-  @include oswald(17px, none, none, 0.1em, uppercase);
+  @include oswald(17px, none, none, 0.07em, uppercase);
   color: $white;
   margin: 20px 0;
 }
@@ -125,6 +134,10 @@ input[type="file"] {
   cursor: pointer;
 }
 
+.Input-file:hover {
+  background-color: transparent;
+  @include border(2px, solid, $b-3);
+}
 .Btn-secondary {
   @include btn-secondary(160px, 35px);
   @include flex(center, center, none, none);
@@ -134,6 +147,7 @@ input[type="file"] {
 .Btn-secondary:hover {
   @include btn-secondary-hover;
 }
+
 // FOOTER NAV
 .FooterNav-container {
   @include background-size(100vw, 7vh);
