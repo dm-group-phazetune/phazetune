@@ -4,10 +4,10 @@ require("dotenv").config();
 // Web app's Firebase configuration
 var firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: "phazetune.firebaseapp.com",
-  databaseURL: "https://phazetune.firebaseio.com",
-  projectId: "phazetune",
-  storageBucket: "phazetune.appspot.com",
+  authDomain: "phazetune-6a7cc.firebaseapp.com",
+  databaseURL: "https://phazetune-6a7cc.firebaseio.com",
+  projectId: "phazetune-6a7cc",
+  storageBucket: "phazetune-6a7cc.appspot.com",
   messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.FIREBASE_APP_ID
 };
