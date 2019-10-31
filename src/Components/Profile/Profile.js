@@ -16,6 +16,7 @@ import {
   faTrash,
   faEdit
 } from "@fortawesome/free-solid-svg-icons";
+require("dotenv").config();
 
 class Profile extends Component {
   constructor() {
@@ -128,7 +129,7 @@ class Profile extends Component {
     const widget = window.cloudinary.createUploadWidget(
       {
         cloudName: "phazetune",
-        uploadPreset: "vaawqi0h",
+        uploadPreset: process.env.CLOUDINARY_UPLOAD_PRESET,
         sources: ["local", "url", "dropbox", "facebook", "instagram"],
         cropping: true,
         cropping_aspect_ratio: 1
