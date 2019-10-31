@@ -8,7 +8,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 class Login extends Component {
   render() {
     if (this.props.user_id) {
-      return <Redirect to="/newsfeed" />;
+      return <Redirect to="/explore" />;
     }
 
     return (

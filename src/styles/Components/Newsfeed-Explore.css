@@ -16,8 +16,30 @@
           flex-direction: column;
   -ms-flex-flow: none;
       flex-flow: none;
-  overflow-y: auto;
   background-color: #312e30;
+  overflow-y: auto;
+}
+
+.N-E-top {
+  width: 60%;
+  height: 55%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-flow: none;
+      flex-flow: none;
+  position: relative;
+  top: 200px;
 }
 
 .N-E-title {
@@ -79,7 +101,9 @@ hr {
           transform: scale(1.1);
 }
 
-.N-E-content {
+.N-E-bottom {
+  width: 60%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -95,9 +119,9 @@ hr {
           flex-direction: column;
   -ms-flex-flow: none;
       flex-flow: none;
-  width: 50vw;
-  height: auto;
-  overflow-y: auto;
+  padding: 40px 0;
+  position: relative;
+  top: 200px;
 }
 
 .Genre-container {
@@ -124,5 +148,6 @@ hr {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #ffffff;
+  background-color: blue;
 }
 /*# sourceMappingURL=Newsfeed-Explore.css.map */

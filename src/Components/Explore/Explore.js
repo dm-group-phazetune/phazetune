@@ -37,51 +37,53 @@ class Explore extends Component {
     // console.log(this.state.pastPost);
     return (
       <div className="N-E-container">
-        <header className="N-E-title">Explore</header>
-        <hr width={200} />
-        <nav className="N-E-nav">
-          <div className="N-E-nav-links">All</div>
-        </nav>
-        {this.props.user_id !== null ? (
-          <div className="Genre-container">
-            <button onClick={this.genreClick}>Choose Genre</button>
-            <div>
-              <form>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <label>Genre: </label>
-                      </td>
-                      <td>
-                        <select onChange={this.genreChange}>
-                          <option>Select</option>
-                          <option value="Rock">Rock</option>
-                          <option value="R&B/ Hip-Hop">R&B/ Hip-Hop</option>
-                          <option value="Pop">Pop</option>
-                          <option value="Country">Country</option>
-                          <option value="Dance">Dance/EDM</option>
-                          <option value="Christian/Gospel">
-                            Christian/Gospel
-                          </option>
-                          <option value="Holiday/Seasonal">
-                            Holiday/Seasonal
-                          </option>
-                          <option value="Latin">Latin</option>
-                          <option value="Jazz">Jazz</option>
-                          <option value="Classical">Classical</option>
-                          <option value="Kids Music">Kids Music</option>
-                          <option value="Other">Other</option>
-                        </select>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </form>
+        <div className="N-E-top">
+          <header className="N-E-title">Explore</header>
+          <hr width={200} />
+          <nav className="N-E-nav">
+            <div className="N-E-nav-links">All</div>
+          </nav>
+          {this.props.user_id !== null ? (
+            <div className="Genre-container">
+              <button onClick={this.genreClick}>Choose Genre</button>
+              <div>
+                <form>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <label>Genre: </label>
+                        </td>
+                        <td>
+                          <select onChange={this.genreChange}>
+                            <option>Select</option>
+                            <option value="Rock">Rock</option>
+                            <option value="R&B/ Hip-Hop">R&B/ Hip-Hop</option>
+                            <option value="Pop">Pop</option>
+                            <option value="Country">Country</option>
+                            <option value="Dance">Dance/EDM</option>
+                            <option value="Christian/Gospel">
+                              Christian/Gospel
+                            </option>
+                            <option value="Holiday/Seasonal">
+                              Holiday/Seasonal
+                            </option>
+                            <option value="Latin">Latin</option>
+                            <option value="Jazz">Jazz</option>
+                            <option value="Classical">Classical</option>
+                            <option value="Kids Music">Kids Music</option>
+                            <option value="Other">Other</option>
+                          </select>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </form>
+              </div>
             </div>
-          </div>
-        ) : null}
-        <main className="N-E-content">
+          ) : null}
+        </div>
+        <main className="N-E-bottom">
           {this.state.pastPost.map((individualPost, i) => {
             return (
               <div className="AudioPlayer-Container" key={i}>
