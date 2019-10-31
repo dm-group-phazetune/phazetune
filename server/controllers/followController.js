@@ -16,16 +16,16 @@
 
 const followUser= async ( req, res) => {
   const db = req.app.get("db");
-  const { id } = req.session.user;
-  const { following_id } = req.params;
+  const { user_id } = req.session.user;
+  const { username } = req.params;
 
-  db.checkFollow([id, following_id]).then(friends => {
+  db.checkFollow([user_id, username]).then(friends => {
     if (friends.length > 0) {
-      db.follow.unfollowUser([id, following_id]).then( () => {
+      db.follow.unfollowUser([user_id, username]).then( () => {
         res.json({ followed:false});
       });
     } else {
-      db.follow.followUser([id, following_id]).then( () => {
+      db.follow.followUser([user_id, username]).then( () => {
         res.json({ followed:true});
       });
     }
@@ -34,8 +34,8 @@ const followUser= async ( req, res) => {
 
 const getFollowPosts = async (req, res, next) => {
   const db = req.app.get("db");
-  const { id } = req.session.user;
-  const results = await db.follow.getFollowingPosts([id]);
+  const { user_id } = req.session.user;
+  const results = await db.follow.getFollowingPosts([user_id]);
   res.status(200).json(results);
 };
 

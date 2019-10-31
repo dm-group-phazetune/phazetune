@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { editProfile, getProfile } from "../../redux/reducers/profReducer";
 import { editPost, deletePost } from "../../redux/reducers/postsReducer";
 import { getSession } from "../../redux/reducers/authReducer";
+import {followUser} from '../../redux/reducers/followReducer';
 import AudioPlayer from "../FooterNav/AudioPlayer";
 
 class Profile extends Component {
@@ -64,6 +65,10 @@ class Profile extends Component {
     this.props.editProfile(editedProfile);
     alert("You've changed your profile settings.");
   };
+  handleFollowUser = () => {
+    console.log(this.props.match.params);
+    this.props.followUser(this.props.match.params.username);
+  }
 
   render() {
     // cloudinary widget
@@ -208,11 +213,9 @@ class Profile extends Component {
           <p>{this.props.user && this.props.user[0][0].follow_count}</p>
           {this.props.username !== this.props.match.params.username
           ?
-          <button>Follow</button>
+          <button onClick={(this.handleFollowUser)}>Follow</button>
           : null
           }
-          <button className="following-button">
-          </button>
         </header>
         <main>{mappedPosts}</main>
       </div>
@@ -234,5 +237,5 @@ const mapStateToProps = reduxState => {
 
 export default connect(
   mapStateToProps,
-  { editProfile, getProfile, editPost, deletePost, getSession }
+  { editProfile, getProfile, editPost, deletePost, getSession, followUser }
 )(Profile);

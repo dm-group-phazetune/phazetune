@@ -7,7 +7,6 @@ const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 // Controllers
-const follow = require("./controllers/followController");
 const authController = require("./controllers/authController");
 const postsController = require("./controllers/postsController");
 const profController = require("./controllers/profController");
@@ -53,6 +52,8 @@ const {
   deletePost
 } = require("./controllers/postsController");
 
+const {followUser, checkFollow} = require('./controllers/followController');
+
 // Auth Endpoints
 app.get("/auth/user", getUser);
 app.post("/auth/register", register);
@@ -77,8 +78,8 @@ app.get("/api/type", genreType);
 app.get("/api/profile/user/:username", getUserProf);
 app.put("/api/profile/user", editUserProf);
 // Follow Endpoints
-app.post("/api/follow/:following_id");
-app.get("/api/follow/")
+app.post("/api/follow/:following_id", followUser);
+app.get("/api/follow/:following_id", checkFollow)
 app.delete("/api/follow/:following_id");
 //genre
 
