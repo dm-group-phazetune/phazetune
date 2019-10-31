@@ -1,7 +1,7 @@
 import React from "react";
 import "./dropzone.css";
 import Axios from "axios";
-import { storage } from "../FireAudioUpload/FireBase";
+import { storage } from "../FireAudioUpload/Firebase"; 
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 
