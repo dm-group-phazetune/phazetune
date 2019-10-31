@@ -119,9 +119,8 @@ hr {
           flex-direction: column;
   -ms-flex-flow: none;
       flex-flow: none;
-  padding-top: 100px;
   position: relative;
-  top: 0vh;
+  top: 15vh;
 }
 
 .Genre-container {

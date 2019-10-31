@@ -58,9 +58,8 @@ hr {
 .N-E-bottom {
   @include background-size(60%, auto);
   @include flex(center, center, column, none);
-  padding-top: 100px;
   position: relative;
-  top: 0vh;
+  top: 15vh;
 }
 
 .Genre-container {
