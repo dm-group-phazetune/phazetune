@@ -118,33 +118,11 @@ class AudioUpload extends React.Component {
         >
           <DialogContent className="Dialog-title">Add Track</DialogContent>
           <DialogContent className="Dialog-content">
-            {/* <table>
-              <tbody>
-                <tr>
-                  <td>
-                    <label>title:</label>
-                  </td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <label>genre:</label>
-                  </td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <label>upload:</label>
-                  </td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table> */}
             <table>
               <tbody>
                 <tr>
-                  <td>
-                    <label className="Dialog-label">title:</label>
+                  <td className="Dialog-label">
+                    <label>title:</label>
                   </td>
                   <td className="Dialog-input">
                     <input
@@ -154,8 +132,8 @@ class AudioUpload extends React.Component {
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label className="Dialog-label">genre:</label>
+                  <td className="Dialog-label">
+                    <label>genre:</label>
                   </td>
                   <td className="Dialog-input">
                     <select
@@ -197,14 +175,13 @@ class AudioUpload extends React.Component {
                 </tr>
                 <tr>
                   <td>
-                    <label className="Dialog-label">Drop & Drop:</label>
+                    <label className="Dialog-label">Drag&Drop:</label>
                   </td>
                 </tr>
               </tbody>
             </table>
             <div>
               <div
-                // style={style}
                 className={`Dropzone ${
                   this.state.highlight ? "Highlight" : ""
                 }`}

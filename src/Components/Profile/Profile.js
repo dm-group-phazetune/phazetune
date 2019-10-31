@@ -27,11 +27,11 @@ class Profile extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.getProfile(this.props.match.params.username);
+  async componentDidMount() {
+    await this.props.getProfile(this.props.match.params.username);
     const { first_name, last_name, photo, city, bio } = this.props;
     if (
-      this.props.user_id &&
+      this.props.user_id ||
       this.props.match.params.username === this.props.username
     ) {
       this.setState({
@@ -43,10 +43,26 @@ class Profile extends Component {
       });
     }
   }
+
   checkUploadResult = (error, resultEvent) => {
     if (resultEvent.event === "success") {
       this.setState({ photo: resultEvent.info.url });
     }
+  };
+  openEditPost = () => {
+    this.setState({ editPost: true });
+  };
+
+  openEditProfile = () => {
+    this.setState({ editProfile: true });
+  };
+
+  closeEditPost = () => {
+    this.setState({ editPost: false });
+  };
+
+  closeEditProfile = () => {
+    this.setState({ editProfile: false });
   };
   handleEditPost = (e, post_id) => {
     e.preventDefault();
@@ -63,9 +79,8 @@ class Profile extends Component {
   };
 
   handleDeletePost = post_id => {
-    console.log(typeof post_id);
-    console.log("hit");
     this.props.deletePost(post_id);
+    this.props.getProfile(this.props.match.params.username);
   };
   handleInput = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -75,33 +90,12 @@ class Profile extends Component {
     const editedProfile = { first_name, last_name, photo, bio, city };
     this.props.editProfile(editedProfile);
     alert("You've changed your profile settings.");
+    this.props.getProfile(this.props.match.params.username);
   };
 
-  openEditPost = () => {
-    this.setState({ editPost: true });
-  };
-
-  openEditProfile = () => {
-    this.setState({ editProfile: true });
-  };
-
-  closeEditPost = () => {
-    this.setState({ editPost: false });
-  };
-
-  closeEditProfile = () => {
-    this.setState({ editProfile: false });
-  };
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.match.params.username !== this.props.match.params.username) {
-      this.props.resetAction();
-    }
+  async componentWillUnmount() {
+    await this.props.resetAction();
   }
-
-  // componentWillUnmount() {
-  //   this.props.resetAction();
-  // }
 
   render() {
     // cloudinary widget
@@ -135,110 +129,87 @@ class Profile extends Component {
                   this.props.user_id &&
                   this.props.match.params.username === this.props.username ? (
                     <div>
-                      <button>EDIT TRACK</button>
-                      <div>
-                        <form>
-                          <table>
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <label>Title</label>
-                                </td>
-                                <td>
-                                  <input
-                                    className="title"
-                                    onChange={e =>
-                                      this.setState({ title: e.target.value })
-                                    }
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <label>Genre</label>
-                                </td>
-                                <td>
-                                  <select
-                                    name="genre"
-                                    onChange={this.handlePlaceChange}
-                                  >
-                                    <option>Select</option>
-                                    <option>Rock</option>
-                                    <option>R&B/ Hip-Hop</option>
-                                    <option>Pop</option>
-                                    <option>Country</option>
-                                    <option>Dance/EDM</option>
-                                    <option>Christian/Gospel</option>
-                                    <option>Holiday/Seasonal</option>
-                                    <option>Latin</option>
-                                    <option>Jazz</option>
-                                    <option>Classical</option>
-                                    <option>Kids Music</option>
-                                    <option>Other</option>
-                                  </select>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                          <button
-                            onClick={e => {
-                              this.handleEditPost(e, track.post_id);
-                            }}
-                          >
-                            Save
-                          </button>
-                        </form>
-                        <button
-                          onClick={() => {
-                            this.handleDeletePost(track.post_id);
-                          }}
-                        >
-                          Delete
-                        </button>
-                      </div>
+                      <button onClick={() => this.openEditPost()}>EDIT</button>
+                      <button
+                        onClick={() => {
+                          this.handleDeletePost(track.post_id);
+                        }}
+                      >
+                        DELETE
+                      </button>
+                      <Dialog
+                        style={{ textAlign: "center" }}
+                        className="Dialog-container"
+                        onClose={this.closeEditPost}
+                        open={this.state.editPost}
+                      >
+                        <DialogContent className="Dialog-title">
+                          Edit Track
+                        </DialogContent>
+                        <DialogContent className="Dialog-content">
+                          <form>
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td className="Dialog-label">
+                                    <label>Title:</label>
+                                  </td>
+                                  <td className="Dialog-input">
+                                    <input
+                                      className="input-text"
+                                      onChange={e =>
+                                        this.setState({
+                                          title: e.target.value
+                                        })
+                                      }
+                                      autoFocus
+                                    />
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td className="Dialog-label">
+                                    <label>Genre:</label>
+                                  </td>
+                                  <td className="Dialog-input">
+                                    <select
+                                      name="genre"
+                                      className="input-select"
+                                      onChange={this.handlePlaceChange}
+                                    >
+                                      <option>Select</option>
+                                      <option>Rock</option>
+                                      <option>R&B/ Hip-Hop</option>
+                                      <option>Pop</option>
+                                      <option>Country</option>
+                                      <option>Dance/EDM</option>
+                                      <option>Christian/Gospel</option>
+                                      <option>Holiday/Seasonal</option>
+                                      <option>Latin</option>
+                                      <option>Jazz</option>
+                                      <option>Classical</option>
+                                      <option>Kids Music</option>
+                                      <option>Other</option>
+                                    </select>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </form>
+                          <div className="Dialog-btn-container">
+                            <button
+                              className="Dialog-btn Dialog-btn-style"
+                              onClick={e => {
+                                this.handleEditPost(e, track.post_id);
+                              }}
+                            >
+                              Save
+                            </button>
+                          </div>
+                        </DialogContent>
+                      </Dialog>
                     </div>
                   ) : null}
                 </div>
-                {/* IF USER ON SESSION SHOW EDIT PROFILE BUTTON */}
-                {this.props.user_id &&
-                this.props.match.params.username === this.props.username ? (
-                  <div>
-                    <button>EDIT PROFILE</button>
-                    <div className="Edit-profile-container">
-                      <input
-                        name="first_name"
-                        onChange={this.handleInput}
-                        value={this.state.first_name}
-                        placeholder="First Name"
-                      />
-                      <input
-                        name="last_name"
-                        onChange={this.handleInput}
-                        value={this.state.last_name}
-                        placeholder="Last Name"
-                      />
-                      <input
-                        name="city"
-                        onChange={this.handleInput}
-                        value={this.state.city}
-                        placeholder="City"
-                      />
-                      <textarea
-                        name="bio"
-                        rows="4"
-                        onChange={this.handleInput}
-                        value={this.state.bio}
-                        placeholder="Bio"
-                      />
-                      <button onClick={() => widget.open()}>
-                        Upload Photo
-                      </button>
-                      <button onClick={() => this.handleEditProfile()}>
-                        Change Profile Settings
-                      </button>
-                    </div>
-                  </div>
-                ) : null}
               </div>
             );
           })
@@ -246,21 +217,118 @@ class Profile extends Component {
 
     return (
       <div className="Profile-container">
-        <h1>Profile</h1>
-        <header>
-          {this.props.user && this.props.user[0] ? (
-            <>
-              <p>{this.props.user && this.props.user[0][0].username}</p>
-              <p>{this.props.user && this.props.user[0][0].city}</p>
-              <p>{this.props.user && this.props.user[0][0].bio}</p>
-              <p>{this.props.user && this.props.user[0][0].photo}</p>
-              <p>{this.props.user && this.props.user[0][0].follow_count}</p>
-            </>
-          ) : (
-            "Loading..."
-          )}
-        </header>
-        <main>{mappedPosts}</main>
+        <div className="Profile-body">
+          <div>
+            <p className="Profile-username">Profile</p>
+            <header>
+              {this.props.user && this.props.user[0] ? (
+                <>
+                  <p>{this.props.user && this.props.user[0][0].username}</p>
+                  <p>{this.props.user && this.props.user[0][0].city}</p>
+                  <p>{this.props.user && this.props.user[0][0].bio}</p>
+                  <p>{this.props.user && this.props.user[0][0].photo}</p>
+                  <p>{this.props.user && this.props.user[0][0].follow_count}</p>
+                </>
+              ) : null}
+              {this.props.user_id &&
+              this.props.match.params.username === this.props.username ? (
+                <div>
+                  <button onClick={this.openEditProfile}>EDIT PROFILE</button>
+                  <Dialog
+                    style={{ textAlign: "center" }}
+                    className="Dialog-container"
+                    onClose={this.closeEditProfile}
+                    open={this.state.editProfile}
+                  >
+                    <DialogContent className="Dialog-title">
+                      Edit Profile
+                    </DialogContent>
+                    <DialogContent className="Dialog-content">
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td className="Dialog-label">
+                              <label>First Name:</label>
+                            </td>
+                            <td className="Dialog-input">
+                              <input
+                                name="first_name"
+                                className="input-text"
+                                onChange={this.handleInput}
+                                value={this.state.first_name}
+                              />
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="Dialog-label">
+                              <label>Last Name:</label>
+                            </td>
+                            <td className="Dialog-input">
+                              <input
+                                name="last_name"
+                                className="input-text"
+                                onChange={this.handleInput}
+                                value={this.state.last_name}
+                              />
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="Dialog-label">
+                              <label>City:</label>
+                            </td>
+                            <td className="Dialog-input">
+                              <input
+                                name="city"
+                                className="input-text"
+                                onChange={this.handleInput}
+                                value={this.state.city}
+                              />
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="Dialog-label">
+                              <label>Bio:</label>
+                            </td>
+                            <td className="Dialog-input">
+                              <textarea
+                                name="bio"
+                                rows="4"
+                                className="input-textarea"
+                                onChange={this.handleInput}
+                                value={this.state.bio}
+                              />
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="Dialog-label">
+                              <label>Photo:</label>
+                            </td>
+                            <td className="Dialog-input">
+                              <button
+                                className="Input-file"
+                                onClick={() => widget.open()}
+                              >
+                                Upload
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <button
+                        className="Dialog-btn Dialog-btn-style"
+                        onClick={() => this.handleEditProfile()}
+                      >
+                        Save
+                      </button>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              ) : null}
+            </header>
+          </div>
+          <hr width={800} />
+          <main className="Profile-bottom">{mappedPosts}</main>
+        </div>
       </div>
     );
   }
