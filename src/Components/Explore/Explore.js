@@ -30,9 +30,7 @@ class Explore extends Component {
       this.setState({ posts: [...res.data] });
     });
   };
-  componentDidUpdate() {
-    this.fetchPost();
-  }
+
   render() {
     // console.log(this.state.pastPost);
     return (

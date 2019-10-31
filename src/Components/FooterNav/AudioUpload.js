@@ -204,8 +204,7 @@ class AudioUpload extends React.Component {
               className="Dialog-btn Dialog-btn-style"
               onClick={this.handleClick}
             >
-              {" "}
-              Upload{" "}
+              Upload
             </button>
           </DialogContent>
         </Dialog>

@@ -39,7 +39,7 @@
   -ms-flex-flow: none;
       flex-flow: none;
   position: relative;
-  top: 400px;
+  top: 460px;
 }
 
 .N-E-title {
@@ -121,7 +121,7 @@ hr {
       flex-flow: none;
   padding: 40px 0;
   position: relative;
-  top: 380px;
+  top: 450px;
 }
 
 .Genre-container {

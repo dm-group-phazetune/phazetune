@@ -378,9 +378,13 @@ class Profile extends Component {
             </header>
           </div>
 
-          <hr width={800} />
+          <hr width={600} />
 
-          <main className="Profile-bottom">{mappedPosts}</main>
+          <main className="Profile-bottom">
+            <header className="Profile-tracks">Tracks</header>
+
+            {mappedPosts}
+          </main>
         </div>
       </div>
     );

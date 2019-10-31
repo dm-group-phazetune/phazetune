@@ -18,14 +18,14 @@
 }
 
 .Profile-body {
-  @include background-size(60vw, 100vh);
-  background-color: $d-3;
+  @include background-size(50vw, 100vh);
+  // background-color: $d-3;
 }
 
 .Profile-top {
   @include background-size(100%, 40vh);
   @include flex(flex-start, center, none, none);
-  padding: 10px 0;
+  padding: 10px 15px;
 
   .Profile-left {
     @include background-size(30%, 100%);
@@ -40,6 +40,7 @@
     position: relative;
     top: 60px;
     color: $white;
+    padding-left: 15px;
   }
 }
 
@@ -71,6 +72,10 @@
   }
 
   .Profile-tracks {
+    @include poppins(3em, bold, italic, 0.02em, uppercase);
+    color: $b-4;
+    position: relative;
+    left: 10px;
   }
 }
 

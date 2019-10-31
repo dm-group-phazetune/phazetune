@@ -15,34 +15,44 @@
 // }
 
 .AudioPlayer-container {
-  @include background-size(30vw, 100%);
+  @include background-size(400px, 100%);
   border-radius: 4px;
-  background-color: $d-3;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: $d-2;
   color: $white;
   margin: 15px 0;
+  padding: 10px;
 }
 
 .AudioPlayer-header-container {
   margin-left: 15px;
   padding-top: 5px;
 
-  .AudioPlayer-username {
-    @include poppins(1.2em, bold, italic, 0.02em, uppercase);
-    color: $b-4;
-  }
-
   .AudioPlayer-title {
     @include p;
+    font-weight: bold;
   }
   .AudioPlayer-genre {
     @include p;
+    opacity: 0.6;
+    line-height: 0.8em;
   }
 }
 
+.AudioPlayer-username {
+  @include poppins(1.4em, bold, italic, 0.02em, uppercase);
+  color: $b-4;
+}
+
+.AudioPlayer-username:hover {
+  color: none;
+  transition: 0.6s;
+  cursor: pointer;
+}
+
 .Audio-player {
-  // @include flex(flex-start, center, none, none);
-  // background-color: blue;
   position: relative;
   top: 25px;
-  left: 65px;
+  left: 42px;
 }
