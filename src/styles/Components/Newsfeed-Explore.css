@@ -4,9 +4,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -22,13 +22,13 @@
 
 .N-E-top {
   width: 60%;
-  height: 55%;
+  height: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -39,7 +39,7 @@
   -ms-flex-flow: none;
       flex-flow: none;
   position: relative;
-  top: 460px;
+  top: 10vh;
 }
 
 .N-E-title {
@@ -119,9 +119,9 @@ hr {
           flex-direction: column;
   -ms-flex-flow: none;
       flex-flow: none;
-  padding: 40px 0;
+  padding-top: 70px;
   position: relative;
-  top: 450px;
+  top: 0vh;
 }
 
 .Genre-container {
@@ -148,5 +148,9 @@ hr {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #ffffff;
+}
+
+.AudioPlayer {
+  padding: 15px 0;
 }
 /*# sourceMappingURL=Newsfeed-Explore.css.map */

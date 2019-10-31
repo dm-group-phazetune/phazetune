@@ -11,9 +11,9 @@ class Landing extends Component {
             artists/producers, and develop a sense of community.
           </div>
         </header>
-        <main>Phazetune Features</main>
+        {/* <main>Phazetune Features</main>
         <main>Mission Statement</main>
-        <footer>About the team</footer>
+        <footer>About the team</footer> */}
       </div>
     );
   }

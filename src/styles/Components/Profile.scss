@@ -20,12 +20,17 @@
 .Profile-body {
   @include background-size(50vw, 100vh);
   // background-color: $d-3;
+
+  .Divider {
+    position: relative;
+    top: 60px;
+  }
 }
 
 .Profile-top {
-  @include background-size(100%, 40vh);
+  @include background-size(100%, 300px);
   @include flex(flex-start, center, none, none);
-  padding: 10px 15px;
+  padding-top: 15px;
 
   .Profile-left {
     @include background-size(30%, 100%);
@@ -50,7 +55,7 @@
 }
 
 .Profile-username {
-  @include poppins(3em, bold, italic, 0.02em, uppercase);
+  @include poppins(2.5em, bold, italic, 0.02em, uppercase);
   color: $b-4;
 }
 
@@ -62,23 +67,26 @@
 .Profile-bio {
   @include p;
   position: relative;
-  top: 135px;
+  top: 100px;
 }
 
 .Profile-bottom {
-  @include background-size(100%, auto);
-
-  .Profile-title {
-  }
-
-  .Profile-tracks {
-    @include poppins(3em, bold, italic, 0.02em, uppercase);
-    color: $b-4;
-    position: relative;
-    left: 10px;
-  }
+  // @include background-size(100%, scroll);
 }
 
+.Profile-tracks {
+  @include poppins(2.5em, bold, italic, 0.02em, uppercase);
+  color: $b-4;
+  position: relative;
+  top: 50px;
+  left: 10px;
+  padding: 10px 0;
+}
+.Profile-tracks-body {
+  position: relative;
+  top: 40px;
+  left: 10px;
+}
 .Dialog-btn-p {
   @include btn-primary(150px, 45px);
   @include oswald(17px, none, none, 0.07em, uppercase);

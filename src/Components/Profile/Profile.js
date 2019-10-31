@@ -376,14 +376,12 @@ class Profile extends Component {
                 </div>
               ) : null}
             </header>
+            <hr className="Divider" width={600} />
           </div>
-
-          <hr width={600} />
 
           <main className="Profile-bottom">
             <header className="Profile-tracks">Tracks</header>
-
-            {mappedPosts}
+            <body className="Profile-tracks-body">{mappedPosts}</body>
           </main>
         </div>
       </div>
