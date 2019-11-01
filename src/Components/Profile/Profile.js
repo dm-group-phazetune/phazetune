@@ -7,6 +7,7 @@ import {
 } from "../../redux/reducers/profReducer";
 import { editPost, deletePost } from "../../redux/reducers/postsReducer";
 import { getSession } from "../../redux/reducers/authReducer";
+import {followUser} from '../../redux/reducers/followReducer';
 import AudioPlayer from "../FooterNav/AudioPlayer";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -100,6 +101,10 @@ class Profile extends Component {
     this.setState({ editProfile: false });
     this.props.getProfile(this.props.match.params.username);
   };
+  handleFollowUser = () => {
+    console.log(this.props.match.params);
+    this.props.followUser(this.props.match.params.username);
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props.user_id !== prevProps.user_id) {

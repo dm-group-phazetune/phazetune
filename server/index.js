@@ -56,6 +56,8 @@ const {
   deletePost
 } = require("./controllers/postsController");
 
+const {followUser, checkFollow} = require('./controllers/followController');
+
 // Auth Endpoints
 app.get("/auth/user", getUser);
 app.post("/auth/register", register);
@@ -80,8 +82,10 @@ app.get("/api/type", genreType);
 app.get("/api/profile/user/:username", getUserProf);
 app.put("/api/profile/user", editUserProf);
 // Follow Endpoints
-app.post("/api/user/:user_id");
-app.delete("/api/user/:user_id");
+app.post("/api/follow/:following_id", followUser);
+app.get("/api/follow/:following_id", checkFollow)
+app.delete("/api/follow/:following_id");
+//genre
 
 io.of("/chat");
 io.on("connection", socket => {
