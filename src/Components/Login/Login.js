@@ -55,7 +55,8 @@ class Login extends Component {
                 </tbody>
               </table>
               <div className="Dialog-btn-container">
-                <button className="Dialog-btn Dialog-btn-style" type="submit">
+                <button className="Dialog-btn Dialog-btn-style" type="submit"
+                id="test-login-button">
                   LOG IN
                 </button>
               </div>

@@ -10,6 +10,7 @@ const initialState = {
 const FOLLOW_USER = "FOLLOW_USER";
 const CHECK_FOLLOW = "CHECK_FOLLOW";
 const UNFOLLOW_USER = "UNFOLLOW_USER";
+const FOLLOW_COUNT = "FOLLOW_COUNT";
 
 export const followUser = id => {
     return {
@@ -32,6 +33,12 @@ export const unFollowUser = id => {
     };
 };
 
+export const followCount = () => {
+    return {
+        type: FOLLOW_COUNT
+    }
+}
+
 
 export function followsReducer(state = initialState, action) {
     const { type, payload } = action;
@@ -49,6 +56,11 @@ export function followsReducer(state = initialState, action) {
         case `${UNFOLLOW_USER}_PENDING`:
             return{ ...state, loading: true, following: false};
         case `${UNFOLLOW_USER}_FULFILLED`:
+            return { ...state, loading: true, following: payload.data.following};
+
+        case `${FOLLOW_COUNT}_PENDING`:
+            return{ ...state, loading: true, following: false};
+        case `${FOLLOW_COUNT}_FULFILLED`:
             return { ...state, loading: true, following: payload.data.following}
         default:
             return state;

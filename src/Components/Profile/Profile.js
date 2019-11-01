@@ -406,30 +406,11 @@ class Profile extends Component {
             <hr className="Divider" width={600} />
           </div>
 
-<<<<<<< HEAD
-    return (
-      <div className="Profile-container">
-        <h1>Profile</h1>
-        <header>
-          <p>{this.props.user && this.props.user[0][0].username}</p>
-          <p>{this.props.user && this.props.user[0][0].city}</p>
-          <p>{this.props.user && this.props.user[0][0].bio}</p>
-          <p>{this.props.user && this.props.user[0][0].photo}</p>
-          <p>{this.props.user && this.props.user[0][0].follow_count}</p>
-          {this.props.username !== this.props.match.params.username
-          ?
-          <button onClick={(this.handleFollowUser)}>Follow</button>
-          : null
-          }
-        </header>
-        <main>{mappedPosts}</main>
-=======
           <main className="Profile-bottom">
             <header className="Profile-tracks">Tracks</header>
             <div className="Profile-tracks-body">{mappedPosts}</div>
           </main>
         </div>
->>>>>>> master
       </div>
     );
   }
@@ -450,9 +431,5 @@ const mapStateToProps = reduxState => {
 
 export default connect(
   mapStateToProps,
-<<<<<<< HEAD
-  { editProfile, getProfile, editPost, deletePost, getSession, followUser }
-=======
   { editProfile, getProfile, editPost, deletePost, getSession, resetAction }
->>>>>>> master
 )(Profile);
