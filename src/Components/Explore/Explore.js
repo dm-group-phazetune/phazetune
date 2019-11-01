@@ -70,12 +70,8 @@ class Explore extends Component {
                             <option value="Pop">Pop</option>
                             <option value="Country">Country</option>
                             <option value="Dance">Dance/EDM</option>
-                            <option value="Christian/Gospel">
-                              Christian/Gospel
-                            </option>
-                            <option value="Holiday/Seasonal">
-                              Holiday/Seasonal
-                            </option>
+                            <option value="Christian/Gospel"> Christian/Gospel</option>
+                            <option value="Holiday/Seasonal">Holiday/Seasonal</option>
                             <option value="Latin">Latin</option>
                             <option value="Jazz">Jazz</option>
                             <option value="Classical">Classical</option>
