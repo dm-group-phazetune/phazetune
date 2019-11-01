@@ -134,7 +134,7 @@ class Profile extends Component {
     const widget = window.cloudinary.createUploadWidget(
       {
         cloudName: "phazetune",
-        uploadPreset: process.env.CLOUDINARY_UPLOAD_PRESET,
+        uploadPreset: "vaawqi0h",
         sources: ["local", "url", "dropbox", "facebook", "instagram"],
         cropping: true,
         cropping_aspect_ratio: 1
