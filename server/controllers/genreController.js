@@ -1,5 +1,3 @@
-
-
 const genreType = async function (req, res) {
     console.log('hit')
     const db = req.app.get('db')
