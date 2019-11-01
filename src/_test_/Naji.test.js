@@ -19,6 +19,4 @@ describe("post reducer test", () => {
     test('getGenre returns right type', () => {
         expect(getGenre({}).type).toBe('GET_GENRE')
     })
-
-    
 })
